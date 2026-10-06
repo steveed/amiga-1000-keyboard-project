@@ -11722,7 +11722,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4b04775b-cbe5-521b-b886-37dfda80e71b")
 		(property "Reference" "C2"
 			(at 325.12 218.44 0)
@@ -11768,7 +11768,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Optional EMI filter on the cable side; on the drawing but not fitted on known boards"
 			(at 322.58 220.98 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12186,7 +12186,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "595040e9-467e-540b-ad07-5887e0921e48")
 		(property "Reference" "C3"
 			(at 345.44 218.44 0)
@@ -12232,7 +12232,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Optional EMI filter on the cable side; on the drawing but not fitted on known boards"
 			(at 342.9 220.98 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17124,7 +17124,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b86f34c4-c926-5566-b948-7bc79ae9eda5")
 		(property "Reference" "C1"
 			(at 304.8 218.44 0)
@@ -17170,7 +17170,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Optional EMI filter on the cable side; on the drawing but not fitted on known boards"
 			(at 302.26 220.98 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -8,7 +8,5 @@
 6. **Custom case**
 
 ## Open questions from the schematic
-- Add solder jumpers to swap KCLK/KDAT, so the board takes either the original A1000 controller
-  or a 6570 from an A500/A2000/A3000 keyboard (those need the two lines swapped).
 - Identify the transistor and diode part numbers.
 - Assign footprints (switches, connector, passives) before layout.

@@ -8,7 +8,6 @@
 6. **Custom case**
 
 ## Open questions from the schematic
-- Check on a real board that PA0 goes to KCLK and PA1 to KDAT (J3/J4 cross on the drawing).
 - Add solder jumpers to swap KCLK/KDAT, so the board takes either the original A1000 controller
   or a 6570 from an A500/A2000/A3000 keyboard (those need the two lines swapped).
 - Identify the transistor and diode part numbers.

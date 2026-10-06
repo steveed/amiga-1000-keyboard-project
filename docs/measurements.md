@@ -7,8 +7,9 @@ Reference photos are kept out of the repo.
 - Key pitch: 19.05 mm.
 - Cable: four wires (black, red, green, white) soldered directly to pads at the left end of the
   component strip, held by a fabric tie through the board. Each passes through a through-hole ferrite.
-  The other end goes to a 4P4C modular jack. Black = GND, red = +5V (per owner); green and white are
-  KCLK/KDAT, which way round not yet confirmed.
+  The other end goes to a 4P4C modular jack. Black = GND, red = +5V (per owner). By meter, white goes
+  to the 6500's pin 38 (PA0) and green to pin 37 (PA1). At the cord's computer end, white is on pin 2
+  (KCLK on the A1000 jack). So white = KCLK = PA0 and green = KDAT = PA1, matching the drawing.
 - Computer side (A1000 main schematic, J9 KBD): 1 +5V, 2 KCLK, 3 KDAT, 4 GND.
 - Three axial resistors are soldered on the solder side next to the X3 cable pads, one lead of each to a
   common pad and the other leads to three separate pads. They aren't on drawing 327063. Value unclear
@@ -19,6 +20,9 @@ Reference photos are kept out of the repo.
   13.5 mm square base. Seen from the top, the two pins sit 2.0 mm in from the right edge of the base
   (caliper: pin to far edge ~11.5 mm), so the body and keycap centre is 4.75 mm left of the pin midpoint.
   Cross-check: with that offset the rotated RETURN switch's body centre lands on the home row.
+- The short ISO left-shift position (SW92) is wired in parallel with L SHIFT (SW87), checked with a meter.
+- Caps Lock LED (inside the Caps Lock switch): leads 2.7 mm apart; the upper lead (towards the F-keys) is the
+  anode, checked with a meter.
 - Crystal: 3.000 MHz, HC-49/U can about 10 x 13 mm, leads 5 mm apart (marked "3.000 UNI 85 E").
 - Controller: 40-pin DIP marked "R10L2-11 / MEXICO A / 0106 / 8535" (Commodore logo).
 - Timer: TI NE556N (confirms the 556; the board silkscreen's "NE566N" is a typo).

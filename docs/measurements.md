@@ -15,6 +15,10 @@ Reference photos are kept out of the repo.
   from the photo (bands look like red/brown-black-red, so roughly 1K-2K).
 
 ## Parts read from an assembled board
+- Switches: Mitsumi standard mechanical Type 2 ("KCT" type, matching the `KCT-A89YC` PCB marking).
+  13.5 mm square base. Seen from the top, the two pins sit 2.0 mm in from the right edge of the base
+  (caliper: pin to far edge ~11.5 mm), so the body and keycap centre is 4.75 mm left of the pin midpoint.
+  Cross-check: with that offset the rotated RETURN switch's body centre lands on the home row.
 - Crystal: 3.000 MHz, HC-49/U can about 10 x 13 mm, leads 5 mm apart (marked "3.000 UNI 85 E").
 - Controller: 40-pin DIP marked "R10L2-11 / MEXICO A / 0106 / 8535" (Commodore logo).
 - Timer: TI NE556N (confirms the 556; the board silkscreen's "NE566N" is a typo).

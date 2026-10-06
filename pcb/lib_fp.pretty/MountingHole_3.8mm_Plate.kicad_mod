@@ -2,7 +2,7 @@
 (descr "Screw to the steel key plate")
 (property "Reference" "REF**" (at 0 -10.5 0) (layer "F.SilkS") (uuid "aa0afaaf-18e2-5124-8173-cf931f300d5a") (effects (font (size 1 1) (thickness 0.15))))
 (property "Value" "MountingHole_3.8mm_Plate" (at 0 10.5 0) (layer "F.Fab") (uuid "e0952423-5978-5c83-8660-8bbe45266b83") (effects (font (size 1 1) (thickness 0.15))))
-(attr exclude_from_pos_files exclude_from_bom)
+(attr board_only exclude_from_pos_files exclude_from_bom)
 (fp_circle (center 0 0) (end 2.15 0) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "b077551d-7ea1-5c08-989c-9668748001e4"))
 (fp_circle (center 0 0) (end 1.9 0) (stroke (width 0.1) (type solid)) (fill no) (layer "Cmts.User") (uuid "99e7c231-919d-5fc6-9981-a5b9994687fe"))
 (pad "" np_thru_hole circle (at 0 0) (size 3.8 3.8) (drill 3.8) (layers "*.Cu" "*.Mask") (uuid "630846b8-b19f-50e7-a20c-d27bdd9cc071"))

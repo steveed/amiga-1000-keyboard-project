@@ -2,7 +2,7 @@
 (descr "Clearance for a case screw boss")
 (property "Reference" "REF**" (at 0 -10.5 0) (layer "F.SilkS") (uuid "eceb7d7a-8fa6-5bf5-98a9-817410062e2b") (effects (font (size 1 1) (thickness 0.15))))
 (property "Value" "MountingHole_7.5mm_CaseClearance" (at 0 10.5 0) (layer "F.Fab") (uuid "997e887d-24f3-50de-a0cf-1a8925c6080c") (effects (font (size 1 1) (thickness 0.15))))
-(attr exclude_from_pos_files exclude_from_bom)
+(attr board_only exclude_from_pos_files exclude_from_bom)
 (fp_circle (center 0 0) (end 4 0) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "6bbc50f8-9d55-5737-9818-69463754a274"))
 (fp_circle (center 0 0) (end 3.75 0) (stroke (width 0.1) (type solid)) (fill no) (layer "Cmts.User") (uuid "ca39c2d2-3efa-534b-800f-456e47a51e79"))
 (pad "" np_thru_hole circle (at 0 0) (size 7.5 7.5) (drill 7.5) (layers "*.Cu" "*.Mask") (uuid "49081be1-6326-5aa8-82ea-0be62cb9989e"))

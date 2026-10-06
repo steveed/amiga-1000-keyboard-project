@@ -1,0 +1,44 @@
+name: Render board
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pcb/**'
+      - '.github/workflows/render.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render with KiCad
+        run: |
+          mkdir -p out
+          docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp \
+            -v "$PWD:/repo" -w /repo kicad/kicad:10.0-full bash -ec '
+              B=pcb/amiga-1000-keyboard.kicad_pcb
+              kicad-cli pcb render --side top --width 2400 --height 940 --quality high \
+                --background transparent --zoom 2.3 -o out/board-top.png "$B"
+              kicad-cli pcb render --width 2400 --height 1200 --quality high --background transparent \
+                --perspective --rotate "-45,0,-20" --zoom 1.35 -o out/board-iso.png "$B"
+            '
+
+      - name: Publish to the renders branch
+        run: |
+          cd out
+          git init -q -b renders
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add board-top.png board-iso.png
+          git commit -q -m "render board from ${GITHUB_SHA::7}."
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" renders

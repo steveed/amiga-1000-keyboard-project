@@ -11,3 +11,9 @@ production/
 gerbers/
 
 .DS_Store
+
+# KiCad local history
+.history/
+
+# Reference photos of a borrowed board - never commit
+images_do_not_keep/

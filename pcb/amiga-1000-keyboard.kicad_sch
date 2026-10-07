@@ -12,6 +12,129 @@
 		(comment 2 "License: CC BY-NC-SA 4.0")
 	)
 	(lib_symbols
+			(symbol "Mechanical:MountingHole_Pad"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "H"
+			(at 0 6.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 0 4.445 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "mounting hole"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "MountingHole*Pad*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "MountingHole_Pad_0_1"
+			(circle
+				(center 0 1.27)
+				(radius 1.27)
+				(stroke
+					(width 1.27)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "MountingHole_Pad_1_1"
+			(pin input line
+				(at 0 -2.54 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 		(symbol "Connector_Generic:Conn_01x04"
 			(pin_names
 				(offset 1.016)
@@ -9064,6 +9187,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c1839b98-da37-5606-a772-27815ef93bc6")
 		)
@@ -9294,6 +9428,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "330a6866-bdb2-5721-bb13-166a5cee1415")
 		)
@@ -9364,6 +9509,17 @@
 		)
 		(property "Description" ""
 			(at 187.96 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 187.96 109.22 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9526,6 +9682,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 228.6 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6c97603d-e8db-5372-a511-f20f8d811f64")
 		)
@@ -9604,6 +9771,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5e549d10-29ae-5ec4-a862-1f3758829559")
 		)
@@ -9674,6 +9852,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9836,6 +10025,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "88db02f6-ec0b-5990-8020-d23ba5b38f06")
 		)
@@ -9906,6 +10106,17 @@
 		)
 		(property "Description" ""
 			(at 106.68 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9992,6 +10203,17 @@
 				)
 			)
 		)
+		(property "Part" "LED built into the Caps Lock switch (no separate part)"
+			(at 170.18 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5344a9d4-f1e7-5374-9122-d2c4fd91eee8")
 		)
@@ -10062,6 +10284,17 @@
 		)
 		(property "Description" ""
 			(at 208.28 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10148,6 +10381,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f17bf9a5-c410-5147-961a-bdd31ea334e8")
 		)
@@ -10226,6 +10470,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bda0b0fa-3100-585c-ada6-eb4b18198b1a")
 		)
@@ -10296,6 +10551,17 @@
 		)
 		(property "Description" ""
 			(at 335.28 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 335.28 149.86 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10458,6 +10724,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "525eb48a-60a0-5696-8a7a-44d39e73fcd2")
 		)
@@ -10528,6 +10805,17 @@
 		)
 		(property "Description" "International layouts only: extra key left of Return (original jumper J9)"
 			(at 289.56 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 91.44 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10614,6 +10902,17 @@
 				)
 			)
 		)
+		(property "Part" "1N4148 small-signal diode, DO-35"
+			(at 170.18 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d758a6ba-5ea9-5761-946b-7283ec4067ef")
 		)
@@ -10684,6 +10983,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 109.22 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10998,6 +11308,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 182.88 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "16bf58f7-b171-5e92-803f-8f026c79b5bf")
 		)
@@ -11068,6 +11389,17 @@
 		)
 		(property "Description" ""
 			(at 248.92 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11230,6 +11562,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5265b7ff-11ac-5e4d-8090-1f43afa816de")
 		)
@@ -11300,6 +11643,17 @@
 		)
 		(property "Description" ""
 			(at 147.32 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11386,6 +11740,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "38330605-8aa3-5c01-b78a-a953afa54d84")
 		)
@@ -11456,6 +11821,17 @@
 		)
 		(property "Description" ""
 			(at 66.04 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 66.04 109.22 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11542,6 +11918,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "47f4cf16-655a-5902-9a53-51145cdca802")
 		)
@@ -11620,6 +12007,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "408cde21-7b85-52eb-8ee8-7cde69915423")
 		)
@@ -11690,6 +12088,17 @@
 		)
 		(property "Description" ""
 			(at 243.84 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 243.84 149.86 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11778,6 +12187,17 @@
 				)
 			)
 		)
+		(property "Part" "1nF 50V ceramic disc, 5 mm"
+			(at 322.58 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7ca2a1de-4c1d-53a5-8b43-408dc29a0c30")
 		)
@@ -11848,6 +12268,17 @@
 		)
 		(property "Description" ""
 			(at 330.2 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 55.88 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12002,6 +12433,17 @@
 		)
 		(property "Description" ""
 			(at 213.36 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 213.36 149.86 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12242,6 +12684,17 @@
 				)
 			)
 		)
+		(property "Part" "1nF 50V ceramic disc, 5 mm"
+			(at 342.9 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ea5803f2-7ce7-593d-a512-92b440943b60")
 		)
@@ -12396,6 +12849,17 @@
 				)
 			)
 		)
+		(property "Part" "3.000 MHz crystal, HC-49/U"
+			(at 50.8 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f5412349-0861-5f8c-8290-cc79d41a67c9")
 		)
@@ -12474,6 +12938,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "02fbdec3-2745-5a5a-a44e-e3fd49678c87")
 		)
@@ -12544,6 +13019,17 @@
 		)
 		(property "Description" ""
 			(at 228.6 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 228.6 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12706,6 +13192,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 66.04 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e24d427f-8a77-548a-8450-70c578ba8a03")
 		)
@@ -12776,6 +13273,17 @@
 		)
 		(property "Description" ""
 			(at 269.24 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 269.24 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12862,6 +13370,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 269.24 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bde3e8ba-02a3-5d22-b2c3-eb1c314e6f24")
 		)
@@ -12932,6 +13451,17 @@
 		)
 		(property "Description" ""
 			(at 127 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 91.44 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13012,6 +13542,17 @@
 		)
 		(property "Description" ""
 			(at 223.52 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "1uF 25V tantalum, 2.5 mm"
+			(at 223.52 251.46 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13250,6 +13791,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 187.96 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "443f2925-5346-59ca-b034-c9150bc60bb9")
 		)
@@ -13328,6 +13880,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "68b50994-91e1-5e24-ba6e-fc5a4f920eb0")
 		)
@@ -13397,6 +13960,17 @@
 			)
 		)
 		(property "Description" "4P4C modular jack to the A1000 (1 GND, 2 +5V, 3 KCLK, 4 KDAT)"
+			(at 393.7 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Original 4-wire cable soldered in (or a 1x4 2.54 mm header)"
 			(at 393.7 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -13567,6 +14141,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e47b03c6-ed4f-5e0d-8414-66a5f500a37e")
 		)
@@ -13637,6 +14222,17 @@
 		)
 		(property "Description" ""
 			(at 309.88 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13725,6 +14321,17 @@
 				)
 			)
 		)
+		(property "Part" "510K 1/4W axial"
+			(at 182.88 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "df4eeb77-65e1-5364-8291-fd3f5ec0ce1b")
 		)
@@ -13803,6 +14410,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 228.6 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5ed0e6e8-cf5e-5dc1-a512-c27a6bbf4e12")
 		)
@@ -13873,6 +14491,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13961,6 +14590,17 @@
 				)
 			)
 		)
+		(property "Part" "47uF 16V electrolytic, 5 mm dia, 2 mm"
+			(at 266.7 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "450772df-61ae-5279-b7f0-40bb345644e7")
 		)
@@ -14031,6 +14671,17 @@
 		)
 		(property "Description" ""
 			(at 309.88 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14117,6 +14768,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0a695c0e-b690-5dd5-93d3-1041bebeb1cc")
 		)
@@ -14187,6 +14849,17 @@
 		)
 		(property "Description" ""
 			(at 127 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14273,6 +14946,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "43006007-3268-57be-9438-ef448a51f864")
 		)
@@ -14342,6 +15026,17 @@
 			)
 		)
 		(property "Description" "Commodore 328191-xx mask ROM keyboard controller"
+			(at 101.6 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Commodore 6500/1 keyboard controller, salvaged from an A1000 keyboard (or a 6570 with white/green swapped)"
 			(at 101.6 218.44 0)
 			(hide yes)
 			(show_name no)
@@ -14620,6 +15315,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "38542d6f-bd8b-5368-921b-3bae262941dd")
 		)
@@ -14690,6 +15396,17 @@
 		)
 		(property "Description" ""
 			(at 45.72 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 45.72 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15004,6 +15721,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2fea3566-ed57-548d-874f-e49fa97e5cb2")
 		)
@@ -15076,6 +15804,17 @@
 		)
 		(property "Description" ""
 			(at 302.26 195.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Axial ferrite bead, e.g. Fair-Rite 2743001112"
+			(at 302.26 195.58 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15162,6 +15901,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "68f4f9d5-845c-5a0f-ad2f-1d0e38afe010")
 		)
@@ -15232,6 +15982,17 @@
 		)
 		(property "Description" ""
 			(at 304.8 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 304.8 149.86 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15318,6 +16079,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 187.96 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e0297c9d-952e-5c9b-b304-bf31b1a630cc")
 		)
@@ -15388,6 +16160,17 @@
 		)
 		(property "Description" ""
 			(at 147.32 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15474,6 +16257,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 45.72 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0895ec1f-db86-5344-8648-337b8e4b35a9")
 		)
@@ -15544,6 +16338,17 @@
 		)
 		(property "Description" ""
 			(at 309.88 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 55.88 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15630,6 +16435,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "579c8b42-a656-5e1f-94ff-99bbf8d929f1")
 		)
@@ -15700,6 +16516,17 @@
 		)
 		(property "Description" ""
 			(at 127 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15788,6 +16615,17 @@
 				)
 			)
 		)
+		(property "Part" "10nF 50V ceramic disc, 5 mm"
+			(at 236.22 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7c047410-40b0-587e-bec8-0a8d240c02de")
 		)
@@ -15866,6 +16704,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fe8cacc8-d221-5052-9313-1d2d2266a450")
 		)
@@ -15936,6 +16785,17 @@
 		)
 		(property "Description" ""
 			(at 187.96 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 187.96 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16098,6 +16958,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1d7c969a-81c0-50e5-b709-8bbaade6e1b9")
 		)
@@ -16252,6 +17123,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e6131b3d-cdd9-53b9-93c1-a28a419423a6")
 		)
@@ -16330,6 +17212,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 106.68 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "adf58b0e-29e4-562e-b665-05575f922a4f")
 		)
@@ -16400,6 +17293,17 @@
 		)
 		(property "Description" ""
 			(at 86.36 38.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 38.1 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16714,6 +17618,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 228.6 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "77673b51-dede-523a-8b1e-3c1ea9e38de8")
 		)
@@ -16784,6 +17699,17 @@
 		)
 		(property "Description" ""
 			(at 269.24 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 269.24 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17022,6 +17948,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "85983f07-01e4-53f3-85cb-3e936a027680")
 		)
@@ -17092,6 +18029,17 @@
 		)
 		(property "Description" ""
 			(at 127 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17180,6 +18128,17 @@
 				)
 			)
 		)
+		(property "Part" "1nF 50V ceramic disc, 5 mm"
+			(at 302.26 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "49eecdd2-d513-5d73-846c-40e0e1d628db")
 		)
@@ -17216,7 +18175,7 @@
 				)
 			)
 		)
-		(property "Value" "NPN"
+		(property "Value" "2SC2021"
 			(at 172.72 214.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17226,7 +18185,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:TO-92_Inline_ECB"
+		(property "Footprint" "amiga1000:TO-92_Inline_Wide_ECB"
 			(at 167.64 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -17250,6 +18209,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 213.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "2SC2021 (Rohm SPT, original) or 2SC1815/KSC1815 TO-92; any small NPN with E-C-B pinout"
+			(at 167.64 213.36 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17417,6 +18387,17 @@
 				)
 			)
 		)
+		(property "Part" "22pF 50V C0G ceramic disc, 5 mm"
+			(at 50.8 203.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "88c0b4c8-2127-56d0-a12b-c4909ba216b4")
 		)
@@ -17489,6 +18470,17 @@
 		)
 		(property "Description" ""
 			(at 254 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "100nF 50V ceramic disc, 5 mm"
+			(at 254 251.46 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17651,6 +18643,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "978d8fe8-a2d2-56e4-bbd0-9bb27946ee26")
 		)
@@ -17721,6 +18724,17 @@
 		)
 		(property "Description" ""
 			(at 86.36 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17807,6 +18821,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b3a6a31e-44b2-5b19-b010-c04989d52adb")
 		)
@@ -17885,6 +18910,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 66.04 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "dbabbe99-6dc4-5a78-b224-e5a48086aadc")
 		)
@@ -17955,6 +18991,17 @@
 		)
 		(property "Description" ""
 			(at 147.32 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 55.88 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18193,6 +19240,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "70220b62-6cb1-56f7-b6fc-d65c5c0c3e6e")
 		)
@@ -18271,6 +19329,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 66.04 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5bb9efaf-85b3-5a6a-9ef1-1d18b4656466")
 		)
@@ -18341,6 +19410,17 @@
 		)
 		(property "Description" ""
 			(at 289.56 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 55.88 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18429,6 +19509,17 @@
 				)
 			)
 		)
+		(property "Part" "150R 1/4W axial"
+			(at 170.18 200.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6920abdd-c8ac-5593-ac53-a284490a950f")
 		)
@@ -18501,6 +19592,17 @@
 		)
 		(property "Description" ""
 			(at 210.82 251.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "560K 1/4W axial"
+			(at 210.82 251.46 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18663,6 +19765,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 274.32 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "717a172f-bc29-5cc3-b601-8514858e6b3a")
 		)
@@ -18733,6 +19846,17 @@
 		)
 		(property "Description" ""
 			(at 309.88 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 309.88 109.22 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18821,6 +19945,17 @@
 				)
 			)
 		)
+		(property "Part" "Axial ferrite bead, e.g. Fair-Rite 2743001112"
+			(at 342.9 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a2761d1b-50ea-5645-a4bd-83f6ba6a8d52")
 		)
@@ -18891,6 +20026,17 @@
 		)
 		(property "Description" ""
 			(at 86.36 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 86.36 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19055,6 +20201,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 152.4 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d36f7eb8-a0e9-5741-b50a-e4a57cc3c640")
 		)
@@ -19125,6 +20282,17 @@
 		)
 		(property "Description" ""
 			(at 330.2 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 330.2 91.44 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19211,6 +20379,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 45.72 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "988008f1-2e0a-55da-8598-d60491150928")
 		)
@@ -19289,6 +20468,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 248.92 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "35ef666a-d8cb-5ab9-8053-cb2e753404ef")
 		)
@@ -19359,6 +20549,17 @@
 		)
 		(property "Description" ""
 			(at 289.56 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 73.66 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19521,6 +20722,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 289.56 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b2d28958-00ac-5224-9c22-14e6103d1421")
 		)
@@ -19675,6 +20887,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 269.24 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "08d94ea8-35a9-53ff-9f42-1db0ae8adb0b")
 		)
@@ -19745,6 +20968,17 @@
 		)
 		(property "Description" ""
 			(at 187.96 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 187.96 91.44 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19831,6 +21065,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 269.24 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6140a4bf-99c1-5401-b88b-3a35f99d8424")
 		)
@@ -19901,6 +21146,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 127 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19987,6 +21243,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 127 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "72f1340c-1082-564e-90a1-5021b4b45bda")
 		)
@@ -20065,6 +21332,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 167.64 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1840cdba-6445-55de-9d24-52ec792aface")
 		)
@@ -20135,6 +21413,17 @@
 		)
 		(property "Description" ""
 			(at 228.6 55.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 228.6 55.88 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20299,6 +21588,17 @@
 				)
 			)
 		)
+		(property "Part" "Axial ferrite bead, e.g. Fair-Rite 2743001112"
+			(at 322.58 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e72decaa-ce2d-531b-a732-c3533e110ecf")
 		)
@@ -20369,6 +21669,17 @@
 		)
 		(property "Description" ""
 			(at 147.32 91.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 147.32 91.44 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20455,6 +21766,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 208.28 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a4b29c4c-0490-5307-8e8f-91672128a46a")
 		)
@@ -20533,6 +21855,17 @@
 				)
 			)
 		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 45.72 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0f0859fc-c9a3-532e-8c27-c77ff079d043")
 		)
@@ -20603,6 +21936,17 @@
 		)
 		(property "Description" "International layouts only: extra key left of Z (original jumper J8)"
 			(at 45.72 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+			(at 45.72 109.22 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20767,6 +22111,17 @@
 				)
 			)
 		)
+		(property "Part" "100nF 50V ceramic disc, 5 mm"
+			(at 195.58 251.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2bba87f8-6b59-5f2b-9a0f-247a1c1d6e60")
 		)
@@ -20837,6 +22192,17 @@
 		)
 		(property "Description" ""
 			(at 205.74 205.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "NE556N dual timer, DIP-14"
+			(at 205.74 205.74 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20959,6 +22325,17 @@
 				)
 			)
 		)
+		(property "Part" "NE556N dual timer, DIP-14"
+			(at 256.54 205.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "7"
 			(uuid "c0c2c1b0-d563-5a8a-9926-d648f9ab85f0")
 		)
@@ -21016,6 +22393,7 @@
 		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch" (at 365.76 149.86 0) (effects (font (size 1 1)) (hide yes)))
 		(property "Datasheet" "" (at 365.76 149.86 0) (effects (font (size 1 1)) (hide yes)))
 		(property "Description" "Short ISO left shift position; fitted instead of SW87 (L SHIFT) on international layouts" (at 365.76 149.86 0) (effects (font (size 1 1)) (hide yes)))
+		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged" (at 365.76 149.86 0) (effects (font (size 1 1)) (hide yes)))
 		(pin "1" (uuid "20fc06d9-c7e5-405b-a13f-17c2836b6f7d")) (pin "2" (uuid "603b6fc6-2e8b-490b-a1ae-4662c5bc1248"))
 		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "SW92") (unit 1))))
 	)
@@ -21032,6 +22410,169 @@
 	(wire (pts (xy 373.38 149.86) (xy 373.38 152.40)) (stroke (width 0) (type default)) (uuid "b0901769-3316-49dd-864a-72d45836dfec"))
 	(label "PB4" (at 355.60 149.86 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e604c8c7-ac02-440d-9716-2527df56da26"))
 
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 360.68 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "9d093cd0-fc7f-4c4c-ab12-41cbbf5b7b5a")
+		(property "Reference" "H1" (at 363.22 53.34 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 363.22 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 360.68 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 360.68 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "14c0032e-74db-47e2-a869-bfa973f452c7"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H1") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 360.68 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "9a060f5e-01f7-4a55-8efb-9f0c75f16dd2")
+		(property "Reference" "#PWR039" (at 360.68 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 360.68 64.77 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 360.68 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "a4d46d82-cf96-498e-bad7-5a992dd33dfa"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR039") (unit 1))))
+	)
+	(wire (pts (xy 360.68 58.42) (xy 360.68 60.96)) (stroke (width 0) (type default)) (uuid "c57ea272-4be7-45b5-aa2f-93b63fd59749"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 375.92 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "58e4e101-1fce-4984-a471-818eb092c9f3")
+		(property "Reference" "H2" (at 378.46 53.34 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 378.46 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 375.92 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 375.92 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5aac672c-6684-4447-9942-b07ddf0037ad"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H2") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 375.92 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "be75261b-a1ab-402f-a7be-e315f87e1e21")
+		(property "Reference" "#PWR040" (at 375.92 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 375.92 64.77 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 375.92 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "ef0b1731-bb20-473e-aede-c20c049e7ad2"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR040") (unit 1))))
+	)
+	(wire (pts (xy 375.92 58.42) (xy 375.92 60.96)) (stroke (width 0) (type default)) (uuid "60704fa1-c416-4cf6-901c-89e89ac267f0"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 391.16 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "1b452225-c138-4aec-aad6-48f3dfe318af")
+		(property "Reference" "H3" (at 393.7 53.34 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 393.7 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 391.16 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 391.16 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "061ec98e-511e-42ca-bf64-df233aa82e3c"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H3") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 391.16 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "312bd875-c87e-4a64-af7b-07923ea05220")
+		(property "Reference" "#PWR041" (at 391.16 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 391.16 64.77 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 391.16 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5a4003ee-6541-4904-93ea-63ce868ec4ce"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR041") (unit 1))))
+	)
+	(wire (pts (xy 391.16 58.42) (xy 391.16 60.96)) (stroke (width 0) (type default)) (uuid "1cd729c5-0420-4e6b-bcd4-4803ef7bf76d"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 360.68 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "dc835049-6bbe-4566-97d2-23ed7fef119d")
+		(property "Reference" "H4" (at 363.22 76.2 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 363.22 78.74 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 360.68 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 360.68 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "40863f29-cecc-49a0-a1a0-4e32d37a70f8"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H4") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 360.68 83.82 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "13670bb4-f024-489d-bca1-f92db3af0392")
+		(property "Reference" "#PWR042" (at 360.68 90.17 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 360.68 87.63 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 360.68 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "b4447377-256a-4786-91f5-2237caa2cf68"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR042") (unit 1))))
+	)
+	(wire (pts (xy 360.68 81.28) (xy 360.68 83.82)) (stroke (width 0) (type default)) (uuid "2434da5a-89ce-4693-ae9a-6c4f5f028715"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 375.92 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "018a38ba-1473-4913-80b9-51d44c66325d")
+		(property "Reference" "H5" (at 378.46 76.2 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 378.46 78.74 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 375.92 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 375.92 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "d0beada0-4f55-472d-8425-603d5d0d6806"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H5") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 375.92 83.82 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "eaf2bdfa-7b9b-4568-aa9a-e5bbb2807a2c")
+		(property "Reference" "#PWR043" (at 375.92 90.17 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 375.92 87.63 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 375.92 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "627cf41f-425b-46d6-90d8-134ec2b64a11"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR043") (unit 1))))
+	)
+	(wire (pts (xy 375.92 81.28) (xy 375.92 83.82)) (stroke (width 0) (type default)) (uuid "1a73628e-0faf-4436-9bcb-59fa3e0ce7af"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 391.16 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "dc01d33f-b435-452a-9506-66454bcb2b5d")
+		(property "Reference" "H6" (at 393.7 76.2 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 393.7 78.74 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 391.16 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 391.16 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "9ef883b7-d88a-4a20-903c-3f7a9d55c987"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H6") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 391.16 83.82 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "6cfad209-40a0-4e2d-9de1-4f139574c380")
+		(property "Reference" "#PWR044" (at 391.16 90.17 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 391.16 87.63 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 391.16 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 83.82 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "e1036bbd-4b4f-4c14-85f0-8d58113691f2"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR044") (unit 1))))
+	)
+	(wire (pts (xy 391.16 81.28) (xy 391.16 83.82)) (stroke (width 0) (type default)) (uuid "4a10535f-299e-4c82-a116-e725c0db8416"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 360.68 101.6 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "5cc86923-d12a-407f-b51c-e01de3cbc312")
+		(property "Reference" "H7" (at 363.22 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 363.22 101.6 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 360.68 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 360.68 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "c7e337f1-f07d-43ba-98d6-8b6c160f79aa"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H7") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 360.68 106.68 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "c3e45173-c99a-482e-90be-1dc35008ab44")
+		(property "Reference" "#PWR045" (at 360.68 113.03 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 360.68 110.49 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 360.68 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 360.68 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "c56b8158-03cc-4b38-a9d0-4732d04b3119"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR045") (unit 1))))
+	)
+	(wire (pts (xy 360.68 104.14) (xy 360.68 106.68)) (stroke (width 0) (type default)) (uuid "f85e04d9-b917-471a-85ae-479051ab14bc"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 375.92 101.6 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "e804281d-6c0a-4e40-8748-3501325d8443")
+		(property "Reference" "H8" (at 378.46 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 378.46 101.6 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 375.92 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 375.92 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "05ee6773-f232-47fc-a2da-cb8adf280237"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H8") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 375.92 106.68 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "1655e88a-819b-4e08-aabc-f48fd7d3ff11")
+		(property "Reference" "#PWR046" (at 375.92 113.03 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 375.92 110.49 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 375.92 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 375.92 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "152253b4-d3f1-43f0-9f95-6e4d3073e9f1"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR046") (unit 1))))
+	)
+	(wire (pts (xy 375.92 104.14) (xy 375.92 106.68)) (stroke (width 0) (type default)) (uuid "fdecac5e-047e-4712-bacd-496c730f5f28"))
+	(symbol (lib_id "Mechanical:MountingHole_Pad") (at 391.16 101.6 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "bb340ba4-f84f-4281-9929-9a3a4daa5452")
+		(property "Reference" "H9" (at 393.7 99.06 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "Plate GND" (at 393.7 101.6 0) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Footprint" "amiga1000:MountingHole_3.8mm_Plate_GND" (at 391.16 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Plate screw hole, grounds the steel key plate" (at 391.16 101.6 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "4082a480-94cf-4689-a63e-16119382fa15"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "H9") (unit 1))))
+	)
+	(symbol (lib_id "power:GND") (at 391.16 106.68 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board yes) (dnp no) (uuid "b3d2a92c-ea2b-4f4e-9e58-b57d341ef07a")
+		(property "Reference" "#PWR047" (at 391.16 113.03 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 391.16 110.49 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 391.16 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 391.16 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "d139a4b4-9f50-4ce4-a131-04a4b3f596ca"))
+		(instances (project "amiga-1000-keyboard" (path "/d7334c81-3b24-56cd-a5dc-b6af3ef06965" (reference "#PWR047") (unit 1))))
+	)
+	(wire (pts (xy 391.16 104.14) (xy 391.16 106.68)) (stroke (width 0) (type default)) (uuid "f4f675ac-6bb8-4f61-8db5-beb2756ad6dd"))
+	(text "Plate screw holes: plated, tied to GND to ground the steel key plate" (exclude_from_sim no) (at 352 40 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "cc8249fb-412e-4a4b-bdbf-4a5cc879e4f4"))
 	(sheet_instances
 		(path "/"
 			(page "1")

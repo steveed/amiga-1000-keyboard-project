@@ -51,8 +51,25 @@ Hole and switch centres come from the scan; edges are taken from the caliper.
     (294.6, 62.8), (349.1, 15.2), (361.4, 110.5)
 - Rectangular cut-outs, ~6.5 x 10.4 mm: centres (89.3, 14.0) and (204.2, 14.0).
 
+## Switch plate (caliper)
+Steel, 1.25 mm thick. Coordinates as above (x from the PCB's left edge, y up from its front edge).
+- Outline: 393.25 x 120.9 mm; 2 mm wider than the PCB on each side (x -2.0 to 391.25). The back edge is
+  flush with the PCB's left-end back edge (y 121.36), so the front edge is at y 0.46.
+- Tab: flat, 18 mm wide, 25 mm deep, on the back edge, its left edge 50.8 mm from the plate's left edge
+  (x 48.8-66.8, y 121.36-146.36). 7.5 mm hole centred in it, at (57.8, 133.86). It sits past the PCB's back
+  edge, where the PCB is only 121.36 mm deep.
+- PCB screw holes: tapped, for screws with a ~2.48 mm thread (likely M2.5; pitch not measured). They line up
+  with the PCB's nine 3.8 mm holes; the size difference suggests extruded bosses that sit in those holes.
+- Case: through-holes for the case screws (diameter and positions to measure).
+- Switch cut-outs: size to measure once a switch is removed.
+- Stabilizer slots (wide keys other than the space bar): 3 x 15 mm. Distance from the switch cut-out to measure.
+- Space bar stabilizer cut-outs: 7.1 mm wide x 11 mm tall. Positions to measure.
+- SW55 (home row, left of Return) holds a dummy housing on US boards: one leg, no spring, supporting the
+  Return keycap. SW41 (Return) body sits behind its pins, in the gap below DEL/HELP.
+
 ## To confirm
 - Overall length by ruler (scan: 389.25 mm); that also fixes the tab width.
+- Plate: switch cut-out size, case through-hole positions and size, PCB screw pitch.
 - Switch pin hole diameter: about 1.2 mm (rough caliper reading). Check by finding the largest drill bit that fits.
 - Cable pad positions (likely the pads marked X3).
 

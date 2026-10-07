@@ -60,16 +60,26 @@ Steel, 1.25 mm thick. Coordinates as above (x from the PCB's left edge, y up fro
   edge, where the PCB is only 121.36 mm deep.
 - PCB screw holes: tapped, for screws with a ~2.48 mm thread (likely M2.5; pitch not measured). They line up
   with the PCB's nine 3.8 mm holes; the size difference suggests extruded bosses that sit in those holes.
-- Case: through-holes for the case screws (diameter and positions to measure).
-- Switch cut-outs: size to measure once a switch is removed.
-- Stabilizer slots (wide keys other than the space bar): 3 x 15 mm. Distance from the switch cut-out to measure.
-- Space bar stabilizer cut-outs: 7.1 mm wide x 11 mm tall. Positions to measure.
+- Case: through-holes for the case screws line up with the PCB's three 7.5 mm case holes, plus the 7.5 mm hole in the tab.
+- Switch cut-outs: 14 x 14 mm.
+- The front and back edges are folded into a C shape that holds the plate at a set height above the PCB
+  (not measured).
+- Stabilizer slots (wide keys other than the space bar): 3 x 15 mm, 2.6 mm from the switch cut-out, under both Shifts, Return (the large
+  L-shaped key), Tab, Backspace, keypad 0 and keypad Enter.
+- Space bar stabilizer cut-outs: 7.1 mm wide x 11 mm tall, ~115 mm apart centre to centre (caliper), so they sit
+  over the PCB's 6.5 x 10.4 mm cut-outs (centres x 89.28 and 204.22, 114.94 mm apart), symmetric about the
+  space bar key centre (x 146.81 = pins - 4.75). Use the PCB cut-out centres for the plate.
 - SW55 (home row, left of Return) holds a dummy housing on US boards: one leg, no spring, supporting the
   Return keycap. SW41 (Return) body sits behind its pins, in the gap below DEL/HELP.
 
+## Plate, version 1
+1.2 mm FR4 (`make plate`), held in place by the switches: no folded edges, and 2.7 mm clearance holes in place
+of the tapped M2.5 holes, so screws and spacers can be added later if needed. A steel plate like the original
+would need the folded edges measured and the holes drawn at the 2.05 mm tap drill.
+
 ## To confirm
 - Overall length by ruler (scan: 389.25 mm); that also fixes the tab width.
-- Plate: switch cut-out size, case through-hole positions and size, PCB screw pitch.
+- Plate (steel only): folded edge dimensions, PCB screw pitch.
 - Switch pin hole diameter: about 1.2 mm (rough caliper reading). Check by finding the largest drill bit that fits.
 - Cable pad positions (likely the pads marked X3).
 

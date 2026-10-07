@@ -30707,6 +30707,18 @@
 		(layer "Edge.Cuts")
 		(uuid "538c13f9-22ce-5f97-b002-749f773f2f72")
 	)
+	(gr_text "AMIGA 1000 KEYBOARD ${VERSION}\nBased on KCT-A89YC 56-7155B\ngithub.com/steveed/amiga-1000-keyboard-project"
+		(at 300 180.6 0)
+		(layer "B.SilkS")
+		(uuid "f9e7f2fb-70ef-498e-a6b0-9bcfd8284209")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.18)
+			)
+			(justify mirror)
+		)
+	)
 	(gr_text "Outline: caliper widths/depths; overall length 389.25 mm from scan - confirm by ruler.\nHole and switch centres from a 200 dpi scan of a reproduction board (+/-0.15 mm)."
 		(at 15 192.99 0)
 		(layer "Cmts.User")

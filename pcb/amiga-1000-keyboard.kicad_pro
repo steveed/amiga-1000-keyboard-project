@@ -641,7 +641,9 @@
       "amiga-1000-keyboard"
     ]
   ],
-  "text_variables": {},
+  "text_variables": {
+    "VERSION": "dev"
+  },
   "tuning_profiles": {
     "meta": {
       "version": 0

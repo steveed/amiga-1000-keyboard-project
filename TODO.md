@@ -1,12 +1,9 @@
 # TODO
 
-1. **PCB measurements** - measure an original board: outline, mounting holes, switch positions, connector placement.
-2. **Layout/routing** - lay out and route the PCB in KiCad.
-3. **Print test fit** - print the board outline 1:1 and test it against the case and keycaps.
+1. ~~**PCB measurements**~~ - done from photos, scans and calipers (`docs/measurements.md`).
+   Still to confirm: overall length by ruler.
+2. ~~**Layout/routing**~~ - placed to match the reproduction board and routed with KiCadRoutingTools.
+3. **Print test fit** - `make print`, print at 100%, and test against the case, plate and keycaps.
 4. **Create plate from original** - model the switch plate from the original.
-5. **Fab** - order boards.
+5. **Fab** - tag a release (`v*`) to build gerbers, then order boards.
 6. **Custom case**
-
-## Open questions from the schematic
-- Identify the transistor and diode part numbers.
-- Assign footprints (switches, connector, passives) before layout.

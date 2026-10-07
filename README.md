@@ -16,6 +16,18 @@ A500/A2000/A3000 keyboard also works if KCLK and KDAT are swapped: solder the ca
 wires into each other's pads on J1. With the original controller: white = KCLK (PA0, pin 38),
 green = KDAT (PA1, pin 37), red = +5V, black = GND.
 
+## Building
+Everything runs in Docker through `make` (KiCad 10 and a small Python image):
+
+- `make print` - 1:1 print sheets in `build/print/` (one 11x17 sheet, or two Letter sheets to tape together).
+  Print at 100% / Actual size and check the 100 mm bar.
+- `make drc` - refill the pours and fail on any DRC error or schematic/board mismatch.
+- `make bom` - regenerate `pcb/bom.csv` from the schematic's Part fields.
+- `make fab` - gerbers and drill files, zipped in `build/fab/`.
+- `make release` - all of the above, collected in `build/release/`.
+
+Pushing a `v*` tag runs `make release` on GitHub and publishes the files as a GitHub release.
+
 ## Reference Material
 - [docs/amiga-a1000-schematics-all.pdf](docs/amiga-a1000-schematics-all.pdf) - Amiga 1000 schematics
 - [docs/original_scan.jpg](docs/original_scan.jpg) - scan of the original keyboard PCB

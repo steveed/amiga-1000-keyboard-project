@@ -2,6 +2,8 @@
 
 Usage: make_plate.py <board.kicad_pcb> <plate.kicad_pcb>
 
+Also writes <plate>.svg, a flat filled drawing of the plate for the README.
+
 Writes a KiCad board containing only the plate outline and its cut-outs on
 Edge.Cuts, in the same coordinates as the PCB. Version 1 is a 1.2 mm FR4 plate
 held by the switches; the original is 1.25 mm steel with tapped holes and folded
@@ -80,6 +82,7 @@ left_back = min(min(l[1], l[3]) for l in lines if min(l[0], l[2]) == left and l[
 inner = [l for l in lines if left < min(l[0], l[2]) and max(l[0], l[2]) < right and front - 30 < min(l[1], l[3])]
 
 items = []
+svg_paths = []   # the same shapes as SVG subpaths, for a crisp flat drawing
 
 
 def uid():
@@ -87,16 +90,21 @@ def uid():
 
 
 def rect(cx, cy, w, h):
+    x0, y0, x1, y1 = cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2
+    svg_paths.append('M%.3f %.3fH%.3fV%.3fH%.3fZ' % (x0, y0, x1, y1, x0))
     items.append('(gr_rect (start %.4f %.4f) (end %.4f %.4f) (stroke (width 0.1) (type solid)) (fill no) '
                  '(layer "Edge.Cuts") (uuid "%s"))' % (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, uid()))
 
 
 def hole(cx, cy, d):
+    r = d / 2
+    svg_paths.append('M%.3f %.3fa%.3f %.3f 0 1 0 %.3f 0a%.3f %.3f 0 1 0 %.3f 0Z' % (cx - r, cy, r, r, d, r, r, -d))
     items.append('(gr_circle (center %.4f %.4f) (end %.4f %.4f) (stroke (width 0.1) (type solid)) (fill no) '
                  '(layer "Edge.Cuts") (uuid "%s"))' % (cx, cy, cx + d / 2, cy, uid()))
 
 
 def poly(pts):
+    svg_paths.append('M' + 'L'.join('%.3f %.3f' % xy for xy in pts) + 'Z')
     p = ' '.join('(xy %.4f %.4f)' % xy for xy in pts)
     items.append('(gr_poly (pts %s) (stroke (width 0.1) (type solid)) (fill no) (layer "Edge.Cuts") (uuid "%s"))' % (p, uid()))
 
@@ -147,6 +155,11 @@ head = re.sub(r'\(title "[^"]*"\)', '(title "Amiga 1000 Keyboard - switch plate"
 head = re.sub(r'\(general\s*\(thickness [\d.]+\)', '(general\n\t\t(thickness %g)' % THICKNESS, head, count=1)
 head = re.sub(r'(\(layer "dielectric 1"\s*\(type "core"\)\s*\(thickness )[\d.]+', lambda m: m.group(1) + '%g' % (THICKNESS - 0.09), head, count=1)
 open(OUT, 'w').write(head + '\n'.join(items) + '\n\t(embedded_fonts no)\n)\n')
+vx, vy, vw, vh = pl - 1, pb - TAB_D - 1, pr - pl + 2, PLATE_DEPTH + TAB_D + 2
+open(OUT.rsplit('.', 1)[0] + '.svg', 'w').write(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="%.2fmm" height="%.2fmm" viewBox="%.3f %.3f %.3f %.3f">'
+    '<path fill="#1f4d33" fill-rule="evenodd" stroke="#0f2a1b" stroke-width="0.15" d="%s"/></svg>\n'
+    % (vw, vh, vx, vy, vw, vh, ''.join(svg_paths)))
 print('plate %.2f x %.2f mm; %d switch cut-outs, %d stabilizer cut-outs, %d screw holes, %d case holes; space bar at %s'
       % (pr - pl, PLATE_DEPTH, counts['switch'], counts['stab'], counts['screw'], counts['case'],
          space and '(%.2f, %.2f)' % space))

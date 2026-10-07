@@ -56,8 +56,8 @@ render: plate
 	$(KICAD) $(RENDER) --side top --width 2400 --height 940 --zoom 2.3 -o $(BUILD)/render/board-top.png $(BOARD)
 	$(KICAD) $(RENDER) --width 2400 --height 1200 --perspective --rotate "-45,0,-20" --zoom 1.35 \
 		-o $(BUILD)/render/board-iso.png $(BOARD)
-	$(KICAD) $(RENDER) --side top --width 2400 --height 940 --zoom 2.3 \
-		-o $(BUILD)/render/plate-top.png $(BUILD)/plate/$(NAME)-plate.kicad_pcb
+	$(TOOLS) python -c "import cairosvg; cairosvg.svg2png(url='$(BUILD)/plate/$(NAME)-plate.svg', \
+		write_to='$(BUILD)/render/plate-top.png', output_width=2400)"
 
 # Everything a release ships, collected in build/release.
 release: drc bom fab print plate

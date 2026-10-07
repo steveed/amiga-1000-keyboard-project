@@ -17,3 +17,6 @@ gerbers/
 
 # Reference photos of a borrowed board - never commit
 images_do_not_keep/
+
+# Generated outputs (print sheets, fab files)
+build/

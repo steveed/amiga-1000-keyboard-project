@@ -1,0 +1,17 @@
+services:
+  kicad:
+    image: kicad/kicad:10.0-full
+    platform: linux/amd64
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /tmp
+    working_dir: /repo
+    volumes:
+      - .:/repo
+
+  tools:
+    build: tools
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /repo
+    volumes:
+      - .:/repo

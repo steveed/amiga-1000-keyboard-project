@@ -5,7 +5,10 @@ NAME  := amiga-1000-keyboard
 BOARD := pcb/$(NAME).kicad_pcb
 SCH   := pcb/$(NAME).kicad_sch
 BUILD := build
+# Printed on the back silkscreen: the release tag, or git describe for local builds.
+VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 KICAD := docker compose run --rm kicad kicad-cli
+VARS  := -D VERSION=$(VERSION)
 TOOLS := docker compose run --rm tools
 
 .PHONY: drc bom fab print plate render release clean
@@ -24,7 +27,7 @@ bom:
 # Gerbers and Excellon drill files, zipped for the board house.
 fab:
 	rm -rf $(BUILD)/fab && mkdir -p $(BUILD)/fab/gerbers
-	$(KICAD) pcb export gerbers --check-zones --subtract-soldermask --no-x2 \
+	$(KICAD) pcb export gerbers $(VARS) --check-zones --subtract-soldermask --no-x2 \
 		--layers F.Cu,B.Cu,F.Mask,B.Mask,F.SilkS,B.SilkS,Edge.Cuts -o $(BUILD)/fab/gerbers $(BOARD)
 	$(KICAD) pcb export drill --format excellon --excellon-separate-th --excellon-units mm \
 		--generate-map --map-format pdf -o $(BUILD)/fab/gerbers/ $(BOARD)
@@ -33,7 +36,7 @@ fab:
 # 1:1 print sheets for checking fit against the case and plate.
 print:
 	mkdir -p $(BUILD)/print
-	$(KICAD) pcb export svg --mode-single \
+	$(KICAD) pcb export svg $(VARS) --mode-single \
 		--layers Edge.Cuts,F.Mask,F.SilkS,Dwgs.User --page-size-mode 2 --exclude-drawing-sheet \
 		--black-and-white --drill-shape-opt 2 -o $(BUILD)/print/board.svg $(BOARD)
 	$(TOOLS) python tools/print_sheets.py $(BUILD)/print/board.svg $(BUILD)/print
@@ -50,7 +53,7 @@ plate:
 	$(TOOLS) sh -c 'cd $(BUILD)/plate/gerbers && python -m zipfile -c ../$(NAME)-plate-gerbers.zip *'
 
 # 3D renders for the README (published to the renders branch by CI).
-RENDER := pcb render --quality high --background transparent
+RENDER := pcb render $(VARS) --quality high --background transparent
 render: plate
 	mkdir -p $(BUILD)/render
 	$(KICAD) $(RENDER) --side top --width 2400 --height 940 --zoom 2.3 -o $(BUILD)/render/board-top.png $(BOARD)

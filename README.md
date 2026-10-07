@@ -36,7 +36,6 @@ Pushing a `v*` tag runs `make release` on GitHub and publishes the files as a Gi
 
 ## Reference Material
 - [docs/amiga-a1000-schematics-all.pdf](docs/amiga-a1000-schematics-all.pdf) - Amiga 1000 schematics
-- [docs/original_scan.jpg](docs/original_scan.jpg) - scan of the original keyboard PCB
 
 ## Credits
 Future revisions are expected to reuse parts of Henryk Richter's [A500KB](https://github.com/HenrykRichter/A500KB) mechanical keyboard. This project uses the same license so that work can be incorporated.

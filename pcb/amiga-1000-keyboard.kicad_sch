@@ -10759,7 +10759,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "342b920a-c86e-516d-b964-167cd158ccb7")
 		(property "Reference" "SW55"
 			(at 289.56 87.63 0)
@@ -10803,7 +10803,7 @@
 				)
 			)
 		)
-		(property "Description" "International layouts only: extra key left of Return (original jumper J9)"
+		(property "Description" "US: dummy housing supporting the Return keycap. International: the extra key left of Return (original jumper J9)"
 			(at 289.56 91.44 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10813,7 +10813,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Dummy Mitsumi housing (one leg, no spring) supporting the Return keycap on US layouts; a real switch on international layouts"
 			(at 289.56 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -10902,7 +10902,7 @@
 				)
 			)
 		)
-		(property "Part" "1N4148 small-signal diode, DO-35"
+		(property "Part" "1N4148 small-signal diode, DO-35 (original: unmarked glass, yellow cathode band, likely a 1S1588)"
 			(at 170.18 251.46 0)
 			(hide yes)
 			(show_name no)

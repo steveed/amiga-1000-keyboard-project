@@ -11194,7 +11194,7 @@
 				)
 			)
 		)
-		(property "Description" "International layouts only: extra key left of Return (original jumper J9)"
+		(property "Description" "US: dummy housing supporting the Return keycap. International: the extra key left of Return (original jumper J9)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11205,7 +11205,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Dummy Mitsumi housing (one leg, no spring) supporting the Return keycap on US layouts; a real switch on international layouts"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11220,7 +11220,7 @@
 		(path "/342b920a-c86e-516d-b964-167cd158ccb7")
 		(sheetname "/")
 		(sheetfile "amiga-1000-keyboard.kicad_sch")
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -11.5 -6.75)
@@ -15523,10 +15523,10 @@
 	(footprint "amiga1000:Mitsumi_A1000_Switch"
 		(layer "F.Cu")
 		(uuid "94212cff-e36b-56bd-8056-97f436d11996")
-		(at 295.13 127.28 90)
+		(at 295.13 127.28 270)
 		(descr "Mitsumi standard mechanical Type 2 (KCT) keyswitch, Amiga 1000: 13.5 mm base, pins 9.04 mm apart and 4.75 mm right of the body centre; 1.2 mm holes (approx.)")
 		(property "Reference" "SW41"
-			(at -4.75 0 90)
+			(at -4.75 0 270)
 			(layer "F.SilkS")
 			(uuid "2557e04b-f601-5409-9561-10dcccecf66a")
 			(effects
@@ -15537,7 +15537,7 @@
 			)
 		)
 		(property "Value" "RETURN"
-			(at 0 10.5 90)
+			(at 0 10.5 270)
 			(layer "F.Fab")
 			(uuid "4e82f640-2620-510e-b709-0aa4ffc02055")
 			(effects
@@ -15548,7 +15548,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a827effc-f70f-483e-9e8e-0f03efec626a")
@@ -15559,7 +15559,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bff798b8-fcb7-57f3-80a8-737ea9784abb")
@@ -15570,7 +15570,7 @@
 			)
 		)
 		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "706f7854-380d-46c3-afbf-0f381e1e44d9")
@@ -15747,7 +15747,7 @@
 			(uuid "a6b441be-fd57-4877-8a62-ce11db55419c")
 		)
 		(pad "1" thru_hole circle
-			(at 0 -4.52 90)
+			(at 0 -4.52 270)
 			(size 2.3 2.3)
 			(drill 1.2)
 			(layers "*.Cu" "*.Mask")
@@ -15758,7 +15758,7 @@
 			(uuid "23cdb2f4-d8bc-58f2-aba0-2f86f8d66236")
 		)
 		(pad "2" thru_hole circle
-			(at 0 4.52 90)
+			(at 0 4.52 270)
 			(size 2.3 2.3)
 			(drill 1.2)
 			(layers "*.Cu" "*.Mask")
@@ -28420,7 +28420,7 @@
 				)
 			)
 		)
-		(property "Part" "1N4148 small-signal diode, DO-35"
+		(property "Part" "1N4148 small-signal diode, DO-35 (original: unmarked glass, yellow cathode band, likely a 1S1588)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -30903,14 +30903,7 @@
 		(net "/PC0")
 		(uuid "ce9e6ffc-81a2-438a-885d-f88742968ae0")
 	)
-	(segment
-		(start 318 52.5)
-		(end 317.9 52.6)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PC0")
-		(uuid "d4363b5a-2f85-4496-b097-e1bdc1059c0d")
-	)
+	
 	(segment
 		(start 282.7 137.9)
 		(end 281.2 136.4)
@@ -31679,14 +31672,7 @@
 		(net "/PA4")
 		(uuid "e75ee5e8-6589-4545-9fa5-ec19a17a3c5d")
 	)
-	(segment
-		(start 299.6 127.3)
-		(end 300.9 126)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PA4")
-		(uuid "f5186dcf-d505-4000-a5d5-d84b1b26eeb4")
-	)
+	
 	(segment
 		(start 300.9 126)
 		(end 313.6 126)
@@ -31751,14 +31737,7 @@
 		(net "/PA4")
 		(uuid "5af38c16-9ac9-433d-881a-1216084e48dc")
 	)
-	(segment
-		(start 299.6 127.3)
-		(end 299.6 123.5)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PA4")
-		(uuid "89347b32-6560-46ae-8bc3-91c6abbeeb55")
-	)
+	
 	(segment
 		(start 319.5 62.4)
 		(end 319.5 68.3)
@@ -31767,14 +31746,7 @@
 		(net "/PA4")
 		(uuid "9946d8cc-befc-44cd-8121-cef0c606f895")
 	)
-	(segment
-		(start 319.3 62.2)
-		(end 319.5 62.4)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PA4")
-		(uuid "a17b71a3-6c1f-4b71-b29d-1e842c7d51cb")
-	)
+	
 	(segment
 		(start 315.4 68.5)
 		(end 315.4 124.4)
@@ -31783,14 +31755,7 @@
 		(net "/PA4")
 		(uuid "ab03d10c-2ed4-4fba-bcb0-50ced6bb1177")
 	)
-	(segment
-		(start 315.5 68.4)
-		(end 315.4 68.5)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PA4")
-		(uuid "e3598631-62f5-4ec2-971f-6c0d05ea0125")
-	)
+	
 	(segment
 		(start 175 48)
 		(end 189.2 48)
@@ -33863,14 +33828,7 @@
 		(net "/PA6")
 		(uuid "e5e9f208-78e0-455a-9ed8-be1c0e06e935")
 	)
-	(segment
-		(start 250.2 163)
-		(end 279.4 163)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC2")
-		(uuid "1d101676-e914-47e4-886e-c1ec52f93ae4")
-	)
+	
 	(segment
 		(start 281.2 127.4)
 		(end 283.7 124.9)
@@ -33887,14 +33845,7 @@
 		(net "/PC2")
 		(uuid "2ec48de3-df61-48dd-b532-bcc64c3221c3")
 	)
-	(segment
-		(start 166.8 165.3)
-		(end 247.9 165.3)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC2")
-		(uuid "3746a5c9-315c-41c4-9383-9dbc10b2b9d4")
-	)
+	
 	(segment
 		(start 276.2 108)
 		(end 276.2 107.4)
@@ -33911,14 +33862,7 @@
 		(net "/PC2")
 		(uuid "42b7da74-0eba-4203-a137-4fb3bebb18b0")
 	)
-	(segment
-		(start 166.6 165.5)
-		(end 166.8 165.3)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC2")
-		(uuid "6150b2db-4bf2-49bb-81da-284500e78a63")
-	)
+	
 	(segment
 		(start 319 119.6)
 		(end 349.5 119.6)
@@ -33967,14 +33911,7 @@
 		(net "/PC2")
 		(uuid "ab5477a1-f3c6-4f49-9d98-a919a9b0eade")
 	)
-	(segment
-		(start 247.9 165.3)
-		(end 250.2 163)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC2")
-		(uuid "bf8b8a6a-68a6-4fb8-9158-4af14e5ec32d")
-	)
+	
 	(segment
 		(start 283.7 124.9)
 		(end 299.3 124.9)
@@ -34151,14 +34088,7 @@
 		(net "/PC1")
 		(uuid "9d1b4fd8-3017-4085-8b44-954f2b1d2113")
 	)
-	(segment
-		(start 291.6 127.3)
-		(end 293.9 129.6)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC1")
-		(uuid "ab75f19e-ff4e-4004-afab-4be31206ded5")
-	)
+	
 	(segment
 		(start 311.2 90.2)
 		(end 312.2 89.2)
@@ -34191,14 +34121,7 @@
 		(net "/PC1")
 		(uuid "cdad9985-f899-4cae-a358-36add077126e")
 	)
-	(segment
-		(start 290.6 127.3)
-		(end 291.6 127.3)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PC1")
-		(uuid "e4606cc0-b3cc-49a1-ace5-3cc998c32380")
-	)
+	
 	(segment
 		(start 311.2 90.2)
 		(end 311.3 90.2)
@@ -34303,14 +34226,7 @@
 		(net "/PC1")
 		(uuid "5b4ad2a9-6c9e-4418-9a98-235e9aa7a73a")
 	)
-	(segment
-		(start 289.5 126.2)
-		(end 289.5 93.1)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PC1")
-		(uuid "6931d0a9-c002-49ea-89bc-e7daac961491")
-	)
+	
 	(segment
 		(start 287.5 69.9)
 		(end 287.5 49.1)
@@ -34367,14 +34283,7 @@
 		(net "/PC1")
 		(uuid "f4d77012-ac34-4d87-98d7-2c12dab76295")
 	)
-	(segment
-		(start 290.6 127.3)
-		(end 289.5 126.2)
-		(width 0.25)
-		(layer "B.Cu")
-		(net "/PC1")
-		(uuid "fa9fdb77-e275-4a35-bcd7-7f02ba7cf362")
-	)
+	
 	(segment
 		(start 133.6 98.3)
 		(end 114.6 98.3)
@@ -36663,14 +36572,7 @@
 		(net "/PB6")
 		(uuid "4f073a7d-8392-475f-a978-e16cdd0421f1")
 	)
-	(segment
-		(start 83.4 165.4)
-		(end 83.6 165.2)
-		(width 0.25)
-		(layer "F.Cu")
-		(net "/PB6")
-		(uuid "dca9ad31-e818-4787-b853-205abf289f7b")
-	)
+	
 	(via
 		(at 293 140.6)
 		(size 0.8)
@@ -48938,4 +48840,126 @@
 		)
 	)
 	(embedded_fonts no)
+
+	(segment
+		(start 299.600000 123.500000)
+		(end 299.600000 125.250000)
+		(width 0.25)
+		(layer "B.Cu")
+		(net "/PA4")
+		(uuid "b4c1bdf2-0add-4f22-82ea-ae675c1ddda5")
+	)
+	(segment
+		(start 299.600000 125.250000)
+		(end 299.825000 125.475000)
+		(width 0.25)
+		(layer "B.Cu")
+		(net "/PA4")
+		(uuid "a3f16569-fef1-4de8-9dfe-27f4ed26da38")
+	)
+	(segment
+		(start 299.825000 125.475000)
+		(end 300.375000 125.475000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PA4")
+		(uuid "6b8b527e-f332-4a56-a631-9a001b43a44b")
+	)
+	(segment
+		(start 300.375000 125.475000)
+		(end 300.900000 126.000000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PA4")
+		(uuid "3654ef2c-6666-4300-9f50-af067fd62a9f")
+	)
+	(segment
+		(start 290.325000 123.500000)
+		(end 290.325000 126.300000)
+		(width 0.25)
+		(layer "B.Cu")
+		(net "/PA4")
+		(uuid "215a6cf6-1fdf-4453-96d3-6371a5c35f6f")
+	)
+	(via
+		(at 299.825000 125.475000)
+		(size 0.8)
+		(drill 0.4)
+		(layers "F.Cu" "B.Cu")
+		(net "/PA4")
+		(uuid "4ef6551c-4e3f-48ac-a02c-450027e94b53")
+	)
+	(via
+		(at 290.325000 123.500000)
+		(size 0.8)
+		(drill 0.4)
+		(layers "F.Cu" "B.Cu")
+		(net "/PA4")
+		(uuid "f32a3b05-4c82-4aca-82fd-cfe2b60a5e79")
+	)
+	(segment
+		(start 289.050000 128.825000)
+		(end 293.125000 128.825000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PC1")
+		(uuid "40db5a12-8df0-4079-8013-b3f18c924045")
+	)
+	(segment
+		(start 293.125000 128.825000)
+		(end 293.900000 129.600000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PC1")
+		(uuid "de1d6b04-27a3-4eb7-b2b1-fd52b39bad48")
+	)
+	(segment
+		(start 298.250000 129.600000)
+		(end 299.550000 128.300000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PC1")
+		(uuid "cd2cae64-39ee-4eab-8633-5749398373da")
+	)
+	(segment
+		(start 289.500000 93.100000)
+		(end 289.050000 93.550000)
+		(width 0.25)
+		(layer "B.Cu")
+		(net "/PC1")
+		(uuid "de59999e-a4a1-41de-8366-f8d997f78097")
+	)
+	(segment
+		(start 289.050000 93.550000)
+		(end 289.050000 128.825000)
+		(width 0.25)
+		(layer "B.Cu")
+		(net "/PC1")
+		(uuid "f869381a-baea-4549-8f70-31acffe6b690")
+	)
+	(via
+		(at 289.050000 128.825000)
+		(size 0.8)
+		(drill 0.4)
+		(layers "F.Cu" "B.Cu")
+		(net "/PC1")
+		(uuid "447dba7e-042c-44fe-90db-f47c89d098e3")
+	)
+	(segment
+		(start 166.800000 165.300000)
+		(end 169.100000 163.000000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PC2")
+		(uuid "c82bee84-9d59-45e7-93fa-096408a6415f")
+	)
+	(segment
+		(start 169.100000 163.000000)
+		(end 279.400000 163.000000)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "/PC2")
+		(uuid "0131555b-a98d-4918-8c5b-13e10c1e7fc1")
+	)
+
 )

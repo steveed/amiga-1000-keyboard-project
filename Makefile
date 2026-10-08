@@ -10,8 +10,10 @@ VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
 KICAD := docker compose run --rm kicad kicad-cli
 VARS  := -D VERSION=$(VERSION)
 TOOLS := docker compose run --rm tools
+OPENSCAD := docker compose run --rm -T openscad --backend=manifold
+CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate render release clean
+.PHONY: drc bom fab print plate case render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -51,6 +53,15 @@ plate:
 	$(KICAD) pcb export gerbers --no-x2 --layers Edge.Cuts,F.Mask,B.Mask \
 		-o $(BUILD)/plate/gerbers $(BUILD)/plate/$(NAME)-plate.kicad_pcb
 	$(TOOLS) sh -c 'cd $(BUILD)/plate/gerbers && python -m zipfile -c ../$(NAME)-plate-gerbers.zip *'
+
+# Printable case parts (STL) and an assembly preview, from case/a1000_case.scad.
+case:
+	mkdir -p $(BUILD)/case
+	for p in $(CASE_PARTS); do \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
+	done
+	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p \
+		-o $(BUILD)/case/case-assembly.png case/a1000_case.scad
 
 # 3D renders for the README (published to the renders branch by CI).
 RENDER := pcb render $(VARS) --quality high --background transparent

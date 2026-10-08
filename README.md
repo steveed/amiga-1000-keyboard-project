@@ -29,6 +29,7 @@ Everything runs in Docker through `make` (KiCad 10 and a small Python image):
 - `make bom` - regenerate `pcb/bom.csv` from the schematic's Part fields.
 - `make fab` - gerbers and drill files, zipped in `build/fab/`.
 - `make plate` - the switch plate (DXF and a gerber zip for FR4) in `build/plate/`, generated from the PCB.
+- `make case` - the printable case (four STLs and a preview) in `build/case/`, from `case/a1000_case.scad`. See [case/README.md](case/README.md).
 - `make render` - the README renders in `build/render/`.
 - `make release` - all of the above, collected in `build/release/`.
 

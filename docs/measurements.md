@@ -32,7 +32,11 @@ Reference photos are kept out of the repo.
 ## From the flatbed scans (200 dpi, calibrated to the 19.05 mm key pitch)
 Coordinates are mm, x from the left edge and y up from the front edge, component side up.
 Hole and switch centres come from the scan; edges are taken from the caliper.
-- Overall length: 389.25 mm.
+- Overall length: 389.25 mm. Checked by caliper from the 7.5 mm case holes to the end edges: left edge to the
+  (16.7, 15.3) hole's near edge 13.01 mm, right edge to the (375.7, 110.2) hole's near edge 9.95 mm. With the
+  scan's hole spacing that gives 389.4 mm; the right end matches the board to 0.01 mm and the left end is 0.16 mm
+  short, which is within the scan's accuracy, so the outline stays at 389.25. A steel ruler read ~388.4 mm, but
+  the edges were hard to read against the shiny ruler, so the caliper figure wins.
 - Outline, by caliper, looking at the top of the keyboard. The back edge steps; the front edge is straight.
   | Section (left to right) | Width | Depth |
   |---|---|---|
@@ -78,7 +82,6 @@ of the tapped M2.5 holes, so screws and spacers can be added later if needed. A 
 would need the folded edges measured and the holes drawn at the 2.05 mm tap drill.
 
 ## To confirm
-- Overall length by ruler (scan: 389.25 mm); that also fixes the tab width.
 - Plate (steel only): folded edge dimensions, PCB screw pitch.
 - Switch pin hole diameter: about 1.2 mm (rough caliper reading). Check by finding the largest drill bit that fits.
 - Cable pad positions (likely the pads marked X3).

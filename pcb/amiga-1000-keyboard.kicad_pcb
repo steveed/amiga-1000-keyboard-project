@@ -21549,15 +21549,15 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Crystal:Crystal_HC49-U_Vertical"
+	(footprint "Crystal:Crystal_HC49-U_Horizontal"
 		(layer "F.Cu")
-		(uuid "bff46bdc-1587-40ca-9c44-a350f75fe9ff")
+		(uuid "d241460a-71a1-4560-9154-0a136b72faea")
 		(at 259.7 47)
-		(descr "HC-49/U, Crystal, http://5hertz.com/pdfs/04404_D.pdf")
+		(descr "HC-49/U, Crystal, length 13.0mm, width 10.9mm, THT, http://5hertz.com/pdfs/04404_D.pdf")
 		(property "Reference" "Y1"
-			(at 2.44 -3.52 180)
+			(at -4.435 3.3125 90)
 			(layer "F.SilkS")
-			(uuid "e240bebd-a3ff-4f3e-89b6-a5e7d2fc7608")
+			(uuid "5f2166a2-23ab-4542-9926-6fcf653b5fc8")
 			(effects
 				(font
 					(size 1 1)
@@ -21566,9 +21566,9 @@
 			)
 		)
 		(property "Value" "3.000MHz"
-			(at 2.44 3.52 180)
+			(at 9.335 3.3125 90)
 			(layer "F.Fab")
-			(uuid "0f6f52f6-a057-4719-83fb-97080e165876")
+			(uuid "fe372ec3-a17d-4a78-b47d-a20a6c1c22ff")
 			(effects
 				(font
 					(size 1 1)
@@ -21577,10 +21577,10 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "501ea18e-6470-44f8-a5a4-30d338da8083")
+			(uuid "e3e0f934-9d56-46eb-b7ee-724bebd5c2ed")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21588,10 +21588,10 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0a623021-8f00-45c9-b827-add8c0ea5852")
+			(uuid "6a1e02cb-21cc-42c3-aa3e-d9a838f9200d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21599,10 +21599,10 @@
 			)
 		)
 		(property "KiLib_Generator" "crystal_resonator_oscillator"
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "6e44c9c1-d716-407c-9737-2fce61dcaaa2")
+			(uuid "164fefce-b1dc-4e20-9f68-91abcfe08bdc")
 			(effects
 				(font
 					(size 1 1)
@@ -21614,150 +21614,157 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8fa80cc5-caa8-4c77-8902-1f0a7c3f97ea")
+			(uuid "bb64155b-ed3b-4813-94a5-e82927d695a3")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property ki_fp_filters "Crystal*")
 		(path "/5c289dfa-59ff-5d37-a849-89be3a72a837")
 		(sheetname "/")
 		(sheetfile "amiga-1000-keyboard.kicad_sch")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -0.685 -2.435)
-			(end 5.565 -2.435)
+			(start 0 0.87)
+			(end 0 0.81)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "8e003764-97d1-460c-8827-bf940c555326")
+			(uuid "93f32545-c6ba-44b8-8323-5b3987533fda")
 		)
 		(fp_line
-			(start 5.565 2.435)
-			(end -0.685 2.435)
+			(start 0 1.74)
+			(end 0 0.87)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "7ee4abb0-959e-49ba-8a51-71455f8e7acc")
+			(uuid "85423ba5-93b5-421c-8178-1f7fff1887a4")
 		)
-		(fp_arc
-			(start -0.685 2.435)
-			(mid -3.12 0)
-			(end -0.685 -2.435)
+		(fp_line
+			(start 4.9 0.87)
+			(end 4.9 0.81)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "12d8cc93-a564-4212-a8f1-db14f74dc03e")
+			(uuid "1e87d9a6-32d9-463d-9d8f-bf25cd2a968c")
 		)
-		(fp_arc
-			(start 5.565 -2.435)
-			(mid 8 0)
-			(end 5.565 2.435)
+		(fp_line
+			(start 4.9 1.74)
+			(end 4.9 0.87)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "5f01b448-2f9a-4da2-8850-4381baf5e1a7")
+			(uuid "5377ee4f-1c20-4f83-b066-8f9118af78c0")
+		)
+		(fp_rect
+			(start -3.61 1.62)
+			(end 8.51 1.74)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "c6a9c6f4-8024-4dc1-84f0-617215f36916")
+		)
+		(fp_rect
+			(start -3.26 1.74)
+			(end 8.16 15.26)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "fbe1bb60-ab06-4bb3-bb1c-69c1863ed930")
+		)
+		(fp_rect
+			(start -4.1 -1)
+			(end 9 16.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "aa75dcd0-b105-404c-ae59-2f432ae24871")
 		)
 		(fp_line
-			(start -0.68 -2.83)
-			(end 5.56 -2.83)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "06aa5020-6349-403f-91cf-a60277035e2a")
-		)
-		(fp_line
-			(start 5.56 2.83)
-			(end -0.68 2.83)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "2fc9e869-7fb6-4473-9484-40ed7a8575b1")
-		)
-		(fp_arc
-			(start -0.68 2.83)
-			(mid -3.51 0)
-			(end -0.68 -2.83)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "f8c64303-2859-4bd1-a095-8e5d9ee8da71")
-		)
-		(fp_arc
-			(start 5.56 -2.83)
-			(mid 8.39 0)
-			(end 5.56 2.83)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "949078a1-718c-4754-a417-a11215a7a639")
-		)
-		(fp_line
-			(start -0.685 -2.325)
-			(end 5.565 -2.325)
+			(start 0 1)
+			(end 0 0)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "9f4df019-ca71-41c8-98c9-f1877eac85ec")
+			(uuid "2038dc10-ddb3-413f-ad45-92871a27e386")
 		)
 		(fp_line
-			(start 5.565 2.325)
-			(end -0.685 2.325)
+			(start 0 2)
+			(end 0 1)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "84c0fc07-9902-486d-8c52-821c4d1c4f9d")
+			(uuid "f1f7c6ec-f8c0-4e7c-81af-692384376ca9")
 		)
-		(fp_arc
-			(start -0.685 2.325)
-			(mid -3.01 0)
-			(end -0.685 -2.325)
+		(fp_line
+			(start 4.9 1)
+			(end 4.9 0)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "3d21eec3-3d97-4b26-a158-b1c2e63856e5")
+			(uuid "df27c14b-77a0-46a0-85fd-b2e7ce7aa8f8")
 		)
-		(fp_arc
-			(start 5.565 -2.325)
-			(mid 7.89 0)
-			(end 5.565 2.325)
+		(fp_line
+			(start 4.9 2)
+			(end 4.9 1)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "197c2514-f70b-4a9d-b005-feddad744923")
+			(uuid "5c1bf78c-350d-4e93-84b4-e9288c103cae")
+		)
+		(fp_rect
+			(start -3.35 1.9)
+			(end 8.25 2)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "87b65cc4-ca74-4234-9340-bd4c654b940b")
+		)
+		(fp_rect
+			(start -3 2)
+			(end 7.9 15)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "a0ae6150-56b0-4bd5-b641-e4dfc4d2ffe5")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.44 0 180)
+			(at 2.45 9.35 90)
 			(layer "F.Fab")
-			(uuid "5feb4046-c069-4760-b2dd-482b244d593d")
+			(uuid "09896bff-7f63-4e45-b6c2-993f89ecec53")
 			(effects
 				(font
 					(size 1 1)
@@ -21772,23 +21779,19 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/XTLI")
-			(pinfunction "1_1")
-			(pintype "passive")
-			(uuid "e68a9481-ab6b-465c-97c6-81f553489de4")
+			(uuid "0a82b2e5-573c-480a-8c8d-6d7c9d1df9f0")
 		)
 		(pad "2" thru_hole circle
-			(at 4.88 0)
+			(at 4.9 0)
 			(size 1.5 1.5)
 			(drill 0.8)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "/XTLO")
-			(pinfunction "2_2")
-			(pintype "passive")
-			(uuid "74673ff8-8e71-49c3-8f6c-97cd843c306f")
+			(uuid "f411ae56-9007-425f-b8a6-0687a31f81d9")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_HC49-U_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
 			)

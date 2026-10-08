@@ -137,8 +137,8 @@ tab_screw  = [57.8, 133.86];
 tab_x      = [48.8, 66.8];
 
 // The tallest parts on the controller strip: [ref, x, y, footprint w, d, height above the PCB]
-// Y1 lies flat on the original, so only its can's thickness counts (footprint here is approximate).
-tall_parts = [["Y1 crystal (HC-49/U, laid flat)", 244.8, 131.4, 11.0, 13.5, 5.0],
+// Y1 lies flat, its can towards the front (the Crystal_HC49-U_Horizontal footprint)
+tall_parts = [["Y1 crystal (HC-49/U, laid flat)", 247.25, 129.65, 10.9, 13.0, 5.0],
               ["C8 47 uF electrolytic",          174.6, 136.85, 5.0, 5.0, 11.0],
               ["U1 6500/1 in a socket",          319.6, 138.15, 52.0, 15.5, 8.5]];
 

@@ -12817,7 +12817,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Crystal:Crystal_HC49-U_Vertical"
+		(property "Footprint" "Crystal:Crystal_HC49-U_Horizontal"
 			(at 50.8 182.88 0)
 			(hide yes)
 			(show_name no)

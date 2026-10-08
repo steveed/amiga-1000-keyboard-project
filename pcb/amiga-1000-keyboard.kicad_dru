@@ -1,0 +1,8 @@
+(version 1)
+
+# Y1 is laid flat with its can towards the front, as on the original board. C9 sits beside its
+# leads, so the courtyards overlap by 0.5 mm, but the bodies still clear by about 0.5 mm.
+# A negative clearance allows the overlap; (severity ignore) doesn't silence courtyards_overlap.
+(rule "Y1 laid flat beside C9"
+	(condition "(A.Reference == 'Y1' && B.Reference == 'C9') || (A.Reference == 'C9' && B.Reference == 'Y1')")
+	(constraint courtyard_clearance (min -1mm)))

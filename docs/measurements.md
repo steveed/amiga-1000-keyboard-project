@@ -24,7 +24,8 @@ Reference photos are kept out of the repo.
 - Caps Lock LED (inside the Caps Lock switch): leads 2.7 mm apart; the upper lead (towards the F-keys) is the
   anode, checked with a meter.
 - Crystal: 3.000 MHz, HC-49/U can about 10 x 13 mm, leads 5 mm apart (marked "3.000 UNI 85 E").
-  It is laid flat on the board, which the case needs: there isn't room for it standing under the label recess.
+  It is laid flat on the board, leads at the back and the can towards the keys (Crystal_HC49-U_Horizontal),
+  which the case needs: there isn't room for it standing under the label recess.
 - Controller: 40-pin DIP marked "R10L2-11 / MEXICO A / 0106 / 8535" (Commodore logo).
 - Timer: TI NE556N (confirms the 556; the board silkscreen's "NE566N" is a typo).
 - Crystal load cap 22 pF; 104 (0.1 uF) ceramic decoupling next to the controller.

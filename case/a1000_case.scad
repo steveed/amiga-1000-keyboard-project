@@ -67,9 +67,15 @@ cbore_depth   = 3.0;
 top_split_x    = 200;
 bottom_split_x = 185;
 
-// Cable exit in the back wall, at the parting line behind the J1 header
-cable_x       = 123.1;
-cable_d       = 6;
+// 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The notch
+// in the original bottom case is at about x 83-97 (scaled from a photo).  The jack sits on the
+// floor against the back wall, held between ribs; J1 is wired to it.  Jack sizes are typical
+// values, NOT MEASURED: check them against the jack you use.
+jack_x        = 90;     // centre of the jack
+jack_body     = [11.5, 10.0, 11.0];   // jack body width (x), depth (y), height (z)
+jack_plug     = [8.4, 7.2];           // plug opening in the back wall, width x height (the notch runs on up to the parting line)
+rib_t         = 1.6;    // ribs that hold the jack
+rib_clear     = 0.2;
 
 feet          = "printed";  // ["printed","none"]: the model shows four square feet
 
@@ -152,6 +158,8 @@ function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[
 
 echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm (", 2 * CZ + (feet == "printed" ? foot_h : 0), " on its feet)"));
 echo(str("plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
+if (IY1 - jack_body[1] - rib_t < 134.90) echo(str("WARNING: the jack pocket reaches y ", IY1 - jack_body[1] - rib_t,
+                                                  ", past the PCB's back edge at 134.90 there"));
 for (p = tall_parts) {
     room = ceiling_at(p[1], p[2]) - pcb_top_z;
     echo(str(room < p[5] ? "WARNING: " : "", p[0], ": ", room, " mm above the PCB, part is ", p[5]));
@@ -235,7 +243,6 @@ module top_shell() {
         // heat-set inserts
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z - 0.01])
             cylinder(d = insert_d, h = insert_depth);
-        cable_cut();
     }
 }
 
@@ -258,7 +265,9 @@ module bottom_shell() {
                 translate([IX0 + tongue_clear + tongue_t, IY0 + tongue_clear + tongue_t, -1])
                     cube([IX1 - IX0 - 2 * (tongue_clear + tongue_t), IY1 - IY0 - 2 * (tongue_clear + tongue_t), tongue_h + 2]);
                 translate([tab_x[0] - 2, IY1 - 5, -1]) cube([tab_x[1] - tab_x[0] + 4, 10, tongue_h + 2]);
+                translate([jack_x - jack_body[0] / 2 - rib_clear, IY1 - 5, -1]) cube([jack_body[0] + 2 * rib_clear, 10, tongue_h + 2]);
             }
+            jack_ribs();
             // bosses under the PCB, and under the plate tab, with spigots up through the holes
             for (p = pcb_screws) translate([p[0], p[1], floor_z - 0.01]) {
                 cylinder(d = boss_d, h = pcb_bot_z - floor_z);
@@ -278,14 +287,20 @@ module bottom_shell() {
         }
         // label recess underneath
         translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
-        cable_cut();
+        // plug opening, centred on the jack body.  It runs up to the parting line as an open
+        // notch, as on the original, so no thin sliver of wall is left above it; the top shell closes it.
+        translate([jack_x - jack_plug[0] / 2, IY1 - 1, floor_z + (jack_body[2] - jack_plug[1]) / 2])
+            cube([jack_plug[0], wall + 2, CZ]);
     }
 }
 
-// cable_cut: through the back wall and the tongue inside it
-module cable_cut() {
-    y0 = IY1 - tongue_clear - tongue_t - 1;
-    translate([cable_x, y0, 0]) rotate([-90, 0, 0]) cylinder(d = cable_d, h = CY1 - y0 + 1);
+// jack_ribs: two side ribs and a back stop on the floor; the jack drops in from above
+module jack_ribs() {
+    w = jack_body[0] + 2 * rib_clear;
+    d = jack_body[1] + rib_clear;
+    h = jack_body[2] - 2;
+    for (x = [jack_x - w / 2 - rib_t, jack_x + w / 2]) translate([x, IY1 - d - rib_t, floor_z - 0.01]) cube([rib_t, d + rib_t + 0.01, h]);
+    translate([jack_x - w / 2, IY1 - d - rib_t, floor_z - 0.01]) cube([w, rib_t, h / 2]);
 }
 
 /* ---------------------------------------------------------------- reference board */
@@ -293,6 +308,7 @@ module cable_cut() {
 module board() {
     color("darkgreen", 0.8) translate([0, 0, pcb_bot_z]) linear_extrude(pcb_t) polygon(pcb_outline);
     color("dimgray", 0.8) translate([0, 0, plate_bot_z]) linear_extrude(plate_t) polygon(plate_outline);
+    color("silver", 0.8) translate([jack_x - jack_body[0] / 2, IY1 - jack_body[1], floor_z]) cube(jack_body);
     color("orange", 0.8) for (p = tall_parts) translate([p[1] - p[3] / 2, p[2] - p[4] / 2, pcb_top_z]) cube([p[3], p[4], p[5]]);
 }
 

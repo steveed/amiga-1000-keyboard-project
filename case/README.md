@@ -34,8 +34,9 @@ the frame. Positions are good to a few millimetres.
 - Overall length agrees with the model: about 406 mm.
 - The bottom case has bosses at all four case-screw positions: the PCB's three 7.5 mm holes and
   the plate tab. The top case has matching bosses, so four screws, as modelled here.
-- The cable leaves through a notch in the bottom case's back wall at about x 83-97, with a
-  moulded channel behind it for the strain relief. That is left of J1 (x 123).
+- The keyboard cable is a coiled telephone handset cable. It plugs into a 4P4C jack that sits
+  in a notch in the bottom case's back wall at about x 83-97, in a moulded pocket. That is left
+  of J1 (x 123), which is wired to the jack.
 - Rear corners: spring-loaded fold-out legs. Each is a hinged leg with a wire spring, lying
   along the back wall when folded, from the end wall to about 55 mm in. Not modelled yet;
   the model's two rear feet sit about where they fold.
@@ -50,7 +51,9 @@ the frame. Positions are good to a few millimetres.
   column in the top shell lands on the plate, with a heat-set insert. Tightening the screws clamps
   the plate and PCB between the shells.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
-- A 6 mm cable hole in the back wall, at the parting line, where the original's cable leaves.
+- A 4P4C jack pocket in the bottom shell at x 90, where the original's jack is: a plug opening in
+  the back wall, and ribs on the floor that hold the jack body. It has to fit between the back
+  wall and the PCB's step at y 134.9, so the jack can be at most about 10.4 mm deep (the render warns past that).
 
 ## Assumed, needs checking
 
@@ -59,6 +62,7 @@ the frame. Positions are good to a few millimetres.
   solder side).
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
+- **Jack size** (`jack_body`, `jack_plug`). Typical 4P4C values; measure the jack you fit.
 - **Tall parts under the label recess.** The render warns that a standing Y1 crystal (13.5 mm)
   doesn't fit: there is 12.3 mm above the PCB there. On the original the crystal is probably laid
   flat. C8 and the socketed controller fit.

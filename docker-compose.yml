@@ -15,3 +15,13 @@ services:
     working_dir: /repo
     volumes:
       - .:/repo
+
+  openscad:
+    build: case
+    init: true   # xvfb-run hangs when it runs as PID 1
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      HOME: /tmp
+    working_dir: /repo
+    volumes:
+      - .:/repo

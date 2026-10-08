@@ -63,9 +63,9 @@ the frame. Positions are good to a few millimetres.
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
 - **Jack size** (`jack_body`, `jack_plug`). Typical 4P4C values; measure the jack you fit.
-- **Tall parts under the label recess.** The render warns that a standing Y1 crystal (13.5 mm)
-  doesn't fit: there is 12.3 mm above the PCB there. On the original the crystal is probably laid
-  flat. C8 and the socketed controller fit.
+- **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it
+  fits; standing up (13.5 mm) it would not, with 12.3 mm above the PCB there. C8 and the socketed
+  controller fit too.
 
 ## Printing
 

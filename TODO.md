@@ -8,4 +8,4 @@
    A steel version needs the folded edges measured.
 5. **Fab** - tag a release (`v*`) to build gerbers, then order boards.
 6. **Custom case** - first pass shaped from a 1:8 model (`make case`, `case/README.md`).
-   Still to measure: plate to PCB spacing, plate height under the keycaps, and whether Y1 lies flat.
+   Still to measure: plate to PCB spacing, plate height under the keycaps and the jack size.

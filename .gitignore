@@ -20,3 +20,6 @@ images_do_not_keep/
 
 # Generated outputs (print sheets, fab files)
 build/
+
+# Python
+__pycache__/

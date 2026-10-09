@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "amiga1000")(type "KiCad")(uri "${KIPRJMOD}/../lib_sch/amiga1000.kicad_sym")(options "")(descr "Amiga 1000 keyboard parts, shared with rev 1"))
+)

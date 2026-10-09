@@ -13,7 +13,7 @@ TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case render release clean
+.PHONY: drc bom fab print plate case rev2-sch render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -62,6 +62,14 @@ case:
 	done
 	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p \
 		-o $(BUILD)/case/case-assembly.png case/a1000_case.scad
+
+# Rev 2 (ATmega32U4, surface mount): regenerate the schematic from tools/gen_rev2_sch.py, then
+# fail on any ERC error.  The library-table warnings from the bare container are not errors.
+REV2 := pcb/rev_2/$(NAME)-rev2
+rev2-sch:
+	mkdir -p $(BUILD)
+	docker compose run --rm -T --entrypoint python3 kicad tools/gen_rev2_sch.py
+	$(KICAD) sch erc --severity-error --exit-code-violations -o $(BUILD)/rev2-erc.rpt $(REV2).kicad_sch
 
 # 3D renders for the README (published to the renders branch by CI).
 RENDER := pcb render $(VARS) --quality high --background transparent

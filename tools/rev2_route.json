@@ -1,0 +1,74 @@
+{
+  "_about": "Routing passes for the rev 2 board, run by tools/route_rev2.py (make rev2-route). Each pass runs KiCadRoutingTools' route.py on the previous pass's board. Option names are route.py's own flags without the leading dashes; a list value becomes several arguments, true becomes a bare flag. Net lists can name a group with @group.",
+
+  "common": {
+    "layers": ["F.Cu", "B.Cu"],
+    "track-width": 0.2,
+    "via-size": 0.6,
+    "via-drill": 0.3,
+    "board-edge-clearance": 0.5,
+    "escalation": "off",
+    "strict-sizes": true,
+    "direction-preference-cost": 5000,
+    "via-cost": 300
+  },
+
+  "groups": {
+    "usb_power": ["/VBUS_IN", "/CC1", "/CC2", "/USB_DP", "/USB_DN", "/USB_DP_MCU", "/USB_DN_MCU",
+                  "+5V", "/VCC_AMIGA", "/PR1", "/AMIGA_PWR"]
+  },
+
+  "passes": [
+    {
+      "name": "row5",
+      "_why": "ROW5 (the bottom row) has the longest run into the 32U4, 100 mm up through the key field; it routes first, on its own: even VBUS (which also runs to the 32U4's VBUS-sense pin) gets in its way otherwise.",
+      "nets": ["/ROW5"],
+      "clearance": 0.25,
+      "options": {"max-ripup": 6}
+    },
+    {
+      "name": "vbus",
+      "_why": "VBUS's pin on the TPS2116 (VIN2) sits between two power pins at 0.5 mm pitch and loses out if anything else gets there first. The board generator pre-routes its escape to a via.",
+      "nets": ["/VBUS"],
+      "clearance": 0.2
+    },
+    {
+      "name": "usb-power",
+      "_why": "The USB-C and TPS2116 pins are 0.5 mm apart, too tight for 0.25 mm clearance. Routing these before the matrix keeps the matrix from walling in the 32U4's USB pins.",
+      "nets": ["@usb_power"],
+      "clearance": 0.2,
+      "power-nets": {"+5V": 0.3, "/VBUS_IN": 0.4, "/VCC_AMIGA": 0.3}
+    },
+    {
+      "name": "rows",
+      "_why": "The eight row nets each run the width of the keyboard, the bottom row the furthest from the 32U4; routed before the columns they get first pick of the channels into the controller strip.",
+      "nets": ["/ROW*"],
+      "clearance": 0.25,
+      "options": {"max-ripup": 6}
+    },
+    {
+      "name": "matrix",
+      "_why": "Everything else at 0.25 mm, which keeps tracks 0.25 mm from the MX pegs and centre holes.",
+      "nets": ["*"],
+      "exclude": ["/VBUS", "@usb_power"],
+      "clearance": 0.25,
+      "power-nets": {"GND": 0.4, "/VCC_EXT": 0.4},
+      "options": {"max-ripup": 6}
+    },
+    {
+      "name": "gnd",
+      "_why": "Tie any pour islands the routing cut off back into the planes.",
+      "nets": ["GND"],
+      "clearance": 0.25,
+      "power-nets": {"GND": 0.4}
+    }
+  ],
+
+  "repair": {
+    "_why": "While the connectivity check finds open nets, rip just those up and route them again, then tie GND up again.",
+    "tries": 2,
+    "tight": {"nets": ["/VBUS", "@usb_power"], "clearance": 0.2},
+    "loose_clearance": 0.25,
+    "options": {"max-ripup": 6}
+  }
+}

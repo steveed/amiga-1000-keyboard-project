@@ -1,11 +1,11 @@
 # Rev 2
 
-A surface-mount version of the board that the fab can assemble from stocked parts; only the
-keyswitches and the Caps Lock LED (which sits inside its switch) are fitted by hand. Rev 1, the
+A surface-mount version of the board that the fab can assemble from stocked parts, for Cherry MX
+switches; only the keyswitches and the Caps Lock LED (which sits inside its switch) are fitted by hand. Rev 1, the
 through-hole recreation of the original that takes the original 6500/1 controller, stays in `pcb/`.
 
-The outline, mounting holes and switch positions will match rev 1, so the plate and the case fit
-both boards.
+The outline, mounting holes and switch positions match rev 1, so the case fits both boards; rev 2
+needs its own MX plate.
 
 ## Schematic
 
@@ -31,20 +31,73 @@ key names.
 
 ## Switches
 
-Every key takes either an original Mitsumi KCT switch or a Cherry MX switch, with hybrid footprints
-from `tools/gen_hybrid_fp.py` (the idea is Henryk's MX_Mitsumi_Hybrid footprints; ours are drawn for
-the A1000, whose Mitsumi pins sit one above the other, 4.75 mm right of the key centre). The MX switch
-is turned 180 degrees, pins south and LED north. Keys of 2U and wider carry MX PCB-mount stabiliser
-holes; the space bar (7.5U) uses a 7U stabiliser, 114.3 mm, close to the original's 115 mm cutouts.
-Keycap widths come from rev 1's switch spacing. Return follows Henryk's US Return: the hybrid switch
-turned 90 degrees at the key's stem (where rev 1's Mitsumi Return body sits, the centre of the column
-the cap has on both rows), with a vertical 2U MX stabiliser. It suits the US inverted L and the
-international Return alike.
+Rev 2 takes Cherry MX (and compatible) switches; rev 1 is the Mitsumi replacement. The footprints
+come from `tools/gen_mx_fp.py`, in the standard orientation (pins north, LED holes south), with
+PCB-mount pegs. Keycap widths come from rev 1's switch spacing. Keys of 2U and wider have PCB-mount
+stabiliser holes; the space bar (7.5U) uses a 7U stabiliser (114.3 mm). Return follows Henryk
+Richter's US Return for the A500KB: the switch at the key's stem, the centre of the column the cap
+has on both rows, with a vertical 2U stabiliser. It suits the US inverted L and the international
+Return alike.
 
-The plates are separate, one for Mitsumi and one for MX, both generated from this board.
+SW87 (US 2.5U left Shift) and SW92 (ISO 1.5U short Shift) are alternatives under the same keycaps.
+Their facing pegs would be 0.54 mm apart, so SW87 has no west peg and SW92's east peg is a slot
+either switch's peg fits.
 
-The Caps Lock LED has two positions on the same resistor: D92 for the LED inside a Mitsumi switch, D93
-for a 3 mm LED through an MX switch. Fit one.
+The Caps Lock LED (D92) is a 3 mm LED through the Caps Lock switch, fitted by hand with it.
+
+## Board
+
+`amiga-1000-keyboard-rev2.kicad_pcb` is generated, then routed:
+
+- `make rev2-pcb` (`tools/gen_rev2_pcb.py`) builds it from rev 1's board and the rev 2 schematic:
+  rev 1's outline, stack-up, design rules and GND pours, with rev 2's footprints linked to the
+  schematic and placed. The file comes out the same on every run (footprints in reference order,
+  UUIDs derived from references), which matters because the router's result depends on file order.
+- `make rev2-route` routes it with [KiCadRoutingTools](https://github.com/drandyhaas/KiCadRoutingTools)
+  (`tools/route_rev2.py`), following the passes in `tools/rev2_route.json`, then removes the vias
+  and tracks left dangling (`tools/rev2_cleanup.py`).
+- `make rev2-drc` checks it, schematic parity included.
+
+Placement and routing notes:
+
+- Switches sit at rev 1's key centres; Return at its stem.
+- Each key's diode is on the back, between its row and the next, at the first spot that clears every
+  pad and hole by 0.5 mm.
+- The controller, USB-C and power parts are on the strip behind the keys. USB-C opens to the left out
+  of the step at the left end of the strip, so a right-angle USB-C cable (a common part for Amiga
+  mods) can turn and leave through the jack notch, which keeps the original case usable; the Amiga
+  header (J1) sits on the board's back edge behind the jack.
+- U1 is turned so its row pins face the keys, and fanned out: every pin but the crystal and USB data
+  pins has a short track to its own via, on two staggered rings. About 20 matrix lines converge on
+  this 0.8 mm-pitch chip on two layers, and the router reaches a ring of vias far more easily than
+  the pads. A few decoupling caps sit on the back, under it (the diodes already make it a two-sided
+  assembly).
+- The TPS2116's VIN2 and GND pins have pre-routed escapes too: they're 0.5 mm-pitch pins the router
+  kept falling just short of.
+- Routing order matters (see `tools/rev2_route.json`): ROW5, the longest run into U1, goes first;
+  then VBUS; then the USB and power nets at 0.2 mm clearance (their 0.5 mm-pitch pins are too tight
+  for 0.25); then the other rows; then everything else at 0.25 mm, which keeps tracks clear of the
+  MX holes; then GND.
+- `amiga-1000-keyboard-rev2.kicad_dru` allows the overlaps that are meant (the left Shift
+  alternatives, the Caps Lock LED inside its switch, the plate screws between switches) and one
+  thermal spoke on GND pads.
+
+### KiCadRoutingTools
+
+`make rev2-route` runs in a `krt:local` image built from a KiCadRoutingTools checkout, with its Rust
+router built inside it:
+
+```
+FROM python:3.12-slim
+WORKDIR /krt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+RUN rm -f rust_router/*.so && python3 build_router.py
+```
+
+Build it from the checkout (`docker build -f <that Dockerfile> -t krt:local .`). Routing takes about
+five minutes.
 
 ## Pins
 
@@ -62,7 +115,5 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 
 ## Still to do
 
-- Board layout and routing. Diodes and tracks must stay clear of the MX centre hole and pegs.
-- Checking the space bar's MX stabiliser holes against the Mitsumi stabiliser cutouts in the board.
-- An MX plate alongside the Mitsumi one.
+- The MX plate.
 - BOM with LCSC part numbers and a placement file for assembly.

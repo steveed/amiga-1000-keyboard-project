@@ -1,0 +1,26 @@
+(version 1)
+
+# Parts that overlap on purpose.  A negative courtyard clearance allows the overlap; holes and pads
+# still have to clear each other as usual.
+
+# SW87 (US left Shift) and SW92 (ISO short Shift) are alternatives under the same keycaps, beside SW58.
+(rule "left Shift alternatives"
+	(condition "(A.Reference == 'SW87' || A.Reference == 'SW92' || A.Reference == 'SW58' || A.Reference == 'D58') && (B.Reference == 'SW87' || B.Reference == 'SW92' || B.Reference == 'SW58' || B.Reference == 'D58')")
+	(constraint courtyard_clearance (min -20mm)))
+
+# The Caps Lock LED sits inside the Caps Lock switch.
+(rule "Caps Lock LED inside the switch"
+	(condition "A.Reference == 'D92' && B.Reference == 'SW43'")
+	(constraint courtyard_clearance (min -20mm)))
+
+# The plate screws sit between switches, as on rev 1; the MX courtyard is a little wider than the switch.
+(rule "plate screws between switches"
+	(condition "A.Reference == 'H*' && B.Reference == 'SW*'")
+	(constraint courtyard_clearance (min -20mm)))
+
+
+# Fine-pitch GND pins (the 32U4 and the power mux) can only take one thermal spoke; bigger pads still
+# get their full count.  (KiCad 10 takes a bare number here, not (min 1).)
+(rule "one thermal spoke is enough for GND pads"
+	(condition "A.NetName == 'GND'")
+	(constraint min_resolved_spokes 1))

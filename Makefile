@@ -13,7 +13,7 @@ TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case rev2-sch render release clean
+.PHONY: drc bom fab print plate case rev2-sch rev2-pcb rev2-route rev2-drc render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -70,6 +70,28 @@ rev2-sch:
 	mkdir -p $(BUILD)
 	docker compose run --rm -T --entrypoint python3 kicad tools/gen_rev2_sch.py
 	$(KICAD) sch erc --severity-error --exit-code-violations -o $(BUILD)/rev2-erc.rpt $(REV2).kicad_sch
+
+# Rev 2 board: rebuild it from rev 1's outline and the rev 2 schematic.  This places parts only;
+# `make rev2-route` then routes it.
+rev2-pcb: rev2-sch
+	docker compose run --rm -T --entrypoint python3 kicad tools/gen_rev2_pcb.py
+
+# Rev 2 routing with KiCadRoutingTools, in its krt:local image (see pcb/rev_2/README.md); the passes
+# are in tools/rev2_route.json.  Then remove the vias and tracks left dangling (tools/rev2_cleanup.py).
+rev2-route:
+	docker run --rm -u $(UID):$(GID) -v "$(CURDIR)":/repo krt:local python3 /repo/tools/route_rev2.py
+	@for i in 1 2 3 4 5 6; do \
+		$(KICAD) pcb drc --refill-zones --severity-warning --format json -o $(BUILD)/rev2-dangling.json \
+			$(REV2).kicad_pcb >/dev/null 2>&1; \
+		n=$$(docker compose run --rm -T tools python tools/rev2_cleanup.py $(BUILD)/rev2-dangling.json 2>/dev/null | tail -1); \
+		echo "cleanup: removed $$n dangling vias and tracks"; [ "$$n" = 0 ] && break; \
+	done
+
+# Rev 2 DRC with schematic parity.
+rev2-drc:
+	mkdir -p $(BUILD)
+	$(KICAD) pcb drc --refill-zones --schematic-parity --severity-error --exit-code-violations \
+		-o $(BUILD)/rev2-drc.rpt $(REV2).kicad_pcb
 
 # 3D renders for the README (published to the renders branch by CI).
 RENDER := pcb render $(VARS) --quality high --background transparent

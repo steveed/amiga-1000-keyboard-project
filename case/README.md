@@ -47,9 +47,10 @@ the frame. Positions are good to a few millimetres.
 
 - The bottom shell has a tongue that locates the top shell's walls.
 - Four M3 screws from underneath, at the PCB's three 7.5 mm case holes and the plate tab's hole.
-  A boss under the PCB (or under the tab) carries a 7 mm spigot up through the PCB and plate. A
-  column in the top shell lands on the plate, with a heat-set insert. Tightening the screws clamps
-  the plate and PCB between the shells.
+  Each bottom boss carries a 7 mm spigot up through the PCB and plate. Under the PCB the boss is a
+  1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance
+  hole and the board is never propped up by the case. Under the plate tab the boss runs up to the
+  plate. A column in the top shell lands on the plate, with a heat-set insert.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
   for stick-on rubber feet instead of printed ones.

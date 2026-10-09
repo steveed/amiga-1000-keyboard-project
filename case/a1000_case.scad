@@ -54,6 +54,7 @@ tongue_clear  = 0.2;
 
 // Screws and bosses
 boss_d        = 11;     // bottom boss under the PCB / plate tab
+pcb_boss_h    = 1.0;    // under the PCB the boss is a 1 mm shoulder, as on the original, so it never props the board up
 spigot_d      = 7.0;    // passes up through the 7.5 mm case holes in the PCB and plate
 squeeze       = 0.2;    // spigot stops this far below the plate top, so the screws clamp the stack
 column_d      = 10;     // top shell column that lands on the plate
@@ -273,9 +274,9 @@ module bottom_shell() {
                 translate([jack_x - jack_body[0] / 2 - rib_clear, IY1 - 5, -1]) cube([jack_body[0] + 2 * rib_clear, 10, tongue_h + 2]);
             }
             jack_ribs();
-            // bosses under the PCB, and under the plate tab, with spigots up through the holes
+            // bosses: a low shoulder under the PCB and a full-height one under the plate tab, with spigots up through the holes
             for (p = pcb_screws) translate([p[0], p[1], floor_z - 0.01]) {
-                cylinder(d = boss_d, h = pcb_bot_z - floor_z);
+                cylinder(d = boss_d, h = pcb_boss_h);
                 cylinder(d = spigot_d, h = plate_top_z - squeeze - floor_z);
             }
             translate([tab_screw[0], tab_screw[1], floor_z - 0.01]) {

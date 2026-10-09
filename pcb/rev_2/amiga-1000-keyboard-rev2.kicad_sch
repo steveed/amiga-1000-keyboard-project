@@ -8058,7 +8058,7 @@
 		(at 203.2 243.84 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "eb407fbb-c491-5f1c-8751-f73053da9b6b")
@@ -8070,7 +8070,7 @@
 				)
 			)
 		)
-		(property "Value" "CAPS LOCK"
+		(property "Value" "CAPS LOCK (Mitsumi)"
 			(at 203.2 246.38 0)
 			(effects
 				(font
@@ -8096,7 +8096,7 @@
 				)
 			)
 		)
-		(property "Description" "Upper lead (towards the F keys) is the anode"
+		(property "Description" "Fit with a Mitsumi switch. Upper lead (towards the F keys) is the anode"
 			(at 203.2 243.84 0)
 			(hide yes)
 			(effects
@@ -8105,7 +8105,7 @@
 				)
 			)
 		)
-		(property "Part" "LED fitted in the Caps Lock switch, salvaged"
+		(property "Part" "LED fitted in the Mitsumi Caps Lock switch, salvaged"
 			(at 203.2 243.84 0)
 			(hide yes)
 			(effects
@@ -8168,6 +8168,122 @@
 			(justify left bottom)
 		)
 		(uuid "6695b63f-8395-5d03-8a4a-b0aeaeb3e605")
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 233.68 243.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "d1ca3759-a992-5a01-9fab-36938adbafb1")
+		(property "Reference" "D93"
+			(at 233.68 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CAPS LOCK (MX)"
+			(at 233.68 246.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "amiga1000:Hybrid_A1000_MX_LED"
+			(at 233.68 243.84 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 243.84 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Fit with an MX switch, instead of D92"
+			(at 233.68 243.84 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Part" "3 mm LED through a Cherry MX switch"
+			(at 233.68 243.84 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5277dbe6-56e3-5b43-9e15-bf7e599c7526")
+		)
+		(pin "2"
+			(uuid "67bb7643-f20c-5a91-a6b1-0a573aaf27a1")
+		)
+		(instances
+			(project "amiga-1000-keyboard-rev2"
+				(path "/8c4c0c0e-c260-5684-b55c-362c20f153e7"
+					(reference "D93")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 229.87 243.84) (xy 227.33 243.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f86632db-e704-5c02-ba2c-cf871816e737")
+	)
+	(label "GND"
+		(at 227.33 243.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "99470943-caed-5ede-8ee3-3616dcf02f2e")
+	)
+	(wire
+		(pts
+			(xy 237.49 243.84) (xy 240.03 243.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc3d8b62-74c9-5ae6-9212-86b06ad4546a")
+	)
+	(label "CAPS_LED_A"
+		(at 240.03 243.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "04c22bec-9ee9-5b96-a42f-b92e931cf9c0")
 	)
 	(text "Power: the Amiga 5 V (VIN1) has priority; USB VBUS (VIN2) takes over below about 4.3 V."
 		(exclude_from_sim no)
@@ -12780,7 +12896,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 76.2 309.88 0)
 			(hide yes)
 			(effects
@@ -12807,7 +12923,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 309.88 0)
 			(hide yes)
 			(effects
@@ -12992,7 +13108,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 134.62 309.88 0)
 			(hide yes)
 			(effects
@@ -13019,7 +13135,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 309.88 0)
 			(hide yes)
 			(effects
@@ -13204,7 +13320,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 193.04 309.88 0)
 			(hide yes)
 			(effects
@@ -13231,7 +13347,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 309.88 0)
 			(hide yes)
 			(effects
@@ -13416,7 +13532,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 251.46 309.88 0)
 			(hide yes)
 			(effects
@@ -13443,7 +13559,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 309.88 0)
 			(hide yes)
 			(effects
@@ -13628,7 +13744,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 309.88 309.88 0)
 			(hide yes)
 			(effects
@@ -13655,7 +13771,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 309.88 0)
 			(hide yes)
 			(effects
@@ -13840,7 +13956,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 368.3 309.88 0)
 			(hide yes)
 			(effects
@@ -13867,7 +13983,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 309.88 0)
 			(hide yes)
 			(effects
@@ -14052,7 +14168,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 426.72 309.88 0)
 			(hide yes)
 			(effects
@@ -14079,7 +14195,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 309.88 0)
 			(hide yes)
 			(effects
@@ -14264,7 +14380,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 485.14 309.88 0)
 			(hide yes)
 			(effects
@@ -14291,7 +14407,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 309.88 0)
 			(hide yes)
 			(effects
@@ -14476,7 +14592,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 543.56 309.88 0)
 			(hide yes)
 			(effects
@@ -14503,7 +14619,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 309.88 0)
 			(hide yes)
 			(effects
@@ -14688,7 +14804,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 601.98 309.88 0)
 			(hide yes)
 			(effects
@@ -14715,7 +14831,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 309.88 0)
 			(hide yes)
 			(effects
@@ -14900,7 +15016,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 660.4 309.88 0)
 			(hide yes)
 			(effects
@@ -14927,7 +15043,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 309.88 0)
 			(hide yes)
 			(effects
@@ -15112,7 +15228,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 309.88 0)
 			(hide yes)
 			(effects
@@ -15139,7 +15255,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 309.88 0)
 			(hide yes)
 			(effects
@@ -15324,7 +15440,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 76.2 342.9 0)
 			(hide yes)
 			(effects
@@ -15351,7 +15467,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 342.9 0)
 			(hide yes)
 			(effects
@@ -15536,7 +15652,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 134.62 342.9 0)
 			(hide yes)
 			(effects
@@ -15563,7 +15679,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 342.9 0)
 			(hide yes)
 			(effects
@@ -15748,7 +15864,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 193.04 342.9 0)
 			(hide yes)
 			(effects
@@ -15775,7 +15891,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 342.9 0)
 			(hide yes)
 			(effects
@@ -15960,7 +16076,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 342.9 0)
 			(hide yes)
 			(effects
@@ -15987,7 +16103,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 342.9 0)
 			(hide yes)
 			(effects
@@ -16172,7 +16288,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 342.9 0)
 			(hide yes)
 			(effects
@@ -16199,7 +16315,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 342.9 0)
 			(hide yes)
 			(effects
@@ -16384,7 +16500,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 342.9 0)
 			(hide yes)
 			(effects
@@ -16411,7 +16527,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 342.9 0)
 			(hide yes)
 			(effects
@@ -16596,7 +16712,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 342.9 0)
 			(hide yes)
 			(effects
@@ -16623,7 +16739,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 342.9 0)
 			(hide yes)
 			(effects
@@ -16808,7 +16924,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 342.9 0)
 			(hide yes)
 			(effects
@@ -16835,7 +16951,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 342.9 0)
 			(hide yes)
 			(effects
@@ -17020,7 +17136,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 342.9 0)
 			(hide yes)
 			(effects
@@ -17047,7 +17163,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 342.9 0)
 			(hide yes)
 			(effects
@@ -17232,7 +17348,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 601.98 342.9 0)
 			(hide yes)
 			(effects
@@ -17259,7 +17375,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 342.9 0)
 			(hide yes)
 			(effects
@@ -17444,7 +17560,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 342.9 0)
 			(hide yes)
 			(effects
@@ -17471,7 +17587,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 342.9 0)
 			(hide yes)
 			(effects
@@ -17656,7 +17772,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 342.9 0)
 			(hide yes)
 			(effects
@@ -17683,7 +17799,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 342.9 0)
 			(hide yes)
 			(effects
@@ -17868,7 +17984,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.75U"
 			(at 76.2 375.92 0)
 			(hide yes)
 			(effects
@@ -17895,7 +18011,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 375.92 0)
 			(hide yes)
 			(effects
@@ -18080,7 +18196,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 134.62 375.92 0)
 			(hide yes)
 			(effects
@@ -18107,7 +18223,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 375.92 0)
 			(hide yes)
 			(effects
@@ -18292,7 +18408,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 193.04 375.92 0)
 			(hide yes)
 			(effects
@@ -18319,7 +18435,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 375.92 0)
 			(hide yes)
 			(effects
@@ -18504,7 +18620,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 375.92 0)
 			(hide yes)
 			(effects
@@ -18531,7 +18647,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 375.92 0)
 			(hide yes)
 			(effects
@@ -18716,7 +18832,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 375.92 0)
 			(hide yes)
 			(effects
@@ -18743,7 +18859,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 375.92 0)
 			(hide yes)
 			(effects
@@ -18928,7 +19044,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 375.92 0)
 			(hide yes)
 			(effects
@@ -18955,7 +19071,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 375.92 0)
 			(hide yes)
 			(effects
@@ -19140,7 +19256,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 375.92 0)
 			(hide yes)
 			(effects
@@ -19167,7 +19283,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 375.92 0)
 			(hide yes)
 			(effects
@@ -19352,7 +19468,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 375.92 0)
 			(hide yes)
 			(effects
@@ -19379,7 +19495,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 375.92 0)
 			(hide yes)
 			(effects
@@ -19564,7 +19680,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 375.92 0)
 			(hide yes)
 			(effects
@@ -19591,7 +19707,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 375.92 0)
 			(hide yes)
 			(effects
@@ -19776,7 +19892,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 601.98 375.92 0)
 			(hide yes)
 			(effects
@@ -19803,7 +19919,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 375.92 0)
 			(hide yes)
 			(effects
@@ -19988,7 +20104,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 375.92 0)
 			(hide yes)
 			(effects
@@ -20015,7 +20131,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 375.92 0)
 			(hide yes)
 			(effects
@@ -20200,7 +20316,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 375.92 0)
 			(hide yes)
 			(effects
@@ -20227,7 +20343,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 375.92 0)
 			(hide yes)
 			(effects
@@ -20412,7 +20528,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 76.2 408.94 0)
 			(hide yes)
 			(effects
@@ -20439,7 +20555,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 408.94 0)
 			(hide yes)
 			(effects
@@ -20624,7 +20740,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 134.62 408.94 0)
 			(hide yes)
 			(effects
@@ -20651,7 +20767,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 408.94 0)
 			(hide yes)
 			(effects
@@ -20836,7 +20952,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 193.04 408.94 0)
 			(hide yes)
 			(effects
@@ -20863,7 +20979,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 408.94 0)
 			(hide yes)
 			(effects
@@ -21048,7 +21164,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 408.94 0)
 			(hide yes)
 			(effects
@@ -21075,7 +21191,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 408.94 0)
 			(hide yes)
 			(effects
@@ -21260,7 +21376,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 408.94 0)
 			(hide yes)
 			(effects
@@ -21287,7 +21403,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 408.94 0)
 			(hide yes)
 			(effects
@@ -21472,7 +21588,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 408.94 0)
 			(hide yes)
 			(effects
@@ -21499,7 +21615,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 408.94 0)
 			(hide yes)
 			(effects
@@ -21684,7 +21800,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 408.94 0)
 			(hide yes)
 			(effects
@@ -21711,7 +21827,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 408.94 0)
 			(hide yes)
 			(effects
@@ -21896,7 +22012,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 408.94 0)
 			(hide yes)
 			(effects
@@ -21923,7 +22039,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 408.94 0)
 			(hide yes)
 			(effects
@@ -22108,7 +22224,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 408.94 0)
 			(hide yes)
 			(effects
@@ -22135,7 +22251,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 408.94 0)
 			(hide yes)
 			(effects
@@ -22320,7 +22436,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 601.98 408.94 0)
 			(hide yes)
 			(effects
@@ -22347,7 +22463,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 408.94 0)
 			(hide yes)
 			(effects
@@ -22532,7 +22648,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 408.94 0)
 			(hide yes)
 			(effects
@@ -22559,7 +22675,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 408.94 0)
 			(hide yes)
 			(effects
@@ -22744,7 +22860,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 408.94 0)
 			(hide yes)
 			(effects
@@ -22771,7 +22887,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 408.94 0)
 			(hide yes)
 			(effects
@@ -22956,7 +23072,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_2.5U"
 			(at 76.2 441.96 0)
 			(hide yes)
 			(effects
@@ -22983,7 +23099,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 441.96 0)
 			(hide yes)
 			(effects
@@ -23178,7 +23294,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 134.62 441.96 0)
 			(hide yes)
 			(effects
@@ -23205,7 +23321,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 441.96 0)
 			(hide yes)
 			(effects
@@ -23390,7 +23506,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 193.04 441.96 0)
 			(hide yes)
 			(effects
@@ -23417,7 +23533,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 441.96 0)
 			(hide yes)
 			(effects
@@ -23602,7 +23718,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 441.96 0)
 			(hide yes)
 			(effects
@@ -23629,7 +23745,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 441.96 0)
 			(hide yes)
 			(effects
@@ -23814,7 +23930,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 441.96 0)
 			(hide yes)
 			(effects
@@ -23841,7 +23957,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 441.96 0)
 			(hide yes)
 			(effects
@@ -24026,7 +24142,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 441.96 0)
 			(hide yes)
 			(effects
@@ -24053,7 +24169,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 441.96 0)
 			(hide yes)
 			(effects
@@ -24238,7 +24354,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 441.96 0)
 			(hide yes)
 			(effects
@@ -24265,7 +24381,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 441.96 0)
 			(hide yes)
 			(effects
@@ -24450,7 +24566,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 441.96 0)
 			(hide yes)
 			(effects
@@ -24477,7 +24593,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 441.96 0)
 			(hide yes)
 			(effects
@@ -24662,7 +24778,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 441.96 0)
 			(hide yes)
 			(effects
@@ -24689,7 +24805,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 441.96 0)
 			(hide yes)
 			(effects
@@ -24874,7 +24990,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 601.98 441.96 0)
 			(hide yes)
 			(effects
@@ -24901,7 +25017,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 441.96 0)
 			(hide yes)
 			(effects
@@ -25086,7 +25202,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 441.96 0)
 			(hide yes)
 			(effects
@@ -25113,7 +25229,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 441.96 0)
 			(hide yes)
 			(effects
@@ -25298,7 +25414,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 441.96 0)
 			(hide yes)
 			(effects
@@ -25325,7 +25441,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 441.96 0)
 			(hide yes)
 			(effects
@@ -25510,7 +25626,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 76.2 474.98 0)
 			(hide yes)
 			(effects
@@ -25537,7 +25653,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 474.98 0)
 			(hide yes)
 			(effects
@@ -25722,7 +25838,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 134.62 474.98 0)
 			(hide yes)
 			(effects
@@ -25749,7 +25865,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 474.98 0)
 			(hide yes)
 			(effects
@@ -25934,7 +26050,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_7.5U"
 			(at 193.04 474.98 0)
 			(hide yes)
 			(effects
@@ -25961,7 +26077,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 474.98 0)
 			(hide yes)
 			(effects
@@ -26146,7 +26262,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 251.46 474.98 0)
 			(hide yes)
 			(effects
@@ -26173,7 +26289,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 474.98 0)
 			(hide yes)
 			(effects
@@ -26358,7 +26474,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.25U"
 			(at 309.88 474.98 0)
 			(hide yes)
 			(effects
@@ -26385,7 +26501,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 474.98 0)
 			(hide yes)
 			(effects
@@ -26570,7 +26686,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 474.98 0)
 			(hide yes)
 			(effects
@@ -26597,7 +26713,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 474.98 0)
 			(hide yes)
 			(effects
@@ -26782,7 +26898,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 474.98 0)
 			(hide yes)
 			(effects
@@ -26809,7 +26925,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 474.98 0)
 			(hide yes)
 			(effects
@@ -26994,7 +27110,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_2U"
 			(at 485.14 474.98 0)
 			(hide yes)
 			(effects
@@ -27021,7 +27137,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 474.98 0)
 			(hide yes)
 			(effects
@@ -27206,7 +27322,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 76.2 508 0)
 			(hide yes)
 			(effects
@@ -27233,7 +27349,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 508 0)
 			(hide yes)
 			(effects
@@ -27418,7 +27534,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 134.62 508 0)
 			(hide yes)
 			(effects
@@ -27445,7 +27561,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 508 0)
 			(hide yes)
 			(effects
@@ -27630,7 +27746,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.75U"
 			(at 193.04 508 0)
 			(hide yes)
 			(effects
@@ -27657,7 +27773,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 508 0)
 			(hide yes)
 			(effects
@@ -27842,7 +27958,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 508 0)
 			(hide yes)
 			(effects
@@ -27869,7 +27985,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 508 0)
 			(hide yes)
 			(effects
@@ -28054,7 +28170,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 508 0)
 			(hide yes)
 			(effects
@@ -28081,7 +28197,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 508 0)
 			(hide yes)
 			(effects
@@ -28266,7 +28382,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 508 0)
 			(hide yes)
 			(effects
@@ -28293,7 +28409,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 508 0)
 			(hide yes)
 			(effects
@@ -28478,7 +28594,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 426.72 508 0)
 			(hide yes)
 			(effects
@@ -28505,7 +28621,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 508 0)
 			(hide yes)
 			(effects
@@ -28690,7 +28806,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 508 0)
 			(hide yes)
 			(effects
@@ -28717,7 +28833,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 508 0)
 			(hide yes)
 			(effects
@@ -28902,7 +29018,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 508 0)
 			(hide yes)
 			(effects
@@ -28929,7 +29045,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 508 0)
 			(hide yes)
 			(effects
@@ -29114,7 +29230,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 601.98 508 0)
 			(hide yes)
 			(effects
@@ -29141,7 +29257,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 508 0)
 			(hide yes)
 			(effects
@@ -29326,7 +29442,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 508 0)
 			(hide yes)
 			(effects
@@ -29353,7 +29469,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 508 0)
 			(hide yes)
 			(effects
@@ -29538,7 +29654,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 718.82 508 0)
 			(hide yes)
 			(effects
@@ -29565,7 +29681,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 718.82 508 0)
 			(hide yes)
 			(effects
@@ -29750,7 +29866,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 76.2 541.02 0)
 			(hide yes)
 			(effects
@@ -29777,7 +29893,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 76.2 541.02 0)
 			(hide yes)
 			(effects
@@ -29989,7 +30105,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 134.62 541.02 0)
 			(hide yes)
 			(effects
@@ -30174,7 +30290,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 193.04 541.02 0)
 			(hide yes)
 			(effects
@@ -30201,7 +30317,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 193.04 541.02 0)
 			(hide yes)
 			(effects
@@ -30386,7 +30502,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 251.46 541.02 0)
 			(hide yes)
 			(effects
@@ -30413,7 +30529,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 251.46 541.02 0)
 			(hide yes)
 			(effects
@@ -30598,7 +30714,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 309.88 541.02 0)
 			(hide yes)
 			(effects
@@ -30625,7 +30741,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 309.88 541.02 0)
 			(hide yes)
 			(effects
@@ -30810,7 +30926,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 368.3 541.02 0)
 			(hide yes)
 			(effects
@@ -30837,7 +30953,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 368.3 541.02 0)
 			(hide yes)
 			(effects
@@ -31022,7 +31138,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_2U"
 			(at 426.72 541.02 0)
 			(hide yes)
 			(effects
@@ -31049,7 +31165,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 426.72 541.02 0)
 			(hide yes)
 			(effects
@@ -31234,7 +31350,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 485.14 541.02 0)
 			(hide yes)
 			(effects
@@ -31261,7 +31377,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 485.14 541.02 0)
 			(hide yes)
 			(effects
@@ -31446,7 +31562,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 543.56 541.02 0)
 			(hide yes)
 			(effects
@@ -31473,7 +31589,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 543.56 541.02 0)
 			(hide yes)
 			(effects
@@ -31658,7 +31774,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_2U"
 			(at 601.98 541.02 0)
 			(hide yes)
 			(effects
@@ -31685,7 +31801,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 601.98 541.02 0)
 			(hide yes)
 			(effects
@@ -31870,7 +31986,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1U"
 			(at 660.4 541.02 0)
 			(hide yes)
 			(effects
@@ -31897,7 +32013,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 660.4 541.02 0)
 			(hide yes)
 			(effects
@@ -32082,7 +32198,7 @@
 				)
 			)
 		)
-		(property "Footprint" "amiga1000:Mitsumi_A1000_Switch"
+		(property "Footprint" "amiga1000:Hybrid_A1000_1.5U"
 			(at 777.24 441.96 0)
 			(hide yes)
 			(effects
@@ -32109,7 +32225,7 @@
 				)
 			)
 		)
-		(property "Part" "Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged"
+		(property "Part" "Mitsumi KCT (salvaged) or Cherry MX keyswitch"
 			(at 777.24 441.96 0)
 			(hide yes)
 			(effects

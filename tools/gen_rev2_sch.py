@@ -268,11 +268,14 @@ def build():
           dnp=True, desc='MISO/PB3, SCK/PB1 and MOSI/PB2 are shared with matrix columns 3, 1 and 2')
     place('Connector:TestPoint', 'TP1', 'SPARE (PC7)', 233.68, 200.66, {'1': 'SPARE'},
           'TestPoint:TestPoint_Pad_D1.5mm', 'test pad', in_bom=False)
-    # Caps Lock LED, inside the Caps Lock switch
+    # Caps Lock LED, inside the Caps Lock switch: fit the one that matches the switch
     R('R3', '330', 175.26, 233.68, 'CAPS_LED', 'CAPS_LED_A')
-    place('Device:LED', 'D92', 'CAPS LOCK', 203.2, 243.84, {'1': 'GND', '2': 'CAPS_LED_A'},
-          'amiga1000:Mitsumi_A1000_CapsLock_LED', 'LED fitted in the Caps Lock switch, salvaged',
-          desc='Upper lead (towards the F keys) is the anode')
+    place('Device:LED', 'D92', 'CAPS LOCK (Mitsumi)', 203.2, 243.84, {'1': 'GND', '2': 'CAPS_LED_A'},
+          'amiga1000:Mitsumi_A1000_CapsLock_LED', 'LED fitted in the Mitsumi Caps Lock switch, salvaged',
+          in_bom=False, desc='Fit with a Mitsumi switch. Upper lead (towards the F keys) is the anode')
+    place('Device:LED', 'D93', 'CAPS LOCK (MX)', 233.68, 243.84, {'1': 'GND', '2': 'CAPS_LED_A'},
+          'amiga1000:Hybrid_A1000_MX_LED', '3 mm LED through a Cherry MX switch',
+          in_bom=False, desc='Fit with an MX switch, instead of D92')
 
     # --- power: Amiga 5 V has priority, USB takes over when it is absent
     text('Power: the Amiga 5 V (VIN1) has priority; USB VBUS (VIN2) takes over below about 4.3 V.', 330.2, 33.02)
@@ -372,6 +375,22 @@ def matrix_map():
     return cells, {k[0]: k[1] for k in rev1_keys()}
 
 
+# Keycap widths, from rev 1's switch spacing (the rest are 1U).  RETURN is the US inverted-L key and
+# keeps the Mitsumi-only footprint until the MX stem position for that cap is settled.
+WIDTHS = {**{f'F{i}': '1.25U' for i in range(1, 11)}, '`': '1.25U', 'L ALT': '1.25U', 'L AMIGA': '1.25U',
+          'R AMIGA': '1.25U', 'R ALT': '1.25U', 'L SHIFT ISO': '1.5U', 'TAB': '1.75U', 'BACKSPACE': '1.75U',
+          'R SHIFT': '2U', 'KP 0': '2U', 'KP ENTER': '2U', 'L SHIFT': '2.5U', 'SPACE': '7.5U'}
+
+
+def switch_fp(name):
+    if name == 'RETURN':
+        return 'amiga1000:Mitsumi_A1000_Switch'
+    return f'amiga1000:Hybrid_A1000_{WIDTHS.get(name, "1U")}'
+
+
+SWITCH_PART = 'Mitsumi KCT (salvaged) or Cherry MX keyswitch'
+
+
 def matrix():
     cells, names = matrix_map()
     x0, y0, dx, dy = 76.2, 309.88, 58.42, 33.02
@@ -385,8 +404,7 @@ def matrix():
         n = int(ref[2:])
         x, y = x0 + c * dx, y0 + r * dy
         sw = place('Switch:SW_Push', ref, names[ref], x, y, {'1': f'COL{c}', '2': ''},
-                   'amiga1000:Mitsumi_A1000_Switch', 'Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged',
-                   in_bom=False, desc=f'Matrix row {r}, column {c}')
+                   switch_fp(names[ref]), SWITCH_PART, in_bom=False, desc=f'Matrix row {r}, column {c}')
         d = place('Device:D', f'D{n}', '1N4148W', x + 17.78, y + 7.62, {'1': f'ROW{r}', '2': ''},
                   'Diode_SMD:D_SOD-123', '1N4148W SOD-123')
         (sx, sy), (ax, ay) = sw['2'], d['2']
@@ -396,8 +414,8 @@ def matrix():
             label('SW87_A', ax, sy, (0, -1))
     # SW92 beside the grid, on SW87's anode node
     sw = place('Switch:SW_Push', 'SW92', names['SW92'], x0 + 12 * dx, y0 + 4 * dy,
-               {'1': f'COL{cells["SW87"][1]}', '2': 'SW87_A'}, 'amiga1000:Mitsumi_A1000_Switch',
-               'Mitsumi standard mechanical Type 2 (KCT) keyswitch, salvaged', in_bom=False, dnp=True,
+               {'1': f'COL{cells["SW87"][1]}', '2': 'SW87_A'}, switch_fp(names['SW92']),
+               SWITCH_PART, in_bom=False, dnp=True,
                desc='Short ISO left shift position; fitted instead of SW87 (L SHIFT) on international layouts')
     return cells
 

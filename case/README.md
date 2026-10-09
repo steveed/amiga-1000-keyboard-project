@@ -45,7 +45,9 @@ the frame. Positions are good to a few millimetres.
 
 ## Inside (designed here, not from the original)
 
-- The bottom shell has a tongue that locates the top shell's walls.
+- The bottom shell has a 3.8 mm tongue, as on the original, that locates the top shell's walls.
+  Below the parting line it thickens the wall down to the floor, so it prints on a base instead of
+  in mid-air.
 - Four M3 screws from underneath, at the PCB's three 7.5 mm case holes and the plate tab's hole.
   Each bottom boss carries a 7 mm spigot up through the PCB and plate. Under the PCB the boss is a
   1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance

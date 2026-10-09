@@ -49,7 +49,7 @@ skirt_gap     = 0.3;    // skirt bottom -> plate top
 
 // Shell joint: a tongue on the bottom shell that drops inside the top shell's walls
 tongue_t      = 1.2;
-tongue_h      = 2.5;
+tongue_h      = 3.8;    // as on the original
 tongue_clear  = 0.2;
 
 // Screws and bosses
@@ -264,14 +264,19 @@ module bottom_shell() {
                 }
                 translate([IX0, IY0, floor_z]) cube([IX1 - IX0, IY1 - IY0, CZ]);
             }
-            // tongue that locates the top shell; gapped round the plate tab
+            // tongue that locates the top shell; gapped round the plate tab and the jack.  Below the
+            // parting line it thickens the wall down to the floor, so it prints on something.
             difference() {
-                translate([IX0 + tongue_clear, IY0 + tongue_clear, -0.01])
-                    cube([IX1 - IX0 - 2 * tongue_clear, IY1 - IY0 - 2 * tongue_clear, tongue_h]);
-                translate([IX0 + tongue_clear + tongue_t, IY0 + tongue_clear + tongue_t, -1])
-                    cube([IX1 - IX0 - 2 * (tongue_clear + tongue_t), IY1 - IY0 - 2 * (tongue_clear + tongue_t), tongue_h + 2]);
+                union() {
+                    translate([IX0 - 0.01, IY0 - 0.01, floor_z - 0.01])
+                        cube([IX1 - IX0 + 0.02, IY1 - IY0 + 0.02, -floor_z + 0.01]);
+                    translate([IX0 + tongue_clear, IY0 + tongue_clear, 0])
+                        cube([IX1 - IX0 - 2 * tongue_clear, IY1 - IY0 - 2 * tongue_clear, tongue_h]);
+                }
+                translate([IX0 + tongue_clear + tongue_t, IY0 + tongue_clear + tongue_t, floor_z - 1])
+                    cube([IX1 - IX0 - 2 * (tongue_clear + tongue_t), IY1 - IY0 - 2 * (tongue_clear + tongue_t), tongue_h + 2 - floor_z]);
                 translate([tab_x[0] - 2, IY1 - 5, -1]) cube([tab_x[1] - tab_x[0] + 4, 10, tongue_h + 2]);
-                translate([jack_x - jack_body[0] / 2 - rib_clear, IY1 - 5, -1]) cube([jack_body[0] + 2 * rib_clear, 10, tongue_h + 2]);
+                translate([jack_x - jack_body[0] / 2 - rib_clear, IY1 - 5, floor_z]) cube([jack_body[0] + 2 * rib_clear, 10, tongue_h + 1 - floor_z]);
             }
             jack_ribs();
             // bosses: a low shoulder under the PCB and a full-height one under the plate tab, with spigots up through the holes

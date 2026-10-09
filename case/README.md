@@ -56,10 +56,11 @@ the frame. Positions are good to a few millimetres.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
   for stick-on rubber feet instead of printed ones.
-- A 4P4C jack pocket in the bottom shell at x 90, where the original's jack is: a plug opening in
-  the back wall, and ribs on the floor that hold the jack body. The opening is a notch up to the
-  parting line, and a matching notch in the top shell carries it on to the top of the jack body. It has to fit between the back
-  wall and the PCB's step at y 134.9, so the jack can be at most about 10.4 mm deep (the render warns past that).
+- A 4P4C jack at x 90, where the original's jack is: a plug opening in the back wall, and an
+  open-topped box round the jack, measured from the original: x 78.3-101.55 (23.25 wide), 10.5 deep
+  from the back wall, with walls from the floor to the top of the tongue. The opening is a notch up
+  to the parting line, and a matching notch in the top shell carries it on to the top of the jack.
+  The box clears the PCB's step at y 134.9 by 1.75 mm (the render warns if it reaches it).
 
 ## Assumed, needs checking
 
@@ -68,7 +69,8 @@ the frame. Positions are good to a few millimetres.
   solder side).
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
-- **Jack size** (`jack_body`, `jack_plug`). Typical 4P4C values; measure the jack you fit.
+- **Jack** (`jack_h`, `jack_plug`, `jack_box_t`). The jack height, plug opening and box wall
+  thickness are typical values; the box's outside size is measured from the original.
 - **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it
   fits; standing up (13.5 mm) it would not, with 12.3 mm above the PCB there. C8 and the socketed
   controller fit too.

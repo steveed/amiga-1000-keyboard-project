@@ -52,7 +52,8 @@ the frame. Positions are good to a few millimetres.
   the plate and PCB between the shells.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
 - A 4P4C jack pocket in the bottom shell at x 90, where the original's jack is: a plug opening in
-  the back wall, and ribs on the floor that hold the jack body. It has to fit between the back
+  the back wall, and ribs on the floor that hold the jack body. The opening is a notch up to the
+  parting line, and a matching notch in the top shell carries it on to the top of the jack body. It has to fit between the back
   wall and the PCB's step at y 134.9, so the jack can be at most about 10.4 mm deep (the render warns past that).
 
 ## Assumed, needs checking

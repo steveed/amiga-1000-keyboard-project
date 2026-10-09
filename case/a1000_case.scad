@@ -73,7 +73,8 @@ bottom_split_x = 185;
 // values, NOT MEASURED: check them against the jack you use.
 jack_x        = 90;     // centre of the jack
 jack_body     = [11.5, 10.0, 11.0];   // jack body width (x), depth (y), height (z)
-jack_plug     = [8.4, 7.2];           // plug opening in the back wall, width x height (the notch runs on up to the parting line)
+jack_plug     = [8.4, 7.2];           // plug opening in the back wall, width x height (the notch runs on up to the parting line,
+                                      // and on in the top shell to the top of the jack body)
 rib_t         = 1.6;    // ribs that hold the jack
 rib_clear     = 0.2;
 
@@ -244,6 +245,9 @@ module top_shell() {
         // heat-set inserts
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z - 0.01])
             cylinder(d = insert_d, h = insert_depth);
+        // notch over the bottom shell's plug opening, up to the top of the jack body, for plug clearance
+        translate([jack_x - jack_plug[0] / 2, IY1 - 1, -1])
+            cube([jack_plug[0], wall + 2, floor_z + jack_body[2] + 1]);
     }
 }
 
@@ -289,7 +293,7 @@ module bottom_shell() {
         // label recess underneath
         translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
         // plug opening, centred on the jack body.  It runs up to the parting line as an open
-        // notch, as on the original, so no thin sliver of wall is left above it; the top shell closes it.
+        // notch, as on the original, so no thin sliver of wall is left above it; the top shell's matching notch completes it.
         translate([jack_x - jack_plug[0] / 2, IY1 - 1, floor_z + (jack_body[2] - jack_plug[1]) / 2])
             cube([jack_plug[0], wall + 2, CZ]);
     }

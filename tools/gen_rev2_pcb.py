@@ -35,18 +35,20 @@ DIODE_CLEAR = 0.5
 
 # Controller strip, first placement: (x, y, rotation, back side).  KiCad coordinates.
 PLACE = {
-    # controller group, central on the strip.  U1 is turned 180 degrees so its six row pins (PF0-PF7)
-    # face the keyboard instead of the back edge; the crystal sits on the back-edge side, where the
-    # XTAL pins now are.  The caps that would block the pins are on the back, under U1.
-    'U1': (192.0, 54.0, 180, False), 'Y1': (191.5, 43.4, 0, False),
-    'C1': (187.0, 43.4, 90, False), 'C2': (196.0, 43.4, 90, False),
-    'C3': (188.5, 50.5, 0, True), 'C4': (195.5, 50.5, 180, True), 'C5': (199.0, 60.5, 0, False),
-    'C6': (205.0, 58.0, 90, False), 'C7': (179.0, 54.0, 90, False),
-    'C8': (202.6, 54.0, 90, False), 'C9': (194.4, 64.4, 90, False),     # UCAP and AREF, outside U1's via ring
-    'R1': (214.0, 49.0, 90, False), 'SW93': (220.0, 53.0, 0, False),
-    'R2': (228.0, 49.0, 90, False), 'SW94': (234.0, 53.0, 0, False),
-    'J3': (248.0, 53.0, 0, False), 'TP1': (260.0, 53.0, 0, False),
-    'R3': (214.0, 60.0, 0, False),
+    # controller group, on the right of the strip where rev 1's controller sat, so the matrix lines
+    # don't all converge mid-board.  U1 is turned 180 degrees so its six row pins (PF0-PF7) face the
+    # keyboard; the crystal sits on the back-edge side, where the XTAL pins now are.  Two of the
+    # decoupling caps are on the back, under U1.
+    'U1': (300.0, 54.0, 180, False), 'Y1': (299.5, 43.4, 0, False),
+    'C1': (295.0, 43.4, 90, False), 'C2': (304.0, 43.4, 90, False),
+    'C3': (296.5, 50.5, 0, True), 'C4': (303.5, 50.5, 180, True), 'C5': (307.0, 60.5, 0, False),
+    'C6': (313.0, 58.0, 90, False), 'C7': (287.0, 54.0, 90, False),
+    'C8': (310.6, 54.0, 90, False), 'C9': (302.4, 64.4, 90, False),     # UCAP and AREF, outside U1's via ring
+    # reset and boot pads, ISP header and the spare pin's test pad, to U1's left
+    'R1': (262.0, 49.0, 90, False), 'JP1': (266.0, 53.0, 0, False),
+    'R2': (272.0, 49.0, 90, False), 'JP2': (276.0, 53.0, 0, False),
+    'J3': (248.0, 53.0, 0, False), 'TP1': (238.0, 53.0, 0, False),
+    'R3': (282.0, 60.0, 0, False),
     # USB-C on the step face at x 118.55, opening to the left; fuse, CC resistors, ESD, series resistors
     'J2': (122.42, 45.35, 270, False), 'F1': (131.0, 41.8, 0, False),
     'R7': (130.0, 52.0, 90, False), 'R8': (133.0, 52.0, 90, False),

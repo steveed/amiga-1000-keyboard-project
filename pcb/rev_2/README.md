@@ -15,10 +15,18 @@ key names.
 
 - **Controller:** ATmega32U4 at 16 MHz, in place of the mask-ROM 6500/1. Its firmware will be
   ported from Henryk Richter's [A500KB](https://github.com/HenrykRichter/A500KB) (AVR, same licence).
-  It ships with a USB (DFU) bootloader: hold BOOT and press RESET to flash over USB. The ISP header
-  is for recovery only and isn't fitted.
+  Flashing:
+  - first time: the 32U4 ships with Microchip's USB (DFU) bootloader, and a chip with empty flash
+    runs straight into it, so it can be flashed over USB as it comes (to confirm on the first board);
+  - updates: the firmware jumps to the bootloader on a key combination, then flash over USB;
+  - recovery, if the firmware can't get there: short JP2 (BOOT) while shorting JP1 (RESET), then
+    flash over USB; or use the 6-pin ISP header (J3, not fitted; a pogo adapter or a soldered header
+    and any AVR programmer), which works even without the bootloader.
 - **Amiga and USB both live:** the Amiga cable (J1, same pin order as rev 1's J1: GND, +5V, KCLK,
-  KDAT) and a USB-C socket (J2) are on every board. The keyboard works on either, or both at once.
+  KDAT) and a USB-C socket (J2) are on every board. The keyboard works on either, or both at once. Plugging
+  both in is safe: the TPS2116 keeps the two 5 V supplies apart (no back-feeding either way), and the
+  firmware only pulls KCLK and KDAT while the Amiga's 5 V is present. With both connected, the
+  Amiga's and the PC's grounds are joined through the keyboard, as with any USB device.
 - **Power:** a TPS2116 power mux. The Amiga's 5 V has priority; USB takes over when it's absent
   (below about 4.3 V), with no diode drop. Its status output (AMIGA_PWR, on PE6) tells the firmware
   whether the Amiga is powered, so it never pulls KCLK or KDAT on a switched-off machine.
@@ -67,7 +75,8 @@ Placement and routing notes:
   of the step at the left end of the strip, so a right-angle USB-C cable (a common part for Amiga
   mods) can turn and leave through the jack notch, which keeps the original case usable; the Amiga
   header (J1) sits on the board's back edge behind the jack.
-- U1 is turned so its row pins face the keys, and fanned out: every pin but the crystal and USB data
+- U1 sits on the right of the strip, where rev 1's controller was, so the matrix lines run along the
+  strip instead of converging mid-board. It's turned so its row pins face the keys, and fanned out: every pin but the crystal and USB data
   pins has a short track to its own via, on two staggered rings. About 20 matrix lines converge on
   this 0.8 mm-pitch chip on two layers, and the router reaches a ring of vias far more easily than
   the pads. A few decoupling caps sit on the back, under it (the diodes already make it a two-sided

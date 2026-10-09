@@ -256,12 +256,13 @@ def build():
     C('C9', '100nF', 195.58, 93.98, 'AREF', 'GND', part='100 nF X7R 0402')
     # reset and bootloader
     R('R1', '10k', 175.26, 127.0, '+5V', 'RESET')
-    place('Switch:SW_Push', 'SW93', 'RESET', 203.2, 134.62, {'1': 'RESET', '2': 'GND'},
-          'Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A', 'XKB TS-1187A tactile switch')
+    place('Jumper:SolderJumper_2_Open', 'JP1', 'RESET', 203.2, 134.62, {'1': 'RESET', '2': 'GND'},
+          'Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm', 'pads, shorted with tweezers', in_bom=False,
+          desc='Short to reset the 32U4')
     R('R2', '10k', 175.26, 157.48, '+5V', 'HWB')
-    place('Switch:SW_Push', 'SW94', 'BOOT', 203.2, 165.1, {'1': 'HWB', '2': 'GND'},
-          'Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A', 'XKB TS-1187A tactile switch',
-          desc='Hold while pressing RESET to enter the USB (DFU) bootloader')
+    place('Jumper:SolderJumper_2_Open', 'JP2', 'BOOT', 203.2, 165.1, {'1': 'HWB', '2': 'GND'},
+          'Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm', 'pads, shorted with tweezers', in_bom=False,
+          desc='Short while shorting RESET to enter the USB (DFU) bootloader; firmware can also jump there')
     place('Connector_Generic:Conn_02x03_Odd_Even', 'J3', 'ISP', 180.34, 200.66,
           {'1': 'COL3', '2': '+5V', '3': 'COL1', '4': 'COL2', '5': 'RESET', '6': 'GND'},
           'Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical', 'AVR ISP header (recovery only)',

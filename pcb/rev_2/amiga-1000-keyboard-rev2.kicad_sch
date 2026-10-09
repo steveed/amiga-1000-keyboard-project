@@ -2638,6 +2638,184 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "MCU_Microchip_ATmega:ATmega32U4-A"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -7283,15 +7461,15 @@
 		(uuid "bffc16c1-a364-58e2-b9fb-07d18ac73c22")
 	)
 	(symbol
-		(lib_id "Switch:SW_Push")
+		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 203.2 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "0f30bf52-3295-5a40-bf3e-7b6e168e5ad7")
-		(property "Reference" "SW93"
+		(uuid "8c9393f3-3577-532d-80f0-1a761effd6c9")
+		(property "Reference" "JP1"
 			(at 203.2 132.08 0)
 			(effects
 				(font
@@ -7307,7 +7485,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A"
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
 			(at 203.2 134.62 0)
 			(hide yes)
 			(effects
@@ -7325,7 +7503,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Short to reset the 32U4"
 			(at 203.2 134.62 0)
 			(hide yes)
 			(effects
@@ -7334,7 +7512,7 @@
 				)
 			)
 		)
-		(property "Part" "XKB TS-1187A tactile switch"
+		(property "Part" "pads, shorted with tweezers"
 			(at 203.2 134.62 0)
 			(hide yes)
 			(effects
@@ -7344,15 +7522,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "b5e5e587-fdd9-5918-875d-aa36b75c25f7")
+			(uuid "04c2942d-b6dc-5f27-85a4-5c79ad89ae4f")
 		)
 		(pin "2"
-			(uuid "6438e962-9c68-54c5-8ff7-e6306ff9ffbc")
+			(uuid "f85f0469-283b-5603-bf6f-1ce01bb2c5ee")
 		)
 		(instances
 			(project "amiga-1000-keyboard-rev2"
 				(path "/8c4c0c0e-c260-5684-b55c-362c20f153e7"
-					(reference "SW93")
+					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -7517,15 +7695,15 @@
 		(uuid "cb98bf47-9a0d-50e8-8af2-e56c3c9ffa9c")
 	)
 	(symbol
-		(lib_id "Switch:SW_Push")
+		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 203.2 165.1 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "95712338-3c88-5e46-9309-f6ccfd4de46a")
-		(property "Reference" "SW94"
+		(uuid "3afa1ca5-7eda-5d89-bf07-721cd0763c84")
+		(property "Reference" "JP2"
 			(at 203.2 162.56 0)
 			(effects
 				(font
@@ -7541,7 +7719,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A"
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
 			(at 203.2 165.1 0)
 			(hide yes)
 			(effects
@@ -7559,7 +7737,7 @@
 				)
 			)
 		)
-		(property "Description" "Hold while pressing RESET to enter the USB (DFU) bootloader"
+		(property "Description" "Short while shorting RESET to enter the USB (DFU) bootloader; firmware can also jump there"
 			(at 203.2 165.1 0)
 			(hide yes)
 			(effects
@@ -7568,7 +7746,7 @@
 				)
 			)
 		)
-		(property "Part" "XKB TS-1187A tactile switch"
+		(property "Part" "pads, shorted with tweezers"
 			(at 203.2 165.1 0)
 			(hide yes)
 			(effects
@@ -7578,15 +7756,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "d470c100-3f14-5cb2-901a-0a4e4b771847")
+			(uuid "429fc4fb-04aa-5272-ab0e-c48dbb0b37eb")
 		)
 		(pin "2"
-			(uuid "097d32f5-5268-5753-9407-1097861eb238")
+			(uuid "30a63fcd-d9dd-536d-8dd6-ddc4b5cb380f")
 		)
 		(instances
 			(project "amiga-1000-keyboard-rev2"
 				(path "/8c4c0c0e-c260-5684-b55c-362c20f153e7"
-					(reference "SW94")
+					(reference "JP2")
 					(unit 1)
 				)
 			)

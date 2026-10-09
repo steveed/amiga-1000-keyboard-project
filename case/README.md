@@ -14,7 +14,7 @@ No original case was measured. The outside is taken from a 1:8 scale model of th
 `docs/switch-positions.csv`: 66 single-width caps match at a scale of 7.99 with 0.27 mm RMS error,
 so the model is accurate to well under a millimetre in plan. At full size:
 
-- Case 405.7 x 157.9 x 23.6 mm, 25.85 mm on its feet. It overhangs the PCB by 8.0 mm at the left,
+- Case 405.7 x 157.9 x 23.6 mm, 25.85 mm on the model's feet. It overhangs the PCB by 8.0 mm at the left,
   8.45 at the right, 8.15 at the front and 4.8 behind the controller tab.
 - Flat top, no wedge. The front and back edges are rounded (about r 5.9). The ends are square.
 - A groove round the middle at the parting line (the model steps it; here it is one 1.6 x 1.2 mm groove).
@@ -51,6 +51,8 @@ the frame. Positions are good to a few millimetres.
   column in the top shell lands on the plate, with a heat-set insert. Tightening the screws clamps
   the plate and PCB between the shells.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
+- Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
+  for stick-on rubber feet instead of printed ones.
 - A 4P4C jack pocket in the bottom shell at x 90, where the original's jack is: a plug opening in
   the back wall, and ribs on the floor that hold the jack body. The opening is a notch up to the
   parting line, and a matching notch in the top shell carries it on to the top of the jack body. It has to fit between the back
@@ -74,8 +76,8 @@ the frame. Positions are good to a few millimetres.
 |---|---|---|
 | top_left | 220 x 158 x 12 | face down |
 | top_right | 198 x 158 x 12 | face down |
-| bottom_left | 193 x 158 x 17 | feet down |
-| bottom_right | 227 x 158 x 17 | feet down |
+| bottom_left | 193 x 158 x 14 | base down |
+| bottom_right | 227 x 158 x 14 | base down |
 
 The STLs come out in their print orientation. Each shell splits into two on a 45 degree scarf
 (glue it), and the two splits are staggered so the shells bridge each other's joint. The rounded
@@ -86,3 +88,4 @@ needs supports. The exception is the label recess, which prints as a ~17 mm brid
 
 - 4 M3 x 14 screws, pan or button head (12-16 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column).
 - 4 M3 heat-set inserts, 4 mm hole.
+- 4 stick-on rubber feet, up to 19 mm square or round, for the pockets underneath.

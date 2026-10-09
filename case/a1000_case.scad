@@ -14,7 +14,7 @@
 //
 // Four printed parts, each fits a 256 x 256 mm bed:
 //   top_left / top_right        top shell, printed face down, joined on a 45 degree scarf at top_split_x
-//   bottom_left / bottom_right  bottom shell, printed feet down, joined the same way at bottom_split_x
+//   bottom_left / bottom_right  bottom shell, printed base down, joined the same way at bottom_split_x
 // The two splits are staggered so each shell bridges the other's joint.
 //
 // Fixings: 4x M3 screws from underneath, through the bottom bosses, the PCB/plate case holes
@@ -78,7 +78,8 @@ jack_plug     = [8.4, 7.2];           // plug opening in the back wall, width x 
 rib_t         = 1.6;    // ribs that hold the jack
 rib_clear     = 0.2;
 
-feet          = "printed";  // ["printed","none"]: the model shows four square feet
+feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
+foot_depth    = 1.0;        // pocket depth, out of the floor_t floor
 
 $fn = 48;
 
@@ -118,9 +119,8 @@ badge_depth = 0.5;
 BLBL = [79.94, 52.81, 149.89, 104.27];
 blbl_depth = 0.3;
 
-// Feet: 19 mm square, 2.25 mm tall
+// Feet: 19 mm square (the model's are 2.25 mm tall; here they are pockets for rubber feet)
 foot_w = 19;
-foot_h = 2.25;
 foot_c = [[36.47, 7.84], [353.25, 7.84], [36.47, 108.77], [353.25, 108.77]];
 
 /* ------------------------------------------------ geometry from the PCB (docs/measurements.md) */
@@ -158,7 +158,7 @@ function in_lbl(x, y, m = 0) = x > LBL[0] - m && x < LBL[2] + m && y > LBL[1] - 
 // inside of the top shell at (x, y): lower under the label recess
 function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin : ceil_z;
 
-echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm (", 2 * CZ + (feet == "printed" ? foot_h : 0), " on its feet)"));
+echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm, before its rubber feet"));
 echo(str("plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
 if (IY1 - jack_body[1] - rib_t < 134.90) echo(str("WARNING: the jack pocket reaches y ", IY1 - jack_body[1] - rib_t,
                                                   ", past the PCB's back edge at 134.90 there"));
@@ -282,14 +282,15 @@ module bottom_shell() {
                 cylinder(d = boss_d, h = plate_bot_z - floor_z);
                 cylinder(d = spigot_d, h = plate_top_z - squeeze - floor_z);
             }
-            if (feet == "printed") for (c = foot_c) translate([0, 0, -CZ - foot_h])
-                linear_extrude(foot_h + 0.01) rrect(c[0] - foot_w / 2, c[1] - foot_w / 2, c[0] + foot_w / 2, c[1] + foot_w / 2, 2);
         }
         // screws from underneath
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], -CZ - 1]) {
             cylinder(d = screw_clear_d, h = 2 * CZ, $fn = 24);
             cylinder(d = cbore_d, h = cbore_depth + 1);
         }
+        // pockets for stick-on rubber feet
+        if (feet == "recessed") for (c = foot_c) translate([0, 0, -CZ - 1])
+            linear_extrude(1 + foot_depth) rrect(c[0] - foot_w / 2, c[1] - foot_w / 2, c[0] + foot_w / 2, c[1] + foot_w / 2, 2);
         // label recess underneath
         translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
         // plug opening, centred on the jack body.  It runs up to the parting line as an open
@@ -319,10 +320,10 @@ module board() {
 
 /* ---------------------------------------------------------------- output */
 
-// Print orientation: top shell face down, bottom shell feet down, both at the origin.  The top
+// Print orientation: top shell face down, bottom shell base down, both at the origin.  The top
 // is turned over front to back (a rotation, not a mirror, which would print it handed wrong).
 module print_top()    { translate([-CX0, CY1, CZ]) rotate([180, 0, 0]) children(); }
-module print_bottom() { translate([-CX0, -CY0, CZ + (feet == "printed" ? foot_h : 0)]) children(); }
+module print_bottom() { translate([-CX0, -CY0, CZ]) children(); }
 
 // The scarfs lean so that each piece only grows outward as it prints.
 module top_piece(left)    { intersection() { top_shell();    if (left) left_of(top_split_x, CZ, -1);     else difference() { cube(2000, center = true); left_of(top_split_x, CZ, -1); } } }

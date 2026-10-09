@@ -161,9 +161,15 @@ def place(lib_id, ref, value, x, y, nets, footprint='', part='', dnp=False, in_b
          [Sym('exclude_from_sim'), Sym('no')], [Sym('in_bom'), Sym('yes' if in_bom else 'no')],
          [Sym('on_board'), Sym('yes')], [Sym('dnp'), Sym('yes' if dnp else 'no')],
          [Sym('uuid'), uid('sym', ref)]]
-    ys = [-p[3] for p in pins] or [0]
-    s.append(prop('Reference', ref, x, g(y + min(ys) - 2.54), hide=power))
-    s.append(prop('Value', value, x, g(y + max(ys) + 2.54), hide=False))
+    if pins and all(int(p[4]) % 180 == 90 for p in pins):
+        # pins only top and bottom (R, C, holes, power symbols): their stubs and labels run up
+        # and down, so the text goes beside the body
+        s.append(prop('Reference', ref, g(x + 2.54), g(y - 1.27), hide=power, justify='left'))
+        s.append(prop('Value', value, g(x + 2.54), g(y + 1.27), justify='left'))
+    else:
+        ys = [-p[3] for p in pins] or [0]
+        s.append(prop('Reference', ref, x, g(y + min(ys) - 2.54), hide=power))
+        s.append(prop('Value', value, x, g(y + max(ys) + 2.54)))
     s.append(prop('Footprint', footprint, x, y, hide=True))
     s.append(prop('Datasheet', '', x, y, hide=True))
     s.append(prop('Description', desc, x, y, hide=True))
@@ -232,98 +238,98 @@ def C(ref, value, x, y, a, b, fp=C0402, part=None, dnp=False):
 
 def build():
     # --- controller
-    text('Controller: ATmega32U4, 16 MHz.', 25.4, 22.86)
-    place('MCU_Microchip_ATmega:ATmega32U4-A', 'U1', 'ATmega32U4-AU', 76.2, 101.6, MCU_NETS,
+    text('Controller: ATmega32U4, 16 MHz.', 30.48, 33.02)
+    place('MCU_Microchip_ATmega:ATmega32U4-A', 'U1', 'ATmega32U4-AU', 101.6, 147.32, MCU_NETS,
           'Package_QFP:TQFP-44_10x10mm_P0.8mm', 'ATMEGA32U4-AU, TQFP-44',
           desc='Keyboard controller; firmware ported from A500KB')
-    place('Device:Crystal_GND24', 'Y1', '16MHz', 30.48, 152.4,
+    place('Device:Crystal_GND24', 'Y1', '16MHz', 60.96, 233.68,
           {'1': 'XTAL1', '3': 'XTAL2', '2': 'GND', '4': 'GND'},
           'Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm', '16 MHz crystal, 3225, CL 20 pF')
-    C('C1', '22pF', 20.32, 172.72, 'XTAL1', 'GND', part='22 pF C0G 0402')
-    C('C2', '22pF', 40.64, 172.72, 'XTAL2', 'GND', part='22 pF C0G 0402')
-    C('C3', '100nF', 127.0, 45.72, '+5V', 'GND', part='100 nF X7R 0402')
-    C('C4', '100nF', 137.16, 45.72, '+5V', 'GND', part='100 nF X7R 0402')
-    C('C5', '100nF', 147.32, 45.72, '+5V', 'GND', part='100 nF X7R 0402')
-    C('C6', '100nF', 157.48, 45.72, '+5V', 'GND', part='100 nF X7R 0402')
-    C('C7', '10uF', 167.64, 45.72, '+5V', 'GND', C0603, '10 uF X5R 10 V 0603')
-    C('C8', '1uF', 127.0, 68.58, 'UCAP', 'GND', part='1 uF X5R 0402')
-    C('C9', '100nF', 137.16, 68.58, 'AREF', 'GND', part='100 nF X7R 0402')
+    C('C1', '22pF', 45.72, 254.0, 'XTAL1', 'GND', part='22 pF C0G 0402')
+    C('C2', '22pF', 76.2, 254.0, 'XTAL2', 'GND', part='22 pF C0G 0402')
+    C('C3', '100nF', 175.26, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
+    C('C4', '100nF', 195.58, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
+    C('C5', '100nF', 215.9, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
+    C('C6', '100nF', 236.22, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
+    C('C7', '10uF', 256.54, 63.5, '+5V', 'GND', C0603, '10 uF X5R 10 V 0603')
+    C('C8', '1uF', 175.26, 93.98, 'UCAP', 'GND', part='1 uF X5R 0402')
+    C('C9', '100nF', 195.58, 93.98, 'AREF', 'GND', part='100 nF X7R 0402')
     # reset and bootloader
-    R('R1', '10k', 127.0, 91.44, '+5V', 'RESET')
-    place('Switch:SW_Push', 'SW93', 'RESET', 142.24, 99.06, {'1': 'RESET', '2': 'GND'},
+    R('R1', '10k', 175.26, 127.0, '+5V', 'RESET')
+    place('Switch:SW_Push', 'SW93', 'RESET', 203.2, 134.62, {'1': 'RESET', '2': 'GND'},
           'Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A', 'XKB TS-1187A tactile switch')
-    R('R2', '10k', 127.0, 114.3, '+5V', 'HWB')
-    place('Switch:SW_Push', 'SW94', 'BOOT', 142.24, 121.92, {'1': 'HWB', '2': 'GND'},
+    R('R2', '10k', 175.26, 157.48, '+5V', 'HWB')
+    place('Switch:SW_Push', 'SW94', 'BOOT', 203.2, 165.1, {'1': 'HWB', '2': 'GND'},
           'Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A', 'XKB TS-1187A tactile switch',
           desc='Hold while pressing RESET to enter the USB (DFU) bootloader')
-    place('Connector_Generic:Conn_02x03_Odd_Even', 'J3', 'ISP', 132.08, 142.24,
+    place('Connector_Generic:Conn_02x03_Odd_Even', 'J3', 'ISP', 180.34, 200.66,
           {'1': 'COL3', '2': '+5V', '3': 'COL1', '4': 'COL2', '5': 'RESET', '6': 'GND'},
           'Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical', 'AVR ISP header (recovery only)',
           dnp=True, desc='MISO/PB3, SCK/PB1 and MOSI/PB2 are shared with matrix columns 3, 1 and 2')
-    place('Connector:TestPoint', 'TP1', 'SPARE (PC7)', 160.02, 142.24, {'1': 'SPARE'},
+    place('Connector:TestPoint', 'TP1', 'SPARE (PC7)', 233.68, 200.66, {'1': 'SPARE'},
           'TestPoint:TestPoint_Pad_D1.5mm', 'test pad', in_bom=False)
     # Caps Lock LED, inside the Caps Lock switch
-    R('R3', '330', 127.0, 162.56, 'CAPS_LED', 'CAPS_LED_A')
-    place('Device:LED', 'D92', 'CAPS LOCK', 142.24, 172.72, {'1': 'GND', '2': 'CAPS_LED_A'},
+    R('R3', '330', 175.26, 233.68, 'CAPS_LED', 'CAPS_LED_A')
+    place('Device:LED', 'D92', 'CAPS LOCK', 203.2, 243.84, {'1': 'GND', '2': 'CAPS_LED_A'},
           'amiga1000:Mitsumi_A1000_CapsLock_LED', 'LED fitted in the Caps Lock switch, salvaged',
           desc='Upper lead (towards the F keys) is the anode')
 
     # --- power: Amiga 5 V has priority, USB takes over when it is absent
-    text('Power: the Amiga 5 V (VIN1) has priority; USB VBUS (VIN2) takes over below about 4.3 V.', 190.5, 22.86)
-    place('amiga1000:TPS2116', 'U2', 'TPS2116DRLR', 228.6, 50.8,
+    text('Power: the Amiga 5 V (VIN1) has priority; USB VBUS (VIN2) takes over below about 4.3 V.', 330.2, 33.02)
+    place('amiga1000:TPS2116', 'U2', 'TPS2116DRLR', 424.18, 73.66,
           {'3': 'VCC_AMIGA', '6': 'VBUS', '4': 'PR1', '5': 'VCC_AMIGA', '2': '+5V', '7': '+5V',
            '8': 'AMIGA_PWR', '1': 'GND'}, 'Package_TO_SOT_SMD:SOT-583-8', 'TPS2116DRLR power mux')
-    R('R4', '33k', 198.12, 66.04, 'VCC_AMIGA', 'PR1')
-    R('R5', '10k', 208.28, 66.04, 'PR1', 'GND')
-    R('R6', '10k', 254.0, 66.04, '+5V', 'AMIGA_PWR')
-    C('C10', '1uF', 198.12, 40.64, 'VCC_AMIGA', 'GND', part='1 uF X5R 10 V 0402')
-    C('C11', '1uF', 208.28, 40.64, 'VBUS', 'GND', part='1 uF X5R 10 V 0402')
-    C('C12', '10uF', 264.16, 40.64, '+5V', 'GND', C0603, '10 uF X5R 10 V 0603')
+    R('R4', '33k', 350.52, 101.6, 'VCC_AMIGA', 'PR1')
+    R('R5', '10k', 370.84, 101.6, 'PR1', 'GND')
+    R('R6', '10k', 474.98, 101.6, '+5V', 'AMIGA_PWR')
+    C('C10', '1uF', 350.52, 60.96, 'VCC_AMIGA', 'GND', part='1 uF X5R 10 V 0402')
+    C('C11', '1uF', 370.84, 60.96, 'VBUS', 'GND', part='1 uF X5R 10 V 0402')
+    C('C12', '10uF', 495.3, 60.96, '+5V', 'GND', C0603, '10 uF X5R 10 V 0603')
 
     # --- USB
-    text('USB-C (USB 2.0 device): ESD protection, 500 mA fuse, 22R series resistors.', 190.5, 93.98)
-    place('Connector:USB_C_Receptacle_USB2.0_16P', 'J2', 'USB-C', 205.74, 132.08,
+    text('USB-C (USB 2.0 device): ESD protection, 500 mA fuse, 22R series resistors.', 330.2, 139.7)
+    place('Connector:USB_C_Receptacle_USB2.0_16P', 'J2', 'USB-C', 360.68, 190.5,
           {'A4': 'VBUS_IN', 'A9': 'VBUS_IN', 'B4': 'VBUS_IN', 'B9': 'VBUS_IN',
            'A5': 'CC1', 'B5': 'CC2', 'A6': 'USB_DP', 'B6': 'USB_DP', 'A7': 'USB_DN', 'B7': 'USB_DN',
            'A8': None, 'B8': None, 'A1': 'GND', 'A12': 'GND', 'B1': 'GND', 'B12': 'GND', 'SH': 'GND'},
           'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12', 'HRO TYPE-C-31-M-12 USB-C receptacle')
-    R('R7', '5.1k', 243.84, 147.32, 'CC1', 'GND')
-    R('R8', '5.1k', 254.0, 147.32, 'CC2', 'GND')
-    place('Device:Polyfuse', 'F1', '500mA', 243.84, 116.84, {'1': 'VBUS_IN', '2': 'VBUS'},
+    R('R7', '5.1k', 416.56, 213.36, 'CC1', 'GND')
+    R('R8', '5.1k', 436.88, 213.36, 'CC2', 'GND')
+    place('Device:Polyfuse', 'F1', '500mA', 416.56, 165.1, {'1': 'VBUS_IN', '2': 'VBUS'},
           'Fuse:Fuse_1206_3216Metric', '500 mA hold PTC fuse, 1206')
-    place('Power_Protection:USBLC6-2SC6', 'U3', 'USBLC6-2SC6', 284.48, 129.54,
+    place('Power_Protection:USBLC6-2SC6', 'U3', 'USBLC6-2SC6', 467.36, 187.96,
           {'1': 'USB_DP', '6': 'USB_DP', '3': 'USB_DN', '4': 'USB_DN', '5': 'VBUS', '2': 'GND'},
           'Package_TO_SOT_SMD:SOT-23-6', 'USBLC6-2SC6 USB ESD protection')
-    R('R9', '22', 307.34, 124.46, 'USB_DP', 'USB_DP_MCU')
-    R('R10', '22', 317.5, 124.46, 'USB_DN', 'USB_DN_MCU')
+    R('R9', '22', 502.92, 182.88, 'USB_DP', 'USB_DP_MCU')
+    R('R10', '22', 523.24, 182.88, 'USB_DN', 'USB_DN_MCU')
 
     # --- Amiga cable (same pin order as rev 1's J1, so the jack pigtail carries over)
-    text('Amiga keyboard cable to the 4P4C jack.  KCLK and KDAT are open drain: the firmware only pulls them low.', 190.5, 175.26)
-    place('Connector_Generic:Conn_01x04', 'J1', 'AMIGA', 205.74, 198.12,
+    text('Amiga keyboard cable to the 4P4C jack.  KCLK and KDAT are open drain: the firmware only pulls them low.', 571.5, 33.02)
+    place('Connector_Generic:Conn_01x04', 'J1', 'AMIGA', 586.74, 78.74,
           {'1': 'GND', '2': 'VCC_EXT', '3': 'KCLK_EXT', '4': 'KDAT_EXT'},
           'Connector_JST:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm_Horizontal', 'JST PH 4-pin SMD right angle',
           desc='1 GND (black), 2 +5V (red), 3 KCLK (white), 4 KDAT (green)')
-    for ref, a, b, x in (('FB1', 'VCC_EXT', 'VCC_AMIGA', 233.68), ('FB2', 'KCLK_EXT', 'KCLK', 243.84),
-                         ('FB3', 'KDAT_EXT', 'KDAT', 254.0)):
-        place('Device:FerriteBead_Small', ref, 'FB', x, 200.66, {'1': a, '2': b},
+    for ref, a, b, x in (('FB1', 'VCC_EXT', 'VCC_AMIGA', 624.84), ('FB2', 'KCLK_EXT', 'KCLK', 645.16),
+                         ('FB3', 'KDAT_EXT', 'KDAT', 665.48)):
+        place('Device:FerriteBead_Small', ref, 'FB', x, 81.28, {'1': a, '2': b},
               'Inductor_SMD:L_0603_1608Metric', 'Ferrite bead 600R@100MHz 0603')
-    for ref, net, x in (('C13', 'VCC_EXT', 271.78), ('C14', 'KCLK_EXT', 281.94), ('C15', 'KDAT_EXT', 292.1)):
-        C(ref, '1nF', x, 200.66, net, 'GND', part='1 nF X7R 0402', dnp=True)
+    for ref, net, x in (('C13', 'VCC_EXT', 695.96), ('C14', 'KCLK_EXT', 716.28), ('C15', 'KDAT_EXT', 736.6)):
+        C(ref, '1nF', x, 81.28, net, 'GND', part='1 nF X7R 0402', dnp=True)
 
     # --- power symbols and flags
-    power_symbol('power:+5V', '+5V', 330.2, 35.56)
-    power_symbol('power:GND', 'GND', 340.36, 50.8)
-    power_symbol('power:PWR_FLAG', 'GND', 350.52, 35.56)
-    power_symbol('power:PWR_FLAG', 'VCC_AMIGA', 360.68, 35.56)
-    power_symbol('power:PWR_FLAG', 'VBUS', 370.84, 35.56)
+    power_symbol('power:+5V', '+5V', 581.66, 251.46)
+    power_symbol('power:GND', 'GND', 601.98, 261.62)
+    power_symbol('power:PWR_FLAG', 'GND', 627.38, 251.46)
+    power_symbol('power:PWR_FLAG', 'VCC_AMIGA', 652.78, 251.46)
+    power_symbol('power:PWR_FLAG', 'VBUS', 678.18, 251.46)
 
     # --- mounting holes
-    text('Mounting holes: H1-H9 screw the plate down and ground it; H10-H12 clear the case screws.', 330.2, 68.58)
+    text('Mounting holes: H1-H9 screw the plate down and ground it; H10-H12 clear the case screws.', 571.5, 139.7)
     for i in range(9):
-        place('Mechanical:MountingHole_Pad', f'H{i + 1}', 'Plate GND', 335.28 + 12.7 * (i % 5), 81.28 + 15.24 * (i // 5),
+        place('Mechanical:MountingHole_Pad', f'H{i + 1}', 'Plate GND', 581.66 + 25.4 * (i % 5), 157.48 + 22.86 * (i // 5),
               {'1': 'GND'}, 'amiga1000:MountingHole_3.8mm_Plate_GND', in_bom=False)
     for i in range(3):
-        place('Mechanical:MountingHole', f'H{i + 10}', 'Case screw', 335.28 + 12.7 * i, 119.38,
+        place('Mechanical:MountingHole', f'H{i + 10}', 'Case screw', 581.66 + 25.4 * i, 203.2,
               {}, 'amiga1000:MountingHole_7.5mm_CaseClearance', in_bom=False)
 
     matrix()
@@ -368,11 +374,11 @@ def matrix_map():
 
 def matrix():
     cells, names = matrix_map()
-    x0, y0, dx, dy = 50.8, 254.0, 45.72, 25.4
+    x0, y0, dx, dy = 76.2, 309.88, 58.42, 33.02
     text('Key matrix, 8 rows x 12 columns, rows driven low one at a time: COLn - switch - diode (anode) - (cathode) ROWn.  '
-         'SW92 (short ISO left shift) is fitted instead of SW87 and shares its position.', x0, y0 - 12.7)
+         'SW92 (short ISO left shift) is fitted instead of SW87 and shares its position.', x0, y0 - 15.24)
     for r in range(8):
-        text(f'ROW{r} = {ROWS[r]}', x0 - 38.1, y0 + r * dy, 1.27)
+        text(f'ROW{r} = {ROWS[r]}', x0 - 45.72, y0 + r * dy, 1.27)
     for c in range(12):
         text(f'COL{c} = {COLS[c]}', x0 + c * dx, y0 - 7.62, 1.27)
     for ref, (r, c) in sorted(cells.items(), key=lambda kv: kv[1]):

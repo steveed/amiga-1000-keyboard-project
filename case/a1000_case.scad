@@ -68,16 +68,15 @@ cbore_depth   = 3.0;
 top_split_x    = 200;
 bottom_split_x = 185;
 
-// 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The notch
-// in the original bottom case is at about x 83-97 (scaled from a photo).  The jack sits on the
-// floor against the back wall, in an open-topped box as on the original; J1 is wired to it.
-jack_x        = 90;     // centre of the plug opening
+// 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The jack sits
+// on the floor against the back wall, in an open-topped box as on the original; J1 is wired to it.
 jack_box      = [78.3, 23.25, 10.5];  // box round the jack, measured from the original: left side x, outside width,
                                       // depth in from the back wall.  Its walls run from the floor to the top of the tongue.
 jack_box_t    = 1.6;    // box wall thickness, NOT MEASURED
 jack_h        = 11.0;   // jack height, NOT MEASURED: sets the plug opening height and the top shell's notch
-jack_plug     = [8.4, 7.2];           // plug opening in the back wall, width x height (the notch runs on up to the parting line,
-                                      // and on in the top shell to the top of the jack body)
+jack_plug     = [15.5, 7.2];          // plug opening in the back wall, width (measured from the original) x height (the notch
+                                      // runs on up to the parting line, and on in the top shell to the top of the jack)
+jack_x        = jack_box[0] + jack_box[1] - jack_plug[0] / 2;  // centre of the plug opening: its right side lines up with the box's
 
 feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
 foot_depth    = 1.0;        // pocket depth, out of the floor_t floor

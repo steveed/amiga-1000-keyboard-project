@@ -35,8 +35,8 @@ the frame. Positions are good to a few millimetres.
 - The bottom case has bosses at all four case-screw positions: the PCB's three 7.5 mm holes and
   the plate tab. The top case has matching bosses, so four screws, as modelled here.
 - The keyboard cable is a coiled telephone handset cable. It plugs into a 4P4C jack that sits
-  in a notch in the bottom case's back wall at about x 83-97, in a moulded pocket. That is left
-  of J1 (x 123), which is wired to the jack.
+  in a 15.5 mm notch in the bottom case's back wall, in a moulded pocket, left of J1 (x 123),
+  which is wired to the jack.
 - Rear corners: spring-loaded fold-out legs. Each is a hinged leg with a wire spring, lying
   along the back wall when folded, from the end wall to about 55 mm in. Not modelled yet;
   the model's two rear feet sit about where they fold.
@@ -56,11 +56,12 @@ the frame. Positions are good to a few millimetres.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
   for stick-on rubber feet instead of printed ones.
-- A 4P4C jack at x 90, where the original's jack is: a plug opening in the back wall, and an
-  open-topped box round the jack, measured from the original: x 78.3-101.55 (23.25 wide), 10.5 deep
-  from the back wall, with walls from the floor to the top of the tongue. The opening is a notch up
-  to the parting line, and a matching notch in the top shell carries it on to the top of the jack.
-  The box clears the PCB's step at y 134.9 by 1.75 mm (the render warns if it reaches it).
+- A 4P4C jack where the original's is, in an open-topped box measured from the original:
+  x 78.3-101.55 (23.25 wide), 10.5 deep from the back wall, with walls from the floor to the top of
+  the tongue. The plug opening in the back wall is 15.5 mm wide (x 86.05-101.55), its right side
+  lined up with the box's, as on the original. It is a notch up to the parting line, and a matching
+  notch in the top shell carries it on to the top of the jack. The box clears the PCB's step at
+  y 134.9 by 1.75 mm (the render warns if it reaches it).
 
 ## Assumed, needs checking
 

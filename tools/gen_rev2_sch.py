@@ -175,6 +175,8 @@ def place(lib_id, ref, value, x, y, nets, footprint='', part='', dnp=False, in_b
     s.append(prop('Description', desc, x, y, hide=True))
     if part:
         s.append(prop('Part', part, x, y, hide=True))
+    if in_bom and lcsc_for(ref, value, footprint):
+        s.append(prop('LCSC', lcsc_for(ref, value, footprint), x, y, hide=True))
     for num, *_ in pins:
         s.append([Sym('pin'), num, [Sym('uuid'), uid('pin', ref, num)]])
     s.append([Sym('instances'), [Sym('project'), PROJECT, [Sym('path'), '/' + ROOT_UUID,
@@ -225,6 +227,37 @@ def text(t, x, y, size=2.54):
 
 # ------------------------------------------------------------------ parts
 
+# LCSC part numbers for the parts JLCPCB fits, checked against JLCPCB's parts library on 2026-10-08
+# (Basic unless marked).  Keyed by reference for the one-off parts, by (value, footprint) for passives.
+LCSC_REF = {
+    'U1': 'C44854',      # Microchip ATMEGA32U4-AU, extended
+    'U2': 'C3235557',    # TI TPS2116DRLR, extended
+    'U3': 'C7519',       # ST USBLC6-2SC6, extended
+    'Y1': 'C13738',      # YXC X322516MLB4SI, 16 MHz, 9 pF load
+    'J1': 'C265102',     # JST S4B-PH-SM4-TB(LF)(SN), extended
+    'J2': 'C165948',     # HRO TYPE-C-31-M-12, extended
+    'F1': 'C70077',      # TECHFUSE nSMD050-33V, 500 mA hold, extended
+}
+LCSC_VALUE = {
+    ('FB', 'L_0603_1608Metric'): 'C1002',            # Sunlord GZ1608D601TF, 600R@100MHz, 200 mA
+    ('1N4148W', 'D_SOD-123'): 'C81598',
+    ('10k', 'R_0402_1005Metric'): 'C25744',
+    ('33k', 'R_0402_1005Metric'): 'C25779',
+    ('5.1k', 'R_0402_1005Metric'): 'C25905',
+    ('22', 'R_0402_1005Metric'): 'C25092',
+    ('330', 'R_0402_1005Metric'): 'C25104',
+    ('100nF', 'C_0402_1005Metric'): 'C1525',
+    ('12pF', 'C_0402_1005Metric'): 'C1547',           # crystal load caps, C0G
+    ('1uF', 'C_0402_1005Metric'): 'C52923',
+    ('10uF', 'C_0603_1608Metric'): 'C19702',
+    ('1nF', 'C_0402_1005Metric'): 'C1523',            # not fitted
+}
+
+
+def lcsc_for(ref, value, footprint):
+    return LCSC_REF.get(ref) or LCSC_VALUE.get((value, footprint.split(':')[-1]), '')
+
+
 R0402, C0402, C0603 = 'Resistor_SMD:R_0402_1005Metric', 'Capacitor_SMD:C_0402_1005Metric', 'Capacitor_SMD:C_0603_1608Metric'
 
 
@@ -244,9 +277,10 @@ def build():
           desc='Keyboard controller; firmware ported from A500KB')
     place('Device:Crystal_GND24', 'Y1', '16MHz', 60.96, 233.68,
           {'1': 'XTAL1', '3': 'XTAL2', '2': 'GND', '4': 'GND'},
-          'Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm', '16 MHz crystal, 3225, CL 20 pF')
-    C('C1', '22pF', 45.72, 254.0, 'XTAL1', 'GND', part='22 pF C0G 0402')
-    C('C2', '22pF', 76.2, 254.0, 'XTAL2', 'GND', part='22 pF C0G 0402')
+          'Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm', '16 MHz crystal, 3225, CL 9 pF')
+    # load caps for a 9 pF crystal: 2 x (9 pF - about 3 pF stray)
+    C('C1', '12pF', 45.72, 254.0, 'XTAL1', 'GND', part='12 pF C0G 0402')
+    C('C2', '12pF', 76.2, 254.0, 'XTAL2', 'GND', part='12 pF C0G 0402')
     C('C3', '100nF', 175.26, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
     C('C4', '100nF', 195.58, 63.5, '+5V', 'GND', part='100 nF X7R 0402')
     C('C5', '100nF', 215.9, 63.5, '+5V', 'GND', part='100 nF X7R 0402')

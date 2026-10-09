@@ -5217,6 +5217,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C44854"
+			(at 101.6 147.32 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "83f8ba4b-6f10-5714-9498-d16083cbe0c7")
 		)
@@ -6190,7 +6199,16 @@
 				)
 			)
 		)
-		(property "Part" "16 MHz crystal, 3225, CL 20 pF"
+		(property "Part" "16 MHz crystal, 3225, CL 9 pF"
+			(at 60.96 233.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C13738"
 			(at 60.96 233.68 0)
 			(hide yes)
 			(effects
@@ -6298,7 +6316,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22pF"
+		(property "Value" "12pF"
 			(at 48.26 255.27 0)
 			(effects
 				(font
@@ -6334,7 +6352,16 @@
 				)
 			)
 		)
-		(property "Part" "22 pF C0G 0402"
+		(property "Part" "12 pF C0G 0402"
+			(at 45.72 254 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1547"
 			(at 45.72 254 0)
 			(hide yes)
 			(effects
@@ -6416,7 +6443,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22pF"
+		(property "Value" "12pF"
 			(at 78.74 255.27 0)
 			(effects
 				(font
@@ -6452,7 +6479,16 @@
 				)
 			)
 		)
-		(property "Part" "22 pF C0G 0402"
+		(property "Part" "12 pF C0G 0402"
+			(at 76.2 254 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1547"
 			(at 76.2 254 0)
 			(hide yes)
 			(effects
@@ -6579,6 +6615,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 175.26 63.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3b91ea1d-b2e0-55e3-b25b-d284cb4e848c")
 		)
@@ -6689,6 +6734,15 @@
 			)
 		)
 		(property "Part" "100 nF X7R 0402"
+			(at 195.58 63.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
 			(at 195.58 63.5 0)
 			(hide yes)
 			(effects
@@ -6815,6 +6869,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 215.9 63.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "946ba6e6-1522-5280-b03d-9e2367bee82a")
 		)
@@ -6925,6 +6988,15 @@
 			)
 		)
 		(property "Part" "100 nF X7R 0402"
+			(at 236.22 63.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
 			(at 236.22 63.5 0)
 			(hide yes)
 			(effects
@@ -7051,6 +7123,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C19702"
+			(at 256.54 63.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ea39e70d-3ccb-58a1-9fbb-2edfc1e147f9")
 		)
@@ -7161,6 +7242,15 @@
 			)
 		)
 		(property "Part" "1 uF X5R 0402"
+			(at 175.26 93.98 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C52923"
 			(at 175.26 93.98 0)
 			(hide yes)
 			(effects
@@ -7287,6 +7377,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 195.58 93.98 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "835efff7-39dd-5a21-8bec-b70dfb3c9db7")
 		)
@@ -7397,6 +7496,15 @@
 			)
 		)
 		(property "Part" "10k 1% 0402"
+			(at 175.26 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 175.26 127 0)
 			(hide yes)
 			(effects
@@ -7631,6 +7739,15 @@
 			)
 		)
 		(property "Part" "10k 1% 0402"
+			(at 175.26 157.48 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 175.26 157.48 0)
 			(hide yes)
 			(effects
@@ -8176,6 +8293,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C25104"
+			(at 175.26 233.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "140b5cc5-e452-5045-b698-f08c1e58ed6e")
 		)
@@ -8411,6 +8537,15 @@
 			)
 		)
 		(property "Part" "TPS2116DRLR power mux"
+			(at 424.18 73.66 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C3235557"
 			(at 424.18 73.66 0)
 			(hide yes)
 			(effects
@@ -8655,6 +8790,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C25779"
+			(at 350.52 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "de42058a-dd93-5e4a-919a-a29a03af50c0")
 		)
@@ -8765,6 +8909,15 @@
 			)
 		)
 		(property "Part" "10k 1% 0402"
+			(at 370.84 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 370.84 101.6 0)
 			(hide yes)
 			(effects
@@ -8891,6 +9044,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 474.98 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "29504bf8-768a-58d5-81d6-009e6ec08051")
 		)
@@ -9001,6 +9163,15 @@
 			)
 		)
 		(property "Part" "1 uF X5R 10 V 0402"
+			(at 350.52 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C52923"
 			(at 350.52 60.96 0)
 			(hide yes)
 			(effects
@@ -9127,6 +9298,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C52923"
+			(at 370.84 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3abcf104-55c6-5cf3-a093-0652b7392ce7")
 		)
@@ -9237,6 +9417,15 @@
 			)
 		)
 		(property "Part" "10 uF X5R 10 V 0603"
+			(at 495.3 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C19702"
 			(at 495.3 60.96 0)
 			(hide yes)
 			(effects
@@ -9364,6 +9553,15 @@
 			)
 		)
 		(property "Part" "HRO TYPE-C-31-M-12 USB-C receptacle"
+			(at 360.68 190.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C165948"
 			(at 360.68 190.5 0)
 			(hide yes)
 			(effects
@@ -9683,6 +9881,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C25905"
+			(at 416.56 213.36 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2d9d87c1-32c0-5253-aa6e-50667099c022")
 		)
@@ -9793,6 +10000,15 @@
 			)
 		)
 		(property "Part" "5.1k 1% 0402"
+			(at 436.88 213.36 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25905"
 			(at 436.88 213.36 0)
 			(hide yes)
 			(effects
@@ -9919,6 +10135,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C70077"
+			(at 416.56 165.1 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b05edcf7-2bef-535f-85f9-e9248d7fa386")
 		)
@@ -10027,6 +10252,15 @@
 			)
 		)
 		(property "Part" "USBLC6-2SC6 USB ESD protection"
+			(at 467.36 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C7519"
 			(at 467.36 187.96 0)
 			(hide yes)
 			(effects
@@ -10245,6 +10479,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C25092"
+			(at 502.92 182.88 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "29cdbffa-0734-529c-8c76-9d9c22a7b8c6")
 		)
@@ -10355,6 +10598,15 @@
 			)
 		)
 		(property "Part" "22 1% 0402"
+			(at 523.24 182.88 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C25092"
 			(at 523.24 182.88 0)
 			(hide yes)
 			(effects
@@ -10482,6 +10734,15 @@
 			)
 		)
 		(property "Part" "JST PH 4-pin SMD right angle"
+			(at 586.74 78.74 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C265102"
 			(at 586.74 78.74 0)
 			(hide yes)
 			(effects
@@ -10654,6 +10915,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1002"
+			(at 624.84 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0c297eb0-f801-50e8-b7d0-e7bed4c8c0e5")
 		)
@@ -10764,6 +11034,15 @@
 			)
 		)
 		(property "Part" "Ferrite bead 600R@100MHz 0603"
+			(at 645.16 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1002"
 			(at 645.16 81.28 0)
 			(hide yes)
 			(effects
@@ -10890,6 +11169,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1002"
+			(at 665.48 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a1dcad79-9f52-58ba-bf36-5d3ffbc621ba")
 		)
@@ -11000,6 +11288,15 @@
 			)
 		)
 		(property "Part" "1 nF X7R 0402"
+			(at 695.96 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1523"
 			(at 695.96 81.28 0)
 			(hide yes)
 			(effects
@@ -11126,6 +11423,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C1523"
+			(at 716.28 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "50a40b58-4f07-50ca-9d07-588d6a0e0428")
 		)
@@ -11236,6 +11542,15 @@
 			)
 		)
 		(property "Part" "1 nF X7R 0402"
+			(at 736.6 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C1523"
 			(at 736.6 81.28 0)
 			(hide yes)
 			(effects
@@ -13090,6 +13405,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 93.98 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c6a3fcc4-c1c0-5ce0-8b95-3d5521bd0811")
 		)
@@ -13294,6 +13618,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 152.4 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 152.4 317.5 0)
 			(hide yes)
 			(effects
@@ -13514,6 +13847,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 210.82 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a802b7fc-175c-5e11-b40d-4665f496b7a6")
 		)
@@ -13718,6 +14060,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 269.24 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 269.24 317.5 0)
 			(hide yes)
 			(effects
@@ -13938,6 +14289,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 327.66 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f542570a-d22a-578b-9ed3-fe6982eaad6f")
 		)
@@ -14142,6 +14502,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 386.08 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 386.08 317.5 0)
 			(hide yes)
 			(effects
@@ -14362,6 +14731,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 444.5 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "985104d7-6537-5567-916b-b334247abf1e")
 		)
@@ -14566,6 +14944,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 502.92 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 502.92 317.5 0)
 			(hide yes)
 			(effects
@@ -14786,6 +15173,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 561.34 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "82052890-3e3c-5dd4-96c4-f2082b2ed4cc")
 		)
@@ -14990,6 +15386,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 619.76 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 619.76 317.5 0)
 			(hide yes)
 			(effects
@@ -15210,6 +15615,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 678.18 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "277d6758-1578-5f94-9af0-05b9db8e6f4b")
 		)
@@ -15414,6 +15828,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 736.6 317.5 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 736.6 317.5 0)
 			(hide yes)
 			(effects
@@ -15634,6 +16057,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 93.98 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e4e344f5-727e-550c-8532-a07337d84acb")
 		)
@@ -15838,6 +16270,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 152.4 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 152.4 350.52 0)
 			(hide yes)
 			(effects
@@ -16058,6 +16499,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 210.82 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c714b891-9b0d-5a64-bb65-ab3329dbe201")
 		)
@@ -16262,6 +16712,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 269.24 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 269.24 350.52 0)
 			(hide yes)
 			(effects
@@ -16482,6 +16941,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 327.66 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "710c9847-e800-580d-ab65-f509a665ff20")
 		)
@@ -16686,6 +17154,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 386.08 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 386.08 350.52 0)
 			(hide yes)
 			(effects
@@ -16906,6 +17383,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 444.5 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b8646db8-c980-5678-add4-495295786835")
 		)
@@ -17110,6 +17596,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 502.92 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 502.92 350.52 0)
 			(hide yes)
 			(effects
@@ -17330,6 +17825,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 561.34 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "cd3c1ba8-a6ed-5ae8-88b7-16da3e52ee15")
 		)
@@ -17534,6 +18038,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 619.76 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 619.76 350.52 0)
 			(hide yes)
 			(effects
@@ -17754,6 +18267,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 678.18 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3122bc51-7ee8-5ddb-9e61-fd06053db320")
 		)
@@ -17958,6 +18480,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 736.6 350.52 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 736.6 350.52 0)
 			(hide yes)
 			(effects
@@ -18178,6 +18709,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 93.98 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0a6a19b3-a830-53af-9a5e-3117e36377fb")
 		)
@@ -18382,6 +18922,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 152.4 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 152.4 383.54 0)
 			(hide yes)
 			(effects
@@ -18602,6 +19151,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 210.82 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d82904bb-c427-527b-92f2-62178fb8e450")
 		)
@@ -18806,6 +19364,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 269.24 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 269.24 383.54 0)
 			(hide yes)
 			(effects
@@ -19026,6 +19593,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 327.66 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f67bb31d-4c94-527f-9d34-a27e19ead677")
 		)
@@ -19230,6 +19806,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 386.08 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 386.08 383.54 0)
 			(hide yes)
 			(effects
@@ -19450,6 +20035,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 444.5 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d0021e2c-6f7c-53d2-a944-8a55bcaab78f")
 		)
@@ -19654,6 +20248,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 502.92 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 502.92 383.54 0)
 			(hide yes)
 			(effects
@@ -19874,6 +20477,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 561.34 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "47931c8f-0793-582d-83ce-372831cee753")
 		)
@@ -20078,6 +20690,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 619.76 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 619.76 383.54 0)
 			(hide yes)
 			(effects
@@ -20298,6 +20919,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 678.18 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7d5fd9ca-4396-5437-8326-9ea666eea337")
 		)
@@ -20502,6 +21132,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 736.6 383.54 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 736.6 383.54 0)
 			(hide yes)
 			(effects
@@ -20722,6 +21361,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 93.98 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "17dfd4ce-9f5e-57ed-9ccb-acc209692c5e")
 		)
@@ -20926,6 +21574,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 152.4 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 152.4 416.56 0)
 			(hide yes)
 			(effects
@@ -21146,6 +21803,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 210.82 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b630368d-9398-5bc0-8be4-120d946f9b36")
 		)
@@ -21350,6 +22016,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 269.24 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 269.24 416.56 0)
 			(hide yes)
 			(effects
@@ -21570,6 +22245,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 327.66 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2c7616d7-d7d6-50c0-9140-56cb714e7166")
 		)
@@ -21774,6 +22458,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 386.08 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 386.08 416.56 0)
 			(hide yes)
 			(effects
@@ -21994,6 +22687,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 444.5 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "896f0811-49c9-5820-b802-101d986cef3b")
 		)
@@ -22198,6 +22900,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 502.92 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 502.92 416.56 0)
 			(hide yes)
 			(effects
@@ -22418,6 +23129,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 561.34 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "df763c39-c9d2-5269-a5c0-63dc27fe4bc5")
 		)
@@ -22622,6 +23342,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 619.76 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 619.76 416.56 0)
 			(hide yes)
 			(effects
@@ -22842,6 +23571,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 678.18 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fa3ce74e-fa2b-5f73-80ae-173c0b510e1c")
 		)
@@ -23054,6 +23792,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 736.6 416.56 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7aedf60e-d724-5f0a-a91e-531751943bd5")
 		)
@@ -23258,6 +24005,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 93.98 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 93.98 449.58 0)
 			(hide yes)
 			(effects
@@ -23488,6 +24244,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 152.4 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1cc4f6f5-f563-5235-8882-9449f27ceeb9")
 		)
@@ -23692,6 +24457,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 210.82 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 210.82 449.58 0)
 			(hide yes)
 			(effects
@@ -23912,6 +24686,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 269.24 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e859b296-6df1-541a-a9e4-1515f5af1709")
 		)
@@ -24116,6 +24899,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 327.66 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 327.66 449.58 0)
 			(hide yes)
 			(effects
@@ -24336,6 +25128,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 386.08 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d61fd504-97d6-5072-afd4-d78d64568dfd")
 		)
@@ -24540,6 +25341,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 444.5 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 444.5 449.58 0)
 			(hide yes)
 			(effects
@@ -24760,6 +25570,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 502.92 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d597ebd1-0bf3-5cd4-a34b-49600ab19193")
 		)
@@ -24964,6 +25783,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 561.34 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 561.34 449.58 0)
 			(hide yes)
 			(effects
@@ -25184,6 +26012,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 619.76 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8aa9e6cd-7b6f-51d3-b2c3-1ffdc734846f")
 		)
@@ -25388,6 +26225,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 678.18 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 678.18 449.58 0)
 			(hide yes)
 			(effects
@@ -25608,6 +26454,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 736.6 449.58 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "607f1d79-54f1-5ecd-894a-1ae1367b6eff")
 		)
@@ -25812,6 +26667,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 93.98 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 93.98 482.6 0)
 			(hide yes)
 			(effects
@@ -26032,6 +26896,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 152.4 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "65a7b9bc-dbfa-5031-a33f-d3e6107f547f")
 		)
@@ -26236,6 +27109,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 210.82 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 210.82 482.6 0)
 			(hide yes)
 			(effects
@@ -26456,6 +27338,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 269.24 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5f740346-8bed-54f9-9290-6642201b3178")
 		)
@@ -26660,6 +27551,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 327.66 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 327.66 482.6 0)
 			(hide yes)
 			(effects
@@ -26880,6 +27780,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 386.08 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "37b78b30-e150-52aa-b752-ba0364bd49a3")
 		)
@@ -27084,6 +27993,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 444.5 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 444.5 482.6 0)
 			(hide yes)
 			(effects
@@ -27304,6 +28222,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 502.92 482.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "28ec2eaf-40a3-5fe7-9d1f-5634573be4f2")
 		)
@@ -27508,6 +28435,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 93.98 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 93.98 515.62 0)
 			(hide yes)
 			(effects
@@ -27728,6 +28664,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 152.4 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f08cefff-c470-5b5a-a113-7b22bc1beed1")
 		)
@@ -27932,6 +28877,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 210.82 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 210.82 515.62 0)
 			(hide yes)
 			(effects
@@ -28152,6 +29106,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 269.24 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "63f3661a-861d-5ae8-9353-bda5df792807")
 		)
@@ -28356,6 +29319,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 327.66 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 327.66 515.62 0)
 			(hide yes)
 			(effects
@@ -28576,6 +29548,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 386.08 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "942e6368-3e83-5b6e-9aec-414a2c45ccbd")
 		)
@@ -28780,6 +29761,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 444.5 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 444.5 515.62 0)
 			(hide yes)
 			(effects
@@ -29000,6 +29990,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 502.92 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ccd6af8-ffca-5a82-8efc-9fcea36c7ab4")
 		)
@@ -29204,6 +30203,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 561.34 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 561.34 515.62 0)
 			(hide yes)
 			(effects
@@ -29424,6 +30432,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 619.76 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c782a67f-54b5-5181-a175-faae05bf7c8a")
 		)
@@ -29628,6 +30645,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 678.18 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 678.18 515.62 0)
 			(hide yes)
 			(effects
@@ -29848,6 +30874,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 736.6 515.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f168b353-57c8-5c18-89b8-b80505e24f18")
 		)
@@ -30052,6 +31087,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 93.98 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 93.98 548.64 0)
 			(hide yes)
 			(effects
@@ -30272,6 +31316,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 152.4 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e09daac8-2732-510c-b4ee-9ba70fc9dc7c")
 		)
@@ -30476,6 +31529,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 210.82 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 210.82 548.64 0)
 			(hide yes)
 			(effects
@@ -30696,6 +31758,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 269.24 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3456a457-9c3a-5ade-ac76-9b22bb3b45bb")
 		)
@@ -30900,6 +31971,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 327.66 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 327.66 548.64 0)
 			(hide yes)
 			(effects
@@ -31120,6 +32200,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 386.08 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "26395806-e17b-58d8-9d16-bd4db3dad8a9")
 		)
@@ -31324,6 +32413,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 444.5 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 444.5 548.64 0)
 			(hide yes)
 			(effects
@@ -31544,6 +32642,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 502.92 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f0200395-6d0e-52b0-8c56-198166b31453")
 		)
@@ -31748,6 +32855,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 561.34 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 561.34 548.64 0)
 			(hide yes)
 			(effects
@@ -31968,6 +33084,15 @@
 				)
 			)
 		)
+		(property "LCSC" "C81598"
+			(at 619.76 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3f747210-4e23-599a-ada5-1f8a05fc5e41")
 		)
@@ -32172,6 +33297,15 @@
 			)
 		)
 		(property "Part" "1N4148W SOD-123"
+			(at 678.18 548.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C81598"
 			(at 678.18 548.64 0)
 			(hide yes)
 			(effects

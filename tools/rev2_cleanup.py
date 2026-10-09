@@ -3,8 +3,10 @@
     python3 tools/rev2_cleanup.py build/rev2-dangling.json   (make rev2-route runs it)
 
 The U1 fan-out gives every pin a via; where the router reached the pad directly, the via and its stub
-are left going nowhere.  Each round removes only what DRC reports as dangling: the via itself, and
-any track with a free end.  A stub that ran to a removed via shows up as dangling on the next round,
+are left going nowhere.  Each round removes only what DRC reports as dangling: a via that at most one
+track touches (KiCad calls a via dangling when it connects on one layer only, but the router may end
+two tracks on its ring and use it as the joint, so a via with two or more tracks stays), and any
+track with a free end.  A stub that ran to a removed via shows up as dangling on the next round,
 while a track that still carries a connection never does, so repeating this can't open a net.  Run
 it with the JSON from `kicad-cli pcb drc --format json --severity-warning`; it prints how many items
 it removed, and make repeats it until there are none.
@@ -32,7 +34,19 @@ def main():
             for i in v['items']}
     text = open(BOARD).read()
     vias, segs = blocks(text, 'via'), blocks(text, 'segment')
-    drop = [u for u in dead if u in vias or u in segs]
+    def touching(via):
+        x, y = map(float, re.search(r'\(at ([-\d.]+) ([-\d.]+)\)', via).groups())
+        r = float(re.search(r'\(size ([\d.]+)\)', via).group(1)) / 2 + 0.01
+        n = 0
+        for _, _, seg in segs.values():
+            if re.search(r'\(net (?:\d+ )?"([^"]*)"\)', seg).group(1) != re.search(r'\(net (?:\d+ )?"([^"]*)"\)', via).group(1):
+                continue
+            for k in ('start', 'end'):
+                ex, ey = map(float, re.search(rf'\({k} ([-\d.]+) ([-\d.]+)\)', seg).groups())
+                n += (ex - x) ** 2 + (ey - y) ** 2 <= r * r
+        return n
+
+    drop = [u for u in dead if u in segs or (u in vias and touching(vias[u][2]) <= 1)]
     spans = sorted({(vias.get(u) or segs[u])[:2] for u in drop}, reverse=True)
     for a, b in spans:
         text = text[:a] + text[b:]

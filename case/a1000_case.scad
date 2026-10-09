@@ -319,8 +319,9 @@ module board() {
 
 /* ---------------------------------------------------------------- output */
 
-// Print orientation: top shell face down, bottom shell feet down, both at the origin.
-module print_top()    { translate([-CX0, -CY0, CZ]) mirror([0, 0, 1]) children(); }
+// Print orientation: top shell face down, bottom shell feet down, both at the origin.  The top
+// is turned over front to back (a rotation, not a mirror, which would print it handed wrong).
+module print_top()    { translate([-CX0, CY1, CZ]) rotate([180, 0, 0]) children(); }
 module print_bottom() { translate([-CX0, -CY0, CZ + (feet == "printed" ? foot_h : 0)]) children(); }
 
 // The scarfs lean so that each piece only grows outward as it prints.

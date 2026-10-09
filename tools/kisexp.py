@@ -1,6 +1,7 @@
 """Minimal KiCad s-expression reader and writer, enough to lift symbols out of the stock
 libraries and write a schematic.  Lists are Python lists; atoms are Sym (bare words) or str
-(quoted strings) or float/int."""
+(quoted strings) or float/int.  Quoted strings are kept exactly as written, escapes and all
+(KiCad's \\n is a newline), so reading and writing a file doesn't change its text."""
 
 import re
 
@@ -28,7 +29,7 @@ def parse(text):
             done, cur = cur, stack.pop()
             cur.append(done)
         elif qs is not None:
-            cur.append(qs.replace('\\"', '"').replace('\\\\', '\\'))
+            cur.append(qs)
         else:
             cur.append(_atom(atom))
     return cur[0]
@@ -55,7 +56,7 @@ def dump(node, indent=0):
             return str(node)
         if isinstance(node, (int, float)):
             return fmt_num(node)
-        return '"' + str(node).replace('\\', '\\\\').replace('"', '\\"') + '"'
+        return '"' + str(node) + '"'
     head = [dump(x) for x in node if not isinstance(x, list)]
     kids = [x for x in node if isinstance(x, list)]
     # (xy ..) runs stay on one line, as KiCad writes them

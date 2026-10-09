@@ -375,8 +375,7 @@ def matrix_map():
     return cells, {k[0]: k[1] for k in rev1_keys()}
 
 
-# Keycap widths, from rev 1's switch spacing (the rest are 1U).  RETURN is the US inverted-L key and
-# keeps the Mitsumi-only footprint until the MX stem position for that cap is settled.
+# Keycap widths, from rev 1's switch spacing (the rest are 1U).  RETURN has its own footprint.
 WIDTHS = {**{f'F{i}': '1.25U' for i in range(1, 11)}, '`': '1.25U', 'L ALT': '1.25U', 'L AMIGA': '1.25U',
           'R AMIGA': '1.25U', 'R ALT': '1.25U', 'L SHIFT ISO': '1.5U', 'TAB': '1.75U', 'BACKSPACE': '1.75U',
           'R SHIFT': '2U', 'KP 0': '2U', 'KP ENTER': '2U', 'L SHIFT': '2.5U', 'SPACE': '7.5U'}
@@ -384,7 +383,7 @@ WIDTHS = {**{f'F{i}': '1.25U' for i in range(1, 11)}, '`': '1.25U', 'L ALT': '1.
 
 def switch_fp(name):
     if name == 'RETURN':
-        return 'amiga1000:Mitsumi_A1000_Switch'
+        return 'amiga1000:Hybrid_A1000_Return'
     return f'amiga1000:Hybrid_A1000_{WIDTHS.get(name, "1U")}'
 
 

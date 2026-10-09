@@ -36,8 +36,10 @@ from `tools/gen_hybrid_fp.py` (the idea is Henryk's MX_Mitsumi_Hybrid footprints
 the A1000, whose Mitsumi pins sit one above the other, 4.75 mm right of the key centre). The MX switch
 is turned 180 degrees, pins south and LED north. Keys of 2U and wider carry MX PCB-mount stabiliser
 holes; the space bar (7.5U) uses a 7U stabiliser, 114.3 mm, close to the original's 115 mm cutouts.
-Keycap widths come from rev 1's switch spacing. The US Return (inverted L) keeps the Mitsumi-only
-footprint for now: the MX stem position for that cap still has to be settled.
+Keycap widths come from rev 1's switch spacing. Return follows Henryk's US Return: the hybrid switch
+turned 90 degrees at the key's stem (where rev 1's Mitsumi Return body sits, the centre of the column
+the cap has on both rows), with a vertical 2U MX stabiliser. It suits the US inverted L and the
+international Return alike.
 
 The plates are separate, one for Mitsumi and one for MX, both generated from this board.
 
@@ -61,7 +63,6 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 ## Still to do
 
 - Board layout and routing. Diodes and tracks must stay clear of the MX centre hole and pegs.
-- The MX Return footprint, and checking the space bar's MX stabiliser holes against the Mitsumi
-  stabiliser cutouts in the board.
+- Checking the space bar's MX stabiliser holes against the Mitsumi stabiliser cutouts in the board.
 - An MX plate alongside the Mitsumi one.
 - BOM with LCSC part numbers and a placement file for assembly.

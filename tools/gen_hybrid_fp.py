@@ -8,6 +8,10 @@ the other, 4.75 mm right of the centre.  The MX switch is turned 180 degrees (pi
 north), which keeps its pins clear of the Mitsumi Caps Lock LED leads.  The MX pin that lands 2.2 mm
 from a Mitsumi pin gets the same pad number, so the two overlap instead of needing clearance.
 
+The Return key (US inverted L, or the international one) is the same switch turned 90 degrees, so its
+Mitsumi pins face the front as on rev 1, with a vertical 2U MX stabiliser as on Henryk's US Return;
+its origin is the stem, at the centre of the column the cap has on both rows.
+
 Wide keys add MX PCB-mount stabiliser holes (Cherry spacing: 23.876 mm for 2U-2.75U, 114.3 mm for
 the space bar, which uses a 7U stabiliser).  The Mitsumi stabilisers are plate mounted.
 """
@@ -96,6 +100,34 @@ def switch(name, width, stab):
     return footprint(name, descr, body)
 
 
+def turn(x, y):
+    """Turn 90 degrees clockwise on the board (KiCad y points down): east becomes south."""
+    return -y, x
+
+
+def return_key():
+    name = 'Hybrid_A1000_Return'
+    body = [text(name, 'Reference', 'REF**', -22.0, 'F.SilkS'), text(name, 'Value', name, 22.0, 'F.Fab')]
+    body += rect(name, -1.25 * U / 2, -U, 1.25 * U / 2, U, 'Dwgs.User', 0.1)   # the column both rows share
+    body += rect(name, -7, -7, 7, 7, 'F.Fab', 0.1)
+    body += rect(name, -7.5, -7.5, 7.5, 7.5, 'F.CrtYd', 0.05)
+    body += [line(name, x, -7.2, x, 7.2, 'F.SilkS', 0.12) for x in (-7.2, 7.2)]
+    body += [line(name, -7.2, y, 7.2, y, 'F.SilkS', 0.12) for y in (-7.2, 7.2)]
+    for num, x, y in MITSUMI:
+        body.append(pad(name, num, *turn(x, y), MITSUMI_PAD, MITSUMI_DRILL))
+    for num, x, y in MX:
+        body.append(pad(name, num, *turn(x, y), MX_PAD, MX_DRILL))
+    body.append(pad(name, '', 0, 0, MX_CENTRE, MX_CENTRE))
+    for y in (-5.08, 5.08):
+        body.append(pad(name, '', 0, y, MX_PEG, MX_PEG))
+    for y in (-11.938, 11.938):                    # vertical 2U stabiliser, as on Henryk's US Return
+        body.append(pad(name, '', -6.985, y, STAB_SMALL, STAB_SMALL))
+        body.append(pad(name, '', 8.255, y, STAB_LARGE, STAB_LARGE))
+        body += rect(name, -8.6, y - 3.4, 10.3, y + 3.4, 'F.CrtYd', 0.05)
+    return footprint(name, 'Return key (US inverted L or international), Amiga 1000 Mitsumi KCT or Cherry MX. Origin '
+                     'is the stem; Mitsumi pins 9.04 mm apart, 4.75 mm towards the front; vertical 2U MX stabiliser', body)
+
+
 def mx_led():
     name = 'Hybrid_A1000_MX_LED'
     body = [text(name, 'Reference', 'REF**', -2.2, 'F.SilkS'), text(name, 'Value', name, 2.2, 'F.Fab')]
@@ -111,9 +143,11 @@ def main():
         name = f'Hybrid_A1000_{k}'
         with open(os.path.join(OUT, name + '.kicad_mod'), 'w') as f:
             f.write(switch(name, w, stab))
+    with open(os.path.join(OUT, 'Hybrid_A1000_Return.kicad_mod'), 'w') as f:
+        f.write(return_key())
     with open(os.path.join(OUT, 'Hybrid_A1000_MX_LED.kicad_mod'), 'w') as f:
         f.write(mx_led())
-    print(f'wrote {len(KEYS) + 1} footprints to {os.path.relpath(OUT, REPO)}')
+    print(f'wrote {len(KEYS) + 2} footprints to {os.path.relpath(OUT, REPO)}')
 
 
 if __name__ == '__main__':

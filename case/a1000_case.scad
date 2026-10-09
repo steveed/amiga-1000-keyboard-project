@@ -72,11 +72,14 @@ bottom_split_x = 185;
 // on the floor against the back wall, in an open-topped box as on the original; J1 is wired to it.
 jack_box      = [78.3, 23.25, 10.5];  // box round the jack, measured from the original: left side x, outside width,
                                       // depth in from the back wall.  Its walls run from the floor to the top of the tongue.
-jack_box_t    = 1.6;    // box wall thickness, NOT MEASURED
-jack_h        = 11.0;   // jack height, NOT MEASURED: sets the plug opening height and the top shell's notch
-jack_plug     = [15.5, 7.2];          // plug opening in the back wall, width (measured from the original) x height (the notch
-                                      // runs on up to the parting line, and on in the top shell to the top of the jack)
-jack_x        = jack_box[0] + jack_box[1] - jack_plug[0] / 2;  // centre of the plug opening: its right side lines up with the box's
+jack_box_t    = 1.3;    // wall thickness of the box and its stop
+jack_stop     = [3.5, 8.4];           // short wall that holds the jack: length left from the box's right wall, and
+                                      // box front to its back face.  It runs from the floor to the parting line.
+jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, opposite the stop: width from the inside of the
+                                      // left wall, and wall left under it.  NOT MEASURED: estimated from photos.
+jack_open     = 15.5;   // plug opening in the back wall: from the floor up, and on in the top shell to the top of the jack
+jack_x        = jack_box[0] + jack_box[1] - jack_open / 2;  // centre of the plug opening: its right side lines up with the box's
+jack_h        = 11.0;   // jack height, NOT MEASURED: sets the top shell's notch
 
 feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
 foot_depth    = 1.0;        // pocket depth, out of the floor_t floor
@@ -245,9 +248,9 @@ module top_shell() {
         // heat-set inserts
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z - 0.01])
             cylinder(d = insert_d, h = insert_depth);
-        // notch over the bottom shell's plug opening, up to the top of the jack body, for plug clearance
-        translate([jack_x - jack_plug[0] / 2, IY1 - 1, -1])
-            cube([jack_plug[0], wall + 2, floor_z + jack_h + 1]);
+        // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance
+        translate([jack_x - jack_open / 2, IY1 - 1, -1])
+            cube([jack_open, wall + 2, floor_z + jack_h + 1]);
     }
 }
 
@@ -298,20 +301,25 @@ module bottom_shell() {
             linear_extrude(1 + foot_depth) rrect(c[0] - foot_w / 2, c[1] - foot_w / 2, c[0] + foot_w / 2, c[1] + foot_w / 2, 2);
         // label recess underneath
         translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
-        // plug opening, centred on the jack.  It runs up to the parting line as an open
-        // notch, as on the original, so no thin sliver of wall is left above it; the top shell's matching notch completes it.
-        translate([jack_x - jack_plug[0] / 2, IY1 - 1, floor_z + (jack_h - jack_plug[1]) / 2])
-            cube([jack_plug[0], wall + 2, CZ]);
+        // plug opening: an open notch from the floor up to the parting line, as on the original; the top
+        // shell's matching notch completes it.
+        translate([jack_x - jack_open / 2, IY1 - 1, floor_z])
+            cube([jack_open, wall + 2, CZ]);
     }
 }
 
-// jack_box: side and front walls round the jack, open on top so the jack drops in and its wires leave over the top
+// jack_box: side and front walls round the jack, open on top so the jack drops in and its wires leave over
+// the top or through a cutout in the front wall, and a short stop inside the right wall, as on the original,
+// that holds the jack in place
 module jack_box() {
-    x0 = jack_box[0]; y0 = IY1 - jack_box[2];
+    x0 = jack_box[0]; x1 = jack_box[0] + jack_box[1]; y0 = IY1 - jack_box[2];
     difference() {
         translate([x0, y0, floor_z - 0.01]) cube([jack_box[1], jack_box[2], tongue_h - floor_z + 0.01]);
         translate([x0 + jack_box_t, y0 + jack_box_t, floor_z]) cube([jack_box[1] - 2 * jack_box_t, jack_box[2], tongue_h - floor_z + 1]);
+        translate([x0 + jack_box_t, y0 - 1, floor_z + jack_wires[1]]) cube([jack_wires[0], jack_box_t + 2, tongue_h - floor_z]);
     }
+    translate([x1 - jack_box_t - jack_stop[0], y0 + jack_stop[1] - jack_box_t, floor_z - 0.01])
+        cube([jack_stop[0] + 0.01, jack_box_t, -floor_z + 0.01]);
 }
 
 /* ---------------------------------------------------------------- reference board */

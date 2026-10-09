@@ -58,10 +58,14 @@ the frame. Positions are good to a few millimetres.
   for stick-on rubber feet instead of printed ones.
 - A 4P4C jack where the original's is, in an open-topped box measured from the original:
   x 78.3-101.55 (23.25 wide), 10.5 deep from the back wall, with walls from the floor to the top of
-  the tongue. The plug opening in the back wall is 15.5 mm wide (x 86.05-101.55), its right side
-  lined up with the box's, as on the original. It is a notch up to the parting line, and a matching
-  notch in the top shell carries it on to the top of the jack. The box clears the PCB's step at
-  y 134.9 by 1.75 mm (the render warns if it reaches it).
+  the tongue, and 1.3 mm walls. Inside its right wall a short stop, 3.5 mm long and 1.3 mm thick,
+  stands 2.1 mm off the back wall, from the floor to the parting line, to hold the jack. A cutout in
+  the front wall's left end, opposite the stop, lets the wires out (`jack_wires`: about 8 mm wide,
+  2.5 mm of wall left under it, estimated from photos). The plug opening in the back wall is 15.5 mm
+  wide (x 86.05-101.55), its right side lined up with the box's, as on the original. It is a notch
+  from the floor up to the parting line, and a matching notch in the top shell carries it on to the
+  top of the jack. The box clears the PCB's step at y 134.9 by 1.75 mm (the render warns if it
+  reaches it).
 
 ## Assumed, needs checking
 
@@ -70,8 +74,9 @@ the frame. Positions are good to a few millimetres.
   solder side).
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
-- **Jack** (`jack_h`, `jack_plug`, `jack_box_t`). The jack height, plug opening and box wall
-  thickness are typical values; the box's outside size is measured from the original.
+- **Jack height** (`jack_h`, 11 mm). A typical value; it sets how far the top shell's notch runs up.
+  The box, its stop and the opening are measured from the original; the wire cutout's size
+  (`jack_wires`) is estimated from photos.
 - **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it
   fits; standing up (13.5 mm) it would not, with 12.3 mm above the PCB there. C8 and the socketed
   controller fit too.

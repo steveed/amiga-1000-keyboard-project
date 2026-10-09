@@ -108,6 +108,24 @@ RUN rm -f rust_router/*.so && python3 build_router.py
 Build it from the checkout (`docker build -f <that Dockerfile> -t krt:local .`). Routing takes about
 five minutes.
 
+## Ordering from JLCPCB
+
+Every push to `main` that touches rev 2 runs the "Rev 2 for JLCPCB" GitHub workflow: DRC and
+schematic parity, then gerbers, BOM and placement, uploaded as the artifact
+`amiga-1000-keyboard-rev2-jlcpcb`. Locally, `make rev2-fab rev2-jlc` writes the same files to
+`build/rev2-fab/` and `build/rev2-jlc/`.
+
+- **PCB:** upload `amiga-1000-keyboard-rev2-gerbers.zip`. Two layers, 1.6 mm.
+- **Assembly:** both sides (the key diodes and two of U1's decoupling caps are on the back). Upload
+  `bom-jlc.csv` and `cpl-jlc.csv`, then check the placement preview: the rotation corrections in
+  `tools/jlc_export.py` cover the ICs, but check every part's orientation, especially the diodes and
+  U1-U3, before ordering.
+- **Parts:** 123 parts in 18 lines, LCSC numbers checked against JLCPCB's parts library. Six are
+  Extended parts with a setup fee each (U1, U2, U3, J1, J2 and F1); the rest, all the passives and
+  the crystal included, are Basic. The crystal is a 9 pF-load part, so its load caps are 12 pF.
+- **Fitted by hand:** the switches and stabilisers, the Caps Lock LED (D92), and the ISP header (J3)
+  if you want it. The 1 nF caps C13-C15 are left off, as on the original.
+
 ## Pins
 
 | Function | Pins |

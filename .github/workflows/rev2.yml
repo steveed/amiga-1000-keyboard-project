@@ -1,0 +1,42 @@
+name: Rev 2 for JLCPCB
+
+# On every push that touches rev 2: check it, then build what JLCPCB needs to make and assemble it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pcb/rev_2/**'
+      - 'pcb/lib_fp.pretty/**'
+      - 'pcb/lib_sch/**'
+      - 'tools/jlc_export.py'
+      - 'Makefile'
+      - 'docker-compose.yml'
+      - '.github/workflows/rev2.yml'
+  workflow_dispatch:
+
+jobs:
+  jlc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # git describe stamps the version on the silkscreen
+
+      - name: DRC and schematic parity
+        run: make rev2-drc
+
+      - name: Gerbers and drill files
+        run: make rev2-fab
+
+      - name: BOM and placement
+        run: make rev2-jlc
+
+      - name: Collect the order files
+        run: |
+          mkdir -p order
+          cp build/rev2-fab/*-rev2-gerbers.zip build/rev2-jlc/bom-jlc.csv build/rev2-jlc/cpl-jlc.csv order/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amiga-1000-keyboard-rev2-jlcpcb
+          path: order/

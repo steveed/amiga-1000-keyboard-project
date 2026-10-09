@@ -13,7 +13,7 @@ TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case rev2-sch rev2-pcb rev2-route rev2-drc render release clean
+.PHONY: drc bom fab print plate case rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-jlc render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -86,6 +86,24 @@ rev2-route:
 		n=$$(docker compose run --rm -T tools python tools/rev2_cleanup.py $(BUILD)/rev2-dangling.json 2>/dev/null | tail -1); \
 		echo "cleanup: removed $$n dangling vias and tracks"; [ "$$n" = 0 ] && break; \
 	done
+
+# Rev 2 gerbers and drill files for JLCPCB, zipped.
+rev2-fab:
+	rm -rf $(BUILD)/rev2-fab && mkdir -p $(BUILD)/rev2-fab/gerbers
+	$(KICAD) pcb export gerbers $(VARS) --check-zones --subtract-soldermask --no-x2 \
+		--layers F.Cu,B.Cu,F.Paste,B.Paste,F.Mask,B.Mask,F.SilkS,B.SilkS,Edge.Cuts \
+		-o $(BUILD)/rev2-fab/gerbers $(REV2).kicad_pcb
+	$(KICAD) pcb export drill --format excellon --excellon-separate-th --excellon-units mm \
+		--generate-map --map-format pdf -o $(BUILD)/rev2-fab/gerbers/ $(REV2).kicad_pcb
+	$(TOOLS) sh -c 'cd $(BUILD)/rev2-fab/gerbers && python -m zipfile -c ../$(NAME)-rev2-gerbers.zip *'
+
+# Rev 2 assembly files for JLCPCB: BOM (by LCSC part number) and placement.
+rev2-jlc:
+	mkdir -p $(BUILD)/rev2-jlc
+	$(KICAD) sch export bom --fields 'Reference,Value,Footprint,LCSC,$${DNP}' --labels 'Reference,Value,Footprint,LCSC,DNP' \
+		--group-by 'Value,Footprint,LCSC,$${DNP}' --ref-range-delimiter '' -o $(BUILD)/rev2-jlc/bom-kicad.csv $(REV2).kicad_sch
+	$(KICAD) pcb export pos --format csv --units mm --side both -o $(BUILD)/rev2-jlc/pos-kicad.csv $(REV2).kicad_pcb
+	$(TOOLS) python tools/jlc_export.py $(BUILD)/rev2-jlc/bom-kicad.csv $(BUILD)/rev2-jlc/pos-kicad.csv $(BUILD)/rev2-jlc
 
 # Rev 2 DRC with schematic parity.
 rev2-drc:

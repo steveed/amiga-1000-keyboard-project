@@ -13,7 +13,7 @@ TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-jlc render release clean
+.PHONY: drc bom fab print plate case rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -96,6 +96,18 @@ rev2-fab:
 	$(KICAD) pcb export drill --format excellon --excellon-separate-th --excellon-units mm \
 		--generate-map --map-format pdf -o $(BUILD)/rev2-fab/gerbers/ $(REV2).kicad_pcb
 	$(TOOLS) sh -c 'cd $(BUILD)/rev2-fab/gerbers && python -m zipfile -c ../$(NAME)-rev2-gerbers.zip *'
+
+# Rev 2 MX plates, US and ISO (one board, two plates): KiCad board, DXF, SVG and a gerber zip each.
+rev2-plate:
+	mkdir -p $(BUILD)/rev2-plate
+	for v in us iso; do \
+		P=$(BUILD)/rev2-plate/$(NAME)-rev2-plate-$$v; \
+		$(TOOLS) python tools/make_plate.py $(REV2).kicad_pcb $$P.kicad_pcb $$v || exit 1; \
+		$(KICAD) pcb export dxf --mode-single --layers Edge.Cuts --output-units mm --use-contours -o $$P.dxf $$P.kicad_pcb; \
+		rm -rf $$P-gerbers && mkdir -p $$P-gerbers; \
+		$(KICAD) pcb export gerbers --no-x2 --layers Edge.Cuts,F.Mask,B.Mask -o $$P-gerbers $$P.kicad_pcb; \
+		$(TOOLS) sh -c "cd $$P-gerbers && python -m zipfile -c ../$$(basename $$P)-gerbers.zip *"; \
+	done
 
 # Rev 2 assembly files for JLCPCB: BOM (by LCSC part number) and placement.
 rev2-jlc:

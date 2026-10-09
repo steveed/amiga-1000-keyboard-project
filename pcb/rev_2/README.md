@@ -123,8 +123,27 @@ schematic parity, then gerbers, BOM and placement, uploaded as the artifact
 - **Parts:** 123 parts in 18 lines, LCSC numbers checked against JLCPCB's parts library. Six are
   Extended parts with a setup fee each (U1, U2, U3, J1, J2 and F1); the rest, all the passives and
   the crystal included, are Basic. The crystal is a 9 pF-load part, so its load caps are 12 pF.
+- **Plate:** `amiga-1000-keyboard-rev2-plate-us-gerbers.zip` or `...-plate-iso-gerbers.zip`, as a
+  second PCB order: 1.6 mm FR4, no copper needed (the gerbers carry only the outline and mask).
+  The DXFs are there for laser-cut metal. See "MX plates" below.
 - **Fitted by hand:** the switches and stabilisers, the Caps Lock LED (D92), and the ISP header (J3)
   if you want it. The 1 nF caps C13-C15 are left off, as on the original.
+
+## MX plates
+
+`make rev2-plate` (`tools/make_plate.py`) generates the plate from the board, in two variants, as
+Henryk does for the A500KB: the US left Shift's stabiliser would land in the ISO short Shift's switch
+hole, so one plate can't take both. The board takes either.
+
+- **US:** the 2.5U left Shift (SW87); no SW92 (ISO short Shift), SW58 (the < > key) or SW55 (the
+  international key under Return). 89 switches.
+- **ISO:** SW92, SW58 and SW55; no SW87. 91 switches.
+
+Both have 14 mm Cherry MX switch cut-outs, the Cherry stabiliser cut-outs from Henryk's
+MX_Mitsumi_Hybrid plate footprints (2U keys, the left Shift, the 7U space bar stabiliser and a
+vertical one for Return), rev 1's outline, tab and case holes, and the plate screw holes except H8,
+which sits under keypad Enter's stabiliser. 1.6 mm FR4: MX switches clip best into 1.5 mm, but 1.6 mm
+is JLCPCB's FR4 thickness nearest to it and the usual choice for FR4 keyboard plates.
 
 ## Pins
 
@@ -142,5 +161,5 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 
 ## Still to do
 
-- The MX plate.
-- BOM with LCSC part numbers and a placement file for assembly.
+- Firmware: port Henryk's A500KB firmware to the 32U4 and this matrix.
+- Build and test the first board, including the factory USB bootloader on a blank chip.

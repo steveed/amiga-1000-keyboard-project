@@ -9,6 +9,7 @@ on:
       - 'pcb/lib_fp.pretty/**'
       - 'pcb/lib_sch/**'
       - 'tools/jlc_export.py'
+      - 'tools/make_plate.py'
       - 'Makefile'
       - 'docker-compose.yml'
       - '.github/workflows/rev2.yml'
@@ -31,10 +32,15 @@ jobs:
       - name: BOM and placement
         run: make rev2-jlc
 
+      - name: MX plates, US and ISO
+        run: make rev2-plate
+
       - name: Collect the order files
         run: |
           mkdir -p order
           cp build/rev2-fab/*-rev2-gerbers.zip build/rev2-jlc/bom-jlc.csv build/rev2-jlc/cpl-jlc.csv order/
+          cp build/rev2-plate/*-plate-us-gerbers.zip build/rev2-plate/*-plate-iso-gerbers.zip order/
+          cp build/rev2-plate/*-plate-us.dxf build/rev2-plate/*-plate-iso.dxf order/
 
       - uses: actions/upload-artifact@v4
         with:

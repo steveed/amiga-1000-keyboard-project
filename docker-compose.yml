@@ -25,3 +25,10 @@ services:
     working_dir: /repo
     volumes:
       - .:/repo
+
+  firmware:
+    build: firmware
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /repo
+    volumes:
+      - .:/repo

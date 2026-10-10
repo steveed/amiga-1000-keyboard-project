@@ -11,9 +11,10 @@ KICAD := docker compose run --rm kicad kicad-cli
 VARS  := -D VERSION=$(VERSION)
 TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
+FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case case-jack rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc render release clean
+.PHONY: drc bom fab print plate case case-jack rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -129,6 +130,22 @@ rev2-drc:
 	mkdir -p $(BUILD)
 	$(KICAD) pcb drc --refill-zones --schematic-parity --severity-error --exit-code-violations \
 		-o $(BUILD)/rev2-drc.rpt $(REV2).kicad_pcb
+
+# Rev 2 firmware (firmware/): regenerate the keymap from the rev 2 matrix, then build the hex in
+# build/firmware/.  firmware-test runs the host-side unit tests.
+firmware:
+	$(TOOLS) python tools/gen_keymap.py
+	$(FIRMWARE) make -C firmware
+
+firmware-test:
+	$(FIRMWARE) make -C firmware test
+
+# Flash over USB with the 32U4's DFU bootloader.  This one runs on the host (brew install
+# dfu-programmer): Docker Desktop on macOS can't pass USB devices through to a container.
+firmware-flash: firmware
+	dfu-programmer atmega32u4 erase
+	dfu-programmer atmega32u4 flash $(BUILD)/firmware/$(NAME)-rev2.hex
+	dfu-programmer atmega32u4 launch
 
 # 3D renders for the README (published to the renders branch by CI).
 RENDER := pcb render $(VARS) --quality high --background transparent

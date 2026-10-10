@@ -1,0 +1,39 @@
+name: Rev 2 firmware
+
+# On every push that touches the firmware or the matrix it's generated from: unit tests, then the
+# hex, uploaded as an artifact.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'firmware/**'
+      - 'tools/gen_keymap.py'
+      - 'tools/gen_rev2_sch.py'
+      - 'pcb/amiga-1000-keyboard.kicad_sch'
+      - 'pcb/amiga-1000-keyboard.kicad_pcb'
+      - 'Makefile'
+      - 'docker-compose.yml'
+      - '.github/workflows/firmware.yml'
+  workflow_dispatch:
+
+jobs:
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Unit tests
+        run: make firmware-test
+
+      - name: Build
+        run: make firmware
+
+      - name: Keymap is up to date
+        run: git diff --exit-code firmware/src/keymap.h
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amiga-1000-keyboard-rev2-firmware
+          path: build/firmware/amiga-1000-keyboard-rev2.hex

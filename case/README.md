@@ -63,9 +63,9 @@ the frame. Positions are good to a few millimetres.
   on to the top of the jack. The jack sits in an open-topped box, as on the original: 0.3 mm
   clearance round the body, 1.3 mm walls from the floor to the top of the tongue. A short stop inside
   the right wall, 3.5 mm long, stands 2.2 mm off the back wall and fits a slot in the jack. A cutout
-  in the front wall's left end lets the wires out (`jack_wires`: about 8 mm wide, 2.5 mm of wall left
-  under it, estimated from photos). The box clears the PCB's step at y 134.9 by 0.15 mm (the render
-  warns if it reaches it).
+  in the front wall's left end lets the wires out (`jack_wires`: 8 mm wide, 2.5 mm of wall left under
+  it). All of it is checked with the jack test print (below). The box clears the PCB's step at
+  y 134.9 by 0.15 mm (the render warns if it reaches it).
 
 ## Assumed, needs checking
 
@@ -74,8 +74,6 @@ the frame. Positions are good to a few millimetres.
   solder side).
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
-- **Jack fit.** The jack, its box and stop are checked with the jack test print (below). The wire
-  cutout (`jack_wires`) is estimated from photos.
 - **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it
   fits; standing up (13.5 mm) it would not, with 12.3 mm above the PCB there. C8 and the socketed
   controller fit too.

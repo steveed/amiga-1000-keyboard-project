@@ -80,7 +80,7 @@ jack_box_t    = 1.3;    // wall thickness of the box and its stop
 jack_stop     = [3.5, 2.2];           // short wall that fits a slot in the jack: length left from the box's right wall,
                                       // and gap to the back wall.  It runs from the floor to the parting line.
 jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, opposite the stop: width from the inside of the
-                                      // left wall, and wall left under it.  NOT MEASURED: estimated from photos.
+                                      // left wall, and wall left under it.  From photos, checked in a test fit.
 
 // Test print: just the jack corner of each shell, to try the jack in before printing the whole case
 jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of the case

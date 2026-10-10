@@ -161,5 +161,5 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 
 ## Still to do
 
-- Firmware: port Henryk's A500KB firmware to the 32U4 and this matrix.
+- Firmware: ported and unit-tested ([firmware/](../../firmware/README.md)), not yet run on a board.
 - Build and test the first board, including the factory USB bootloader on a blank chip.

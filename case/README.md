@@ -56,16 +56,15 @@ the frame. Positions are good to a few millimetres.
 - A skirt round each key opening runs down to 0.3 mm above the plate.
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
   for stick-on rubber feet instead of printed ones.
-- A 4P4C jack where the original's is, in an open-topped box measured from the original:
-  x 78.3-101.55 (23.25 wide), 10.5 deep from the back wall, with walls from the floor to the top of
-  the tongue, and 1.3 mm walls. Inside its right wall a short stop, 3.5 mm long and 1.3 mm thick,
-  stands 2.1 mm off the back wall, from the floor to the parting line, to hold the jack. A cutout in
-  the front wall's left end, opposite the stop, lets the wires out (`jack_wires`: about 8 mm wide,
-  2.5 mm of wall left under it, estimated from photos). The plug opening in the back wall is 15.5 mm
-  wide (x 86.05-101.55), its right side lined up with the box's, as on the original. It is a notch
-  from the floor up to the parting line, and a matching notch in the top shell carries it on to the
-  top of the jack. The box clears the PCB's step at y 134.9 by 1.75 mm (the render warns if it
-  reaches it).
+- A 4P4C jack where the original's is, sized from the jack itself (`jack_size`): a 21.5 x 10 mm body,
+  12.6 mm tall, behind the back wall, with a 15.4 mm nose at its right end that sits in the 15.5 mm
+  plug opening (x 86.05-101.55), as deep as the wall. The opening is a notch from the floor up to the
+  parting line, and a matching notch in the top shell carries it on to the top of the jack. The jack
+  sits in an open-topped box, as on the original: 0.3 mm clearance round the body, 1.3 mm walls from
+  the floor to the top of the tongue. A short stop inside the right wall, 3.5 mm long, stands 2.1 mm
+  off the back wall and fits a slot in the jack. A cutout in the front wall's left end lets the wires
+  out (`jack_wires`: about 8 mm wide, 2.5 mm of wall left under it, estimated from photos). The box
+  clears the PCB's step at y 134.9 by 0.65 mm (the render warns if it reaches it).
 
 ## Assumed, needs checking
 
@@ -74,9 +73,8 @@ the frame. Positions are good to a few millimetres.
   solder side).
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
-- **Jack height** (`jack_h`, 11 mm). A typical value; it sets how far the top shell's notch runs up.
-  The box, its stop and the opening are measured from the original; the wire cutout's size
-  (`jack_wires`) is estimated from photos.
+- **Jack fit.** The jack's size is measured; the 0.3 mm clearance (`jack_clear`) and the wire
+  cutout (`jack_wires`, from photos) are not. Try them with the jack test print (below).
 - **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it
   fits; standing up (13.5 mm) it would not, with 12.3 mm above the PCB there. C8 and the socketed
   controller fit too.
@@ -87,13 +85,19 @@ the frame. Positions are good to a few millimetres.
 |---|---|---|
 | top_left | 220 x 158 x 12 | face down |
 | top_right | 198 x 158 x 12 | face down |
-| bottom_left | 193 x 158 x 14 | base down |
-| bottom_right | 227 x 158 x 14 | base down |
+| bottom_left | 193 x 158 x 16 | base down |
+| bottom_right | 227 x 158 x 16 | base down |
+| jack_test_bottom | 50 x 25 x 16 | base down |
+| jack_test_top | 50 x 25 x 12 | face down |
 
 The STLs come out in their print orientation. Each shell splits into two on a 45 degree scarf
 (glue it), and the two splits are staggered so the shells bridge each other's joint. The rounded
 edges stop at 45 degrees and finish with a small chamfer at the bed (`print_safe`), so nothing
 needs supports. The exception is the label recess, which prints as a ~17 mm bridge.
+
+`make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
+(x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
+printing the whole case.
 
 ## Hardware
 

@@ -23,7 +23,7 @@
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
-part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right"]
+part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top"]
 show = ["top", "bottom", "board"];  // what the assembly view includes
 explode = 0;                        // lift the top shell this far in the assembly view
 
@@ -69,17 +69,21 @@ top_split_x    = 200;
 bottom_split_x = 185;
 
 // 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The jack sits
-// on the floor against the back wall, in an open-topped box as on the original; J1 is wired to it.
-jack_box      = [78.3, 23.25, 10.5];  // box round the jack, measured from the original: left side x, outside width,
-                                      // depth in from the back wall.  Its walls run from the floor to the top of the tongue.
+// on the floor in an open-topped box, as on the original; J1 is wired to it.  The jack (measured):
+// a body behind the back wall, and at its right end a nose as deep as the wall that sits in the opening.
+jack_size     = [21.5, 10.0, 12.6];   // jack body: length (x), depth behind the back wall (y), height
+jack_open     = 15.5;   // plug opening in the back wall (the jack's nose is 15.4): from the floor up, and on in
+                        // the top shell to the top of the jack
+jack_right    = 101.55; // right side of the opening, and so of the jack
+jack_clear    = 0.3;    // room round the jack in its box
 jack_box_t    = 1.3;    // wall thickness of the box and its stop
-jack_stop     = [3.5, 8.4];           // short wall that holds the jack: length left from the box's right wall, and
-                                      // box front to its back face.  It runs from the floor to the parting line.
+jack_stop     = [3.5, 2.1];           // short wall that fits a slot in the jack: length left from the box's right wall,
+                                      // and gap to the back wall.  It runs from the floor to the parting line.
 jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, opposite the stop: width from the inside of the
                                       // left wall, and wall left under it.  NOT MEASURED: estimated from photos.
-jack_open     = 15.5;   // plug opening in the back wall: from the floor up, and on in the top shell to the top of the jack
-jack_x        = jack_box[0] + jack_box[1] - jack_open / 2;  // centre of the plug opening: its right side lines up with the box's
-jack_h        = 11.0;   // jack height, NOT MEASURED: sets the top shell's notch
+
+// Test print: just the jack corner of each shell, to try the jack in before printing the whole case
+jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of the case
 
 feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
 foot_depth    = 1.0;        // pocket depth, out of the floor_t floor
@@ -155,6 +159,8 @@ ceil_z      = CZ - top_skin;           // inside of the top shell
 floor_z     = -CZ + floor_t;           // inside of the bottom shell
 IX0 = CX0 + wall; IX1 = CX1 - wall;    // cavity
 IY0 = CY0 + wall; IY1 = CY1 - wall;
+jack_x  = jack_right - jack_open / 2;                                  // centre of the plug opening
+jack_in = [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
 
 function lbl_floor(y) = lbl_z0 + (y - LBL[1]) * (lbl_z1 - lbl_z0) / (LBL[3] - LBL[1]);
 function in_lbl(x, y, m = 0) = x > LBL[0] - m && x < LBL[2] + m && y > LBL[1] - m && y < LBL[3] + m;
@@ -163,7 +169,7 @@ function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[
 
 echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm, before its rubber feet"));
 echo(str("plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
-if (IY1 - jack_box[2] < 134.90) echo(str("WARNING: the jack box reaches y ", IY1 - jack_box[2],
+if (jack_in[1] - jack_box_t < 134.90) echo(str("WARNING: the jack box reaches y ", jack_in[1] - jack_box_t,
                                                   ", past the PCB's back edge at 134.90 there"));
 for (p = tall_parts) {
     room = ceiling_at(p[1], p[2]) - pcb_top_z;
@@ -250,7 +256,7 @@ module top_shell() {
             cylinder(d = insert_d, h = insert_depth);
         // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance
         translate([jack_x - jack_open / 2, IY1 - 1, -1])
-            cube([jack_open, wall + 2, floor_z + jack_h + 1]);
+            cube([jack_open, wall + 2, floor_z + jack_size[2] + jack_clear + 1]);
     }
 }
 
@@ -278,7 +284,7 @@ module bottom_shell() {
                 translate([IX0 + tongue_clear + tongue_t, IY0 + tongue_clear + tongue_t, floor_z - 1])
                     cube([IX1 - IX0 - 2 * (tongue_clear + tongue_t), IY1 - IY0 - 2 * (tongue_clear + tongue_t), tongue_h + 2 - floor_z]);
                 translate([tab_x[0] - 2, IY1 - 5, -1]) cube([tab_x[1] - tab_x[0] + 4, 10, tongue_h + 2]);
-                translate([jack_box[0] + jack_box_t, IY1 - 5, floor_z]) cube([jack_box[1] - 2 * jack_box_t, 10, tongue_h + 1 - floor_z]);
+                translate([jack_in[0], IY1 - 5, floor_z]) cube([jack_in[2] - jack_in[0], 10, tongue_h + 1 - floor_z]);
             }
             jack_box();
             // bosses: a low shoulder under the PCB and a full-height one under the plate tab, with spigots up through the holes
@@ -312,14 +318,14 @@ module bottom_shell() {
 // the top or through a cutout in the front wall, and a short stop inside the right wall, as on the original,
 // that holds the jack in place
 module jack_box() {
-    x0 = jack_box[0]; x1 = jack_box[0] + jack_box[1]; y0 = IY1 - jack_box[2];
+    x0 = jack_in[0]; x1 = jack_in[2]; y0 = jack_in[1]; t = jack_box_t;
     difference() {
-        translate([x0, y0, floor_z - 0.01]) cube([jack_box[1], jack_box[2], tongue_h - floor_z + 0.01]);
-        translate([x0 + jack_box_t, y0 + jack_box_t, floor_z]) cube([jack_box[1] - 2 * jack_box_t, jack_box[2], tongue_h - floor_z + 1]);
-        translate([x0 + jack_box_t, y0 - 1, floor_z + jack_wires[1]]) cube([jack_wires[0], jack_box_t + 2, tongue_h - floor_z]);
+        translate([x0 - t, y0 - t, floor_z - 0.01]) cube([x1 - x0 + 2 * t, IY1 - y0 + t, tongue_h - floor_z + 0.01]);
+        translate([x0, y0, floor_z]) cube([x1 - x0, IY1 - y0 + 1, tongue_h - floor_z + 1]);
+        translate([x0, y0 - t - 1, floor_z + jack_wires[1]]) cube([jack_wires[0], t + 2, tongue_h - floor_z]);
     }
-    translate([x1 - jack_box_t - jack_stop[0], y0 + jack_stop[1] - jack_box_t, floor_z - 0.01])
-        cube([jack_stop[0] + 0.01, jack_box_t, -floor_z + 0.01]);
+    translate([x1 - jack_stop[0], IY1 - jack_stop[1] - t, floor_z - 0.01])
+        cube([jack_stop[0] + 0.01, t, -floor_z + 0.01]);
 }
 
 /* ---------------------------------------------------------------- reference board */
@@ -327,8 +333,10 @@ module jack_box() {
 module board() {
     color("darkgreen", 0.8) translate([0, 0, pcb_bot_z]) linear_extrude(pcb_t) polygon(pcb_outline);
     color("dimgray", 0.8) translate([0, 0, plate_bot_z]) linear_extrude(plate_t) polygon(plate_outline);
-    color("silver", 0.8) translate([jack_box[0] + jack_box_t, IY1 - jack_box[2] + jack_box_t, floor_z])
-        cube([jack_box[1] - 2 * jack_box_t, jack_box[2] - jack_box_t, jack_h]);
+    color("silver", 0.8) translate([jack_right - jack_size[0], IY1 - jack_size[1], floor_z]) {
+        cube(jack_size);
+        translate([jack_size[0] - jack_open + 0.1, jack_size[1] - 0.01, 0]) cube([jack_open - 0.1, wall + 0.01, jack_size[2]]);
+    }
     color("orange", 0.8) for (p = tall_parts) translate([p[1] - p[3] / 2, p[2] - p[4] / 2, pcb_top_z]) cube([p[3], p[4], p[5]]);
 }
 
@@ -338,6 +346,9 @@ module board() {
 // is turned over front to back (a rotation, not a mirror, which would print it handed wrong).
 module print_top()    { translate([-CX0, CY1, CZ]) rotate([180, 0, 0]) children(); }
 module print_bottom() { translate([-CX0, -CY0, CZ]) children(); }
+
+// jack_test_region: the corner of the case round the jack, for the test prints
+module jack_test_region() { translate([jack_test[0], jack_test[2], -CZ - 1]) cube([jack_test[1] - jack_test[0], CY1 - jack_test[2] + 1, 2 * CZ + 2]); }
 
 // The scarfs lean so that each piece only grows outward as it prints.
 module top_piece(left)    { intersection() { top_shell();    if (left) left_of(top_split_x, CZ, -1);     else difference() { cube(2000, center = true); left_of(top_split_x, CZ, -1); } } }
@@ -354,3 +365,5 @@ if (part == "top_left")     print_top() top_piece(true);
 if (part == "top_right")    print_top() top_piece(false);
 if (part == "bottom_left")  print_bottom() bottom_piece(true);
 if (part == "bottom_right") print_bottom() bottom_piece(false);
+if (part == "jack_test_bottom") print_bottom() intersection() { bottom_shell(); jack_test_region(); }
+if (part == "jack_test_top")    print_top() intersection() { top_shell(); jack_test_region(); }

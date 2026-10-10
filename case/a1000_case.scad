@@ -69,15 +69,15 @@ top_split_x    = 200;
 bottom_split_x = 185;
 
 // 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The jack sits
-// on the floor in an open-topped box, as on the original; J1 is wired to it.  The jack (measured):
+// on the floor in an open-topped box, as on the original; J1 is wired to it.  The jack:
 // a body behind the back wall, and at its right end a nose as deep as the wall that sits in the opening.
-jack_size     = [21.5, 10.0, 12.6];   // jack body: length (x), depth behind the back wall (y), height
+jack_size     = [22, 10.5, 13.5];     // jack body: length (x), depth behind the back wall (y), height; from a test fit
 jack_open     = 15.5;   // plug opening in the back wall (the jack's nose is 15.4): from the floor up, and on in
                         // the top shell to the top of the jack
 jack_right    = 101.55; // right side of the opening, and so of the jack
 jack_clear    = 0.3;    // room round the jack in its box
 jack_box_t    = 1.3;    // wall thickness of the box and its stop
-jack_stop     = [3.5, 2.1];           // short wall that fits a slot in the jack: length left from the box's right wall,
+jack_stop     = [3.5, 2.2];           // short wall that fits a slot in the jack: length left from the box's right wall,
                                       // and gap to the back wall.  It runs from the floor to the parting line.
 jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, opposite the stop: width from the inside of the
                                       // left wall, and wall left under it.  NOT MEASURED: estimated from photos.

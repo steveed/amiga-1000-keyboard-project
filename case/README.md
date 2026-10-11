@@ -98,6 +98,11 @@ needs supports. The exception is the label recess, which prints as a ~17 mm brid
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
 printing the whole case.
 
+`make label` writes a 1:1 sticker for the label recess underneath (`build/case/*-label-rev1.svg` and
+`-rev2.svg`), laid out like the original Commodore label but with this project's name and the board
+revision. Print it at 100% on sticker paper and cut on the grey outline; it sits 0.5 mm inside the
+recess all round.
+
 ## Hardware
 
 - 4 M3 x 14 screws, pan or button head (12-16 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column).

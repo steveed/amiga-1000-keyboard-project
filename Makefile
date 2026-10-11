@@ -14,7 +14,7 @@ OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case case-jack rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release clean
+.PHONY: drc bom fab print plate case case-jack label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -63,6 +63,13 @@ case:
 	done
 	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p \
 		-o $(BUILD)/case/case-assembly.png case/a1000_case.scad
+
+# Stickers for the label recess under the case, one per board revision, 1:1.
+label:
+	mkdir -p $(BUILD)/case
+	for r in 1 2; do \
+		$(TOOLS) python tools/make_label.py $(BUILD)/case/$(NAME)-label-rev$$r.svg $$r || exit 1; \
+	done
 
 # Test prints of just the jack corner of each shell, to try the jack before printing the whole case.
 case-jack:

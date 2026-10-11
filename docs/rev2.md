@@ -49,5 +49,4 @@ Build it with `make firmware`, test it with `make firmware-test`, and flash it w
 ## Status
 
 Designed, routed, and passing DRC; the firmware builds and passes its tests. Neither has been run
-on a real board yet: the first boards haven't arrived. Before boards go to anyone else the firmware
-needs its own USB PID in place of the pid.codes test ID.
+on a real board yet: the first boards haven't arrived.

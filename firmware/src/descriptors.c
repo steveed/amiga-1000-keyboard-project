@@ -1,10 +1,9 @@
 /* USB descriptors, adapted from LUFA's Keyboard class driver demo (licence in descriptors.h). */
 #include "descriptors.h"
 
-/* pid.codes test VID/PID.  It is for private testing only and MUST NOT ship on boards built for
-   other people: request a project PID from pid.codes before release. */
+/* pid.codes VID and this project's PID (https://pid.codes/1209/A10B/). */
 #define USB_VID 0x1209
-#define USB_PID 0x0001
+#define USB_PID 0xA10B
 
 const USB_Descriptor_HIDReport_Datatype_t PROGMEM KeyboardReport[] = {
     HID_DESCRIPTOR_KEYBOARD(6)

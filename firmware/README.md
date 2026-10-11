@@ -44,10 +44,9 @@ No fuse changes are needed: the firmware turns off the factory clock divider and
 - `keymap.h` is generated: each key's Amiga raw key code and USB usage, looked up by its name
   in the rev 1 schematic. HELP sends the HID Help usage, which most PC hosts ignore.
 
-## Before release
+## USB ID
 
-- The USB ID is pid.codes' test ID (`1209:0001`), for private testing only: request a project PID
-  from [pid.codes](https://pid.codes) before boards go to other people.
+`1209:A10B`, from [pid.codes](https://pid.codes/1209/A10B/).
 
 ## Still to check on hardware
 

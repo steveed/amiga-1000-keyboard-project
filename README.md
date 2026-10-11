@@ -25,7 +25,6 @@ A second board for the same case that needs no donor controller: an ATmega32U4 w
 surface-mount parts assembled by the fab, Cherry MX switches, and both the Amiga cable and USB-C
 live at once. See [docs/rev2.md](docs/rev2.md).
 
-
 ## Building
 Everything runs in Docker through `make` (KiCad 10 and a small Python image):
 
@@ -40,8 +39,10 @@ Everything runs in Docker through `make` (KiCad 10 and a small Python image):
 - `make firmware`, `make firmware-test` - the rev 2 firmware and its unit tests. See [firmware/README.md](firmware/README.md).
 - `make render` - the README renders in `build/render/`.
 - `make release` - all of the above, collected in `build/release/`.
+- `make rev2-release` - rev 2's order files, plates and firmware, collected in `build/rev2-release/`.
 
-Pushing a `v*` tag runs `make release` on GitHub and publishes the files as a GitHub release.
+Pushing a `v*` tag runs `make release` on GitHub and publishes rev 1's files as a GitHub release;
+pushing a `rev2-v*` tag does the same for rev 2 with `make rev2-release`.
 
 ## Reference Material
 - [docs/amiga-a1000-schematics-all.pdf](docs/amiga-a1000-schematics-all.pdf) - Amiga 1000 schematics

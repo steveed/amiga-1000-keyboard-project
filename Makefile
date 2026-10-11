@@ -14,7 +14,7 @@ OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case case-jack label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release clean
+.PHONY: drc bom fab print plate case case-jack label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -170,6 +170,16 @@ release: drc bom fab print plate
 	cp $(BUILD)/fab/$(NAME)-gerbers.zip pcb/bom.csv $(BUILD)/print/*.pdf $(BUILD)/release/
 	cp $(BUILD)/fab/gerbers/*-drl_map.pdf $(BUILD)/release/ 2>/dev/null || true
 	cp $(BUILD)/plate/$(NAME)-plate.dxf $(BUILD)/plate/$(NAME)-plate-gerbers.zip $(BUILD)/release/
+
+# Everything a rev 2 release ships, collected in build/rev2-release: the JLCPCB order files, both
+# MX plates and the firmware hex.
+rev2-release: rev2-drc rev2-fab rev2-jlc rev2-plate firmware-test firmware
+	rm -rf $(BUILD)/rev2-release && mkdir -p $(BUILD)/rev2-release
+	cp $(BUILD)/rev2-fab/$(NAME)-rev2-gerbers.zip $(BUILD)/rev2-jlc/bom-jlc.csv $(BUILD)/rev2-jlc/cpl-jlc.csv \
+		$(BUILD)/rev2-release/
+	cp $(BUILD)/rev2-plate/*-plate-us-gerbers.zip $(BUILD)/rev2-plate/*-plate-iso-gerbers.zip \
+		$(BUILD)/rev2-plate/*-plate-us.dxf $(BUILD)/rev2-plate/*-plate-iso.dxf $(BUILD)/rev2-release/
+	cp $(BUILD)/firmware/$(NAME)-rev2.hex $(BUILD)/rev2-release/
 
 clean:
 	rm -rf $(BUILD)

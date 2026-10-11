@@ -113,7 +113,8 @@ five minutes.
 Every push to `main` that touches rev 2 runs the "Rev 2 for JLCPCB" GitHub workflow: DRC and
 schematic parity, then gerbers, BOM and placement, uploaded as the artifact
 `amiga-1000-keyboard-rev2-jlcpcb`. Locally, `make rev2-fab rev2-jlc` writes the same files to
-`build/rev2-fab/` and `build/rev2-jlc/`.
+`build/rev2-fab/` and `build/rev2-jlc/`. Pushing a `rev2-v*` tag publishes the same files, the plates
+and the firmware hex as a GitHub release (`make rev2-release`).
 
 - **PCB:** upload `amiga-1000-keyboard-rev2-gerbers.zip`. Two layers, 1.6 mm.
 - **Assembly:** both sides (the key diodes and two of U1's decoupling caps are on the back). Upload

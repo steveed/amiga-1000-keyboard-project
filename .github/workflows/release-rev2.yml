@@ -1,0 +1,33 @@
+name: Rev 2 release
+
+# A rev2-v* tag builds rev 2's order files, plates and firmware and publishes them as a GitHub
+# release, separate from rev 1's v* releases.
+on:
+  push:
+    tags: ['rev2-v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0          # the previous rev2-v* tag, for the release notes
+
+      - name: DRC, order files, plates and firmware
+        run: make rev2-release VERSION="$GITHUB_REF_NAME"
+
+      - name: Keymap is up to date
+        run: git diff --exit-code firmware/src/keymap.h
+
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prev=$(git tag --list 'rev2-v*' --sort=-v:refname | grep -vx "$GITHUB_REF_NAME" | head -1)
+          gh release create "$GITHUB_REF_NAME" build/rev2-release/* --title "Rev 2 ${GITHUB_REF_NAME#rev2-}" \
+            --generate-notes ${prev:+--notes-start-tag "$prev"}

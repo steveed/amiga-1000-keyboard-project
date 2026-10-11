@@ -43,9 +43,9 @@ plate_t       = 1.2;    // 1.2 mm FR4 plate (version 1); the original steel plat
 plate_to_pcb  = 5.0;    // plate top -> PCB top.  NOT MEASURED: depends on the Mitsumi switches.
 pcb_t         = 1.6;
 
-// Key wells: a skirt round each opening, down to just above the plate, as in the original
+// Key wells: a skirt round each opening, as in the original
 skirt_t       = 1.2;
-skirt_gap     = 0.3;    // skirt bottom -> plate top
+skirt_h       = 8.65;   // case top -> skirt bottom, measured on an original
 
 // Shell joint: a tongue on the bottom shell that drops inside the top shell's walls
 tongue_t      = 1.2;
@@ -169,6 +169,8 @@ function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[
 
 echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm, before its rubber feet"));
 echo(str("plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
+echo(str("key well skirts stop ", CZ - skirt_h - plate_top_z, " mm above the plate"));
+if (CZ - skirt_h <= plate_top_z) echo("WARNING: the key well skirts reach the plate");
 if (jack_in[1] - jack_box_t < 134.90) echo(str("WARNING: the jack box reaches y ", jack_in[1] - jack_box_t,
                                                   ", past the PCB's back edge at 134.90 there"));
 for (p = tall_parts) {
@@ -232,8 +234,8 @@ module top_shell() {
                 }
                 translate([IX0, IY0, -1]) cube([IX1 - IX0, IY1 - IY0, ceil_z + 1]);
             }
-            // key well skirts, down to just above the plate
-            translate([0, 0, plate_top_z + skirt_gap]) linear_extrude(ceil_z - plate_top_z - skirt_gap + 0.01)
+            // key well skirts
+            translate([0, 0, CZ - skirt_h]) linear_extrude(skirt_h - top_skin + 0.01)
                 difference() { openings2d(skirt_t); openings2d(); }
             // backing under the sloped label recess
             hull() for (y = [LBL[1] - label_skin, LBL[3] + label_skin]) {

@@ -53,7 +53,8 @@ the frame. Positions are good to a few millimetres.
   1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance
   hole and the board is never propped up by the case. Under the plate tab the boss runs up to the
   plate. A column in the top shell lands on the plate, with a heat-set insert.
-- A skirt round each key opening runs down to 0.3 mm above the plate.
+- A skirt round each key opening, 8.65 mm deep from the top surface as on the original, stopping
+  2.35 mm above the plate (`skirt_h`).
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
   for stick-on rubber feet instead of printed ones.
 - A 4P4C jack where the original's is, sized from the jack itself and a test fit

@@ -53,6 +53,11 @@ the frame. Positions are good to a few millimetres.
   1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance
   hole and the board is never propped up by the case. Under the plate tab the boss runs up to the
   plate. A column in the top shell lands on the plate, with a heat-set insert.
+- Three snaps along the front and three along the back (`snap_x`) hold the long edges down between
+  the screws. Each is a 10 mm arm hanging from the top shell just inside the tongue, with a hook that
+  catches a pocket in the bottom shell's wall below the parting line. The catch face slopes at 30
+  degrees (`snap_catch_a`), so the case still pulls apart once the screws are out. They sit clear of
+  the parts along both boards' back edges.
 - A skirt round each key opening, 8.65 mm deep from the top surface as on the original, stopping
   2.35 mm above the plate (`skirt_h`).
 - Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
@@ -83,8 +88,8 @@ the frame. Positions are good to a few millimetres.
 
 | part | size (mm) | orientation |
 |---|---|---|
-| top_left | 220 x 158 x 12 | face down |
-| top_right | 198 x 158 x 12 | face down |
+| top_left | 220 x 158 x 15 | face down |
+| top_right | 198 x 158 x 15 | face down |
 | bottom_left | 193 x 158 x 16 | base down |
 | bottom_right | 227 x 158 x 16 | base down |
 | jack_test_bottom | 50 x 25 x 16 | base down |

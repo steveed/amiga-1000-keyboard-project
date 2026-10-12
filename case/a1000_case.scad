@@ -19,8 +19,8 @@
 //
 // Fixings: 4x M3 screws from underneath, through the bottom bosses, the PCB/plate case holes
 // and into heat-set inserts in the top shell's columns.  They clamp the plate and PCB between
-// the two shells, like the original's case screws.  Filament dowels line up each scarf joint
-// for gluing.
+// the two shells, like the original's case screws.  Snaps along the front and back hold the long
+// edges between them, and filament dowels line up each scarf joint for gluing.
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
@@ -80,6 +80,19 @@ top_dowels    = [[-5.55, 1.57, 4.1, 9.31, -2.0, 6.7],       // front: wall to sk
                  [142.5, 147.15, 4.5, 9.31, 144.8, 6.9]];   // back: behind the label recess, above the parts
 bottom_dowels = [[-4.16, -0.3, -9.31, 0, -2.6, -4.5],       // front: in front of the PCB
                  [142.8, 145.76, -3.6, 3.8, 145.0, 0.0]];   // back: over the PCB's back edge, into the tongue
+
+// Snaps between the shells, front and back, to hold the long edges down between the four screws.
+// An arm hangs from the top shell just inside the tongue, and its hook catches a pocket in the bottom
+// shell's wall below the parting line.  The catch face is sloped so the case still comes apart.
+snap_x        = [[110, 255, 385], [150, 265, 385]];          // front, back
+snap_w        = 10;     // along x
+snap_t        = 1.6;    // arm thickness
+snap_clear    = 0.2;    // arm to the tongue and wall
+snap_hook     = 0.8;    // hook depth; it catches snap_hook - snap_clear
+snap_hook_h   = [-3.0, -1.4];                // hook bottom (arm end) and catch, in z
+snap_lead     = 0.7;    // height of the lead-in ramp at the bottom of the hook
+snap_catch_a  = 30;     // catch face, degrees down from flat (0 = permanent)
+snap_pocket_c = 0.15;   // pocket clearance round the hook
 
 // 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The jack sits
 // on the floor in an open-topped box, as on the original; J1 is wired to it.  The jack:
@@ -175,6 +188,7 @@ IY0 = CY0 + wall; IY1 = CY1 - wall;
 jack_x  = jack_right - jack_open / 2;                                  // centre of the plug opening
 jack_in = [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
 
+wall_in = [IY0 + tongue_clear + tongue_t, IY1 - tongue_clear - tongue_t];   // inside of the bottom shell's wall, below the parting line
 function top_split_at(z)    = top_split_x - (z - CZ);       // where each scarf crosses height z
 function bottom_split_at(z) = bottom_split_x - (z + CZ);
 function lbl_floor(y) = lbl_z0 + (y - LBL[1]) * (lbl_z1 - lbl_z0) / (LBL[3] - LBL[1]);
@@ -261,6 +275,7 @@ module top_shell() {
             for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z])
                 cylinder(d = column_d, h = ceiling_at(p[0], p[1]) - plate_top_z + 0.01);
             for (d = top_dowels) dowel_block(d, top_split_at(d[5]));
+            for (s = [0, 1], x = snap_x[s]) snap_arm(x, s);
         }
         translate([0, 0, -1]) linear_extrude(CZ + 2) openings2d();
         // sloped label recess
@@ -318,6 +333,7 @@ module bottom_shell() {
             for (d = bottom_dowels) dowel_block(d, bottom_split_at(d[5]));
         }
         for (d = bottom_dowels) dowel_hole(d, bottom_split_at(d[5]));
+        for (s = [0, 1], x = snap_x[s]) snap_pocket(x, s);
         // screws from underneath
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], -CZ - 1]) {
             cylinder(d = screw_clear_d, h = 2 * CZ, $fn = 24);
@@ -349,7 +365,7 @@ module jack_box() {
         cube([jack_stop[0] + 0.01, t, -floor_z + 0.01]);
 }
 
-/* ---------------------------------------------------------------- dowels */
+/* ---------------------------------------------------------------- dowels and snaps */
 
 // dowel_block / dowel_hole: d = [y0, y1, z0, z1, hole y, hole z], centred on x along the case
 module dowel_block(d, x) {
@@ -357,6 +373,36 @@ module dowel_block(d, x) {
 }
 module dowel_hole(d, x) {
     translate([x - dowel_len / 2 - 0.5, d[4], d[5]]) rotate([0, 90, 0]) cylinder(d = dowel_d, h = dowel_len + 1, $fn = 16);
+}
+
+// snap_hook2d: the hook's profile in (out, z), out measured outward from the arm's outer face.  A lead-in
+// ramp at the bottom, then the full depth, then the catch face sloping back to the arm.
+module snap_hook2d(g = 0) {
+    z0 = snap_hook_h[0]; z1 = snap_hook_h[1]; h = snap_hook;
+    offset(delta = g) polygon([[0, z0], [h, z0 + snap_lead], [h, z1], [0, z1 + h * tan(snap_catch_a)]]);
+}
+// in (out, z) to case (y, z) for side s (0 front, 1 back), from the arm's outer face y_face
+module snap_place(s, x, y_face) {
+    translate([x, y_face, 0]) rotate([90, 0, 90]) mirror([s == 0 ? 1 : 0, 0]) children();
+}
+
+// snap_arm: hangs from the top shell's ceiling just inside the tongue, hook outward
+module snap_arm(x, s) {
+    out  = s == 0 ? -1 : 1;
+    face = wall_in[s] - out * snap_clear;                    // arm's outer face
+    top  = ceiling_at(x, face) + 0.01;
+    translate([x - snap_w / 2, out < 0 ? face : face - snap_t, snap_hook_h[0]])
+        cube([snap_w, snap_t, top - snap_hook_h[0]]);
+    snap_place(s, x - snap_w / 2, face) linear_extrude(snap_w) snap_hook2d();
+}
+
+// snap_pocket: the hook's catch, cut into the bottom shell's wall below the parting line
+module snap_pocket(x, s) {
+    face = wall_in[s] - (s == 0 ? -1 : 1) * snap_clear;
+    snap_place(s, x - snap_w / 2 - 0.3, face) linear_extrude(snap_w + 0.6) union() {
+        snap_hook2d(snap_pocket_c);
+        translate([-1, snap_hook_h[0] - snap_pocket_c]) square([1.01, snap_hook_h[1] - snap_hook_h[0] + snap_hook + 2 * snap_pocket_c]);
+    }
 }
 
 /* ---------------------------------------------------------------- reference board */

@@ -18,9 +18,9 @@
 // The two splits are staggered so each shell bridges the other's joint.
 //
 // Fixings: 4x M3 screws from underneath, through the bottom bosses, the PCB/plate case holes
-// and into heat-set inserts in the top shell's columns.  They clamp the plate and PCB between
-// the two shells, like the original's case screws.  Snaps along the front and back hold the long
-// edges between them, and filament dowels line up each scarf joint for gluing.
+// and into heat-set inserts in the top shell's columns, like the original's case screws.  Snaps
+// along the front and back hold the long edges between them, and filament dowels line up each
+// scarf joint for gluing.
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
@@ -58,7 +58,7 @@ boss_d        = 11;     // bottom boss under the PCB / plate tab
 pcb_boss_h    = 1.0;    // under the PCB the boss is a 1 mm shoulder, as on the original, so it never props the board up
 spigot_d      = 7.0;    // passes up through the 7.5 mm case holes in the PCB and plate
 squeeze       = 0.2;    // spigot stops this far below the plate top, so the screws clamp the stack
-column_d      = 10;     // top shell column that lands on the plate
+column_d      = 10;     // top shell screw column; it stops level with the skirts, as on the original
 insert_d      = 4.0;    // M3 heat-set insert (2.6 to self-tap instead)
 insert_depth  = 5.0;
 screw_clear_d = 3.4;
@@ -271,9 +271,9 @@ module top_shell() {
                 z = lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin;
                 translate([LBL[0] - label_skin, y - 0.01, z]) cube([LBL[2] - LBL[0] + 2 * label_skin, 0.02, CZ - z - 0.5]);
             }
-            // screw columns, landing on the plate
-            for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z])
-                cylinder(d = column_d, h = ceiling_at(p[0], p[1]) - plate_top_z + 0.01);
+            // screw columns, level with the skirts
+            for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], CZ - skirt_h])
+                cylinder(d = column_d, h = ceiling_at(p[0], p[1]) - (CZ - skirt_h) + 0.01);
             for (d = top_dowels) dowel_block(d, top_split_at(d[5]));
             for (s = [0, 1], x = snap_x[s]) snap_arm(x, s);
         }
@@ -285,7 +285,7 @@ module top_shell() {
         translate([0, 0, CZ - badge_depth]) linear_extrude(1)
             rrect(badge_c[0] - badge_w / 2, badge_c[1] - badge_w / 2, badge_c[0] + badge_w / 2, badge_c[1] + badge_w / 2, badge_r);
         // heat-set inserts
-        for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z - 0.01])
+        for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], CZ - skirt_h - 0.01])
             cylinder(d = insert_d, h = insert_depth);
         for (d = top_dowels) dowel_hole(d, top_split_at(d[5]));
         // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance

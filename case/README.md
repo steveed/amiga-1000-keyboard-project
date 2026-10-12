@@ -52,7 +52,8 @@ the frame. Positions are good to a few millimetres.
   Each bottom boss carries a 7 mm spigot up through the PCB and plate. Under the PCB the boss is a
   1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance
   hole and the board is never propped up by the case. Under the plate tab the boss runs up to the
-  plate. A column in the top shell lands on the plate, with a heat-set insert.
+  plate. A column in the top shell, with a heat-set insert, stops level with the key-well skirts
+  (8.65 mm below the top, as on the original), so it doesn't reach the plate.
 - Three snaps along the front and three along the back (`snap_x`) hold the long edges down between
   the screws. Each is a 10 mm arm hanging from the top shell just inside the tongue, with a hook that
   catches a pocket in the bottom shell's wall below the parting line. The catch face slopes at 30
@@ -115,7 +116,7 @@ recess all round.
 
 ## Hardware
 
-- 4 M3 x 14 screws, pan or button head (12-16 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column).
+- 4 M3 x 16 screws, pan or button head (15-17 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column, from 3.15 mm above the parting line).
 - 4 M3 heat-set inserts, 4 mm hole.
 - About 80 mm of 1.75 mm filament, cut into four 20 mm dowels for the joints.
 - 4 stick-on rubber feet, up to 19 mm square or round, for the pockets underneath.

@@ -95,6 +95,10 @@ The STLs come out in their print orientation. Each shell splits into two on a 45
 edges stop at 45 degrees and finish with a small chamfer at the bed (`print_safe`), so nothing
 needs supports. The exception is the label recess, which prints as a ~17 mm bridge.
 
+Each joint has two dowels, front and back, so the halves can't slide while the glue sets: a block
+inside the wall, split with the joint, with a 2 mm hole along the case through both halves. Push a
+20 mm length of 1.75 mm filament into each hole, then slide the halves together flat on the bench.
+
 `make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
 printing the whole case.
@@ -108,4 +112,5 @@ recess all round.
 
 - 4 M3 x 14 screws, pan or button head (12-16 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column).
 - 4 M3 heat-set inserts, 4 mm hole.
+- About 80 mm of 1.75 mm filament, cut into four 20 mm dowels for the joints.
 - 4 stick-on rubber feet, up to 19 mm square or round, for the pockets underneath.

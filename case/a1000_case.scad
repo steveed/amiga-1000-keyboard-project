@@ -19,7 +19,8 @@
 //
 // Fixings: 4x M3 screws from underneath, through the bottom bosses, the PCB/plate case holes
 // and into heat-set inserts in the top shell's columns.  They clamp the plate and PCB between
-// the two shells, like the original's case screws.
+// the two shells, like the original's case screws.  Filament dowels line up each scarf joint
+// for gluing.
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
@@ -67,6 +68,18 @@ cbore_depth   = 3.0;
 // Printing splits: 45 degree scarf joints, glued
 top_split_x    = 200;
 bottom_split_x = 185;
+
+// Dowels across each scarf, so the halves can't slide while the glue sets: a block inside the wall
+// at the front and the back of each joint, split with it, and a hole along x through both halves
+// for a length of 1.75 mm filament.  [y0, y1, z0, z1, hole y, hole z]; the block is centred on
+// where the scarf crosses the hole.
+dowel_d       = 2.0;    // hole, for 1.75 mm filament
+dowel_len     = 20;     // 10 mm into each half
+dowel_block_l = 24;     // block length along x
+top_dowels    = [[-5.55, 1.57, 4.1, 9.31, -2.0, 6.7],       // front: wall to skirt, above the tongue
+                 [142.5, 147.15, 4.5, 9.31, 144.8, 6.9]];   // back: behind the label recess, above the parts
+bottom_dowels = [[-4.16, -0.3, -9.31, 0, -2.6, -4.5],       // front: in front of the PCB
+                 [142.8, 145.76, -3.6, 3.8, 145.0, 0.0]];   // back: over the PCB's back edge, into the tongue
 
 // 4P4C (handset) jack in the back wall: the original's coiled cable plugs in here.  The jack sits
 // on the floor in an open-topped box, as on the original; J1 is wired to it.  The jack:
@@ -162,6 +175,8 @@ IY0 = CY0 + wall; IY1 = CY1 - wall;
 jack_x  = jack_right - jack_open / 2;                                  // centre of the plug opening
 jack_in = [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
 
+function top_split_at(z)    = top_split_x - (z - CZ);       // where each scarf crosses height z
+function bottom_split_at(z) = bottom_split_x - (z + CZ);
 function lbl_floor(y) = lbl_z0 + (y - LBL[1]) * (lbl_z1 - lbl_z0) / (LBL[3] - LBL[1]);
 function in_lbl(x, y, m = 0) = x > LBL[0] - m && x < LBL[2] + m && y > LBL[1] - m && y < LBL[3] + m;
 // inside of the top shell at (x, y): lower under the label recess
@@ -245,6 +260,7 @@ module top_shell() {
             // screw columns, landing on the plate
             for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z])
                 cylinder(d = column_d, h = ceiling_at(p[0], p[1]) - plate_top_z + 0.01);
+            for (d = top_dowels) dowel_block(d, top_split_at(d[5]));
         }
         translate([0, 0, -1]) linear_extrude(CZ + 2) openings2d();
         // sloped label recess
@@ -256,6 +272,7 @@ module top_shell() {
         // heat-set inserts
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], plate_top_z - 0.01])
             cylinder(d = insert_d, h = insert_depth);
+        for (d = top_dowels) dowel_hole(d, top_split_at(d[5]));
         // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance
         translate([jack_x - jack_open / 2, IY1 - 1, -1])
             cube([jack_open, wall + 2, floor_z + jack_size[2] + jack_clear + 1]);
@@ -298,7 +315,9 @@ module bottom_shell() {
                 cylinder(d = boss_d, h = plate_bot_z - floor_z);
                 cylinder(d = spigot_d, h = plate_top_z - squeeze - floor_z);
             }
+            for (d = bottom_dowels) dowel_block(d, bottom_split_at(d[5]));
         }
+        for (d = bottom_dowels) dowel_hole(d, bottom_split_at(d[5]));
         // screws from underneath
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], -CZ - 1]) {
             cylinder(d = screw_clear_d, h = 2 * CZ, $fn = 24);
@@ -328,6 +347,16 @@ module jack_box() {
     }
     translate([x1 - jack_stop[0], IY1 - jack_stop[1] - t, floor_z - 0.01])
         cube([jack_stop[0] + 0.01, t, -floor_z + 0.01]);
+}
+
+/* ---------------------------------------------------------------- dowels */
+
+// dowel_block / dowel_hole: d = [y0, y1, z0, z1, hole y, hole z], centred on x along the case
+module dowel_block(d, x) {
+    translate([x - dowel_block_l / 2, d[0], d[2]]) cube([dowel_block_l, d[1] - d[0], d[3] - d[2]]);
+}
+module dowel_hole(d, x) {
+    translate([x - dowel_len / 2 - 0.5, d[4], d[5]]) rotate([0, 90, 0]) cylinder(d = dowel_d, h = dowel_len + 1, $fn = 16);
 }
 
 /* ---------------------------------------------------------------- reference board */

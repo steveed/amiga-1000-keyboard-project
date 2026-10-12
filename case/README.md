@@ -95,6 +95,8 @@ the frame. Positions are good to a few millimetres.
 | bottom_right | 227 x 158 x 16 | base down |
 | jack_test_bottom | 50 x 25 x 16 | base down |
 | jack_test_top | 50 x 25 x 12 | face down |
+| joint_test_top_left / _right | 52 / 62 x 11 x 15 | face down |
+| joint_test_bottom_left / _right | 25 / 93 x 18 x 16 | base down |
 
 The STLs come out in their print orientation. Each shell splits into two on a 45 degree scarf
 (glue it), and the two splits are staggered so the shells bridge each other's joint. The rounded
@@ -108,6 +110,11 @@ inside the wall, split with the joint, with a 2 mm hole along the case through b
 `make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
 printing the whole case.
+
+`make case-joint` writes four test pieces: a strip along the front of each shell (x 160-262, the
+front 18 mm), split at its joint like the full case. It has the front dowel of each joint and the
+snap at x 255, to try the filament in its holes, glue each strip, and snap the top strip onto the
+bottom before printing the whole case.
 
 `make label` writes a 1:1 sticker for the label recess underneath (`build/case/*-label-rev1.svg` and
 `-rev2.svg`), laid out like the original Commodore label but with this project's name and the board

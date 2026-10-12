@@ -14,7 +14,7 @@ OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
 
-.PHONY: drc bom fab print plate case case-jack label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
+.PHONY: drc bom fab print plate case case-jack case-joint label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -75,6 +75,13 @@ label:
 case-jack:
 	mkdir -p $(BUILD)/case
 	for p in jack_test_bottom jack_test_top; do \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
+	done
+
+# Test prints of a strip along the front of each shell, across both glue joints and a snap.
+case-joint:
+	mkdir -p $(BUILD)/case
+	for p in joint_test_top_left joint_test_top_right joint_test_bottom_left joint_test_bottom_right; do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
 	done
 

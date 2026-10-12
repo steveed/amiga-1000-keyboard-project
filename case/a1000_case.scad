@@ -24,7 +24,7 @@
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
-part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top"]
+part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top","joint_test_top_left","joint_test_top_right","joint_test_bottom_left","joint_test_bottom_right"]
 show = ["top", "bottom", "board"];  // what the assembly view includes
 explode = 0;                        // lift the top shell this far in the assembly view
 
@@ -110,6 +110,10 @@ jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, op
 
 // Test print: just the jack corner of each shell, to try the jack in before printing the whole case
 jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of the case
+
+// Test print: a strip along the front of each shell, across both scarf joints and the snap at x 255,
+// each split at its joint, to try the dowels and a snap before printing the whole case
+joint_test    = [160, 262, 10];       // x0, x1, y1; it runs from the front of the case
 
 feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
 foot_depth    = 1.0;        // pocket depth, out of the floor_t floor
@@ -427,6 +431,9 @@ module print_bottom() { translate([-CX0, -CY0, CZ]) children(); }
 // jack_test_region: the corner of the case round the jack, for the test prints
 module jack_test_region() { translate([jack_test[0], jack_test[2], -CZ - 1]) cube([jack_test[1] - jack_test[0], CY1 - jack_test[2] + 1, 2 * CZ + 2]); }
 
+// joint_test_region: the front strip across both joints, for the test prints
+module joint_test_region() { translate([joint_test[0], CY0 - 1, -CZ - 5]) cube([joint_test[1] - joint_test[0], joint_test[2] - CY0 + 1, 2 * CZ + 10]); }
+
 // The scarfs lean so that each piece only grows outward as it prints.
 module top_piece(left)    { intersection() { top_shell();    if (left) left_of(top_split_x, CZ, -1);     else difference() { cube(2000, center = true); left_of(top_split_x, CZ, -1); } } }
 module bottom_piece(left) { intersection() { bottom_shell(); if (left) left_of(bottom_split_x, -CZ, -1); else difference() { cube(2000, center = true); left_of(bottom_split_x, -CZ, -1); } } }
@@ -444,3 +451,7 @@ if (part == "bottom_left")  print_bottom() bottom_piece(true);
 if (part == "bottom_right") print_bottom() bottom_piece(false);
 if (part == "jack_test_bottom") print_bottom() intersection() { bottom_shell(); jack_test_region(); }
 if (part == "jack_test_top")    print_top() intersection() { top_shell(); jack_test_region(); }
+if (part == "joint_test_top_left")     print_top()    intersection() { top_piece(true);     joint_test_region(); }
+if (part == "joint_test_top_right")    print_top()    intersection() { top_piece(false);    joint_test_region(); }
+if (part == "joint_test_bottom_left")  print_bottom() intersection() { bottom_piece(true);  joint_test_region(); }
+if (part == "joint_test_bottom_right") print_bottom() intersection() { bottom_piece(false); joint_test_region(); }

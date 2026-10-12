@@ -108,6 +108,16 @@ jack_stop     = [3.5, 2.2];           // short wall that fits a slot in the jack
 jack_wires    = [8.0, 2.5];           // wire cutout in the box's front wall, opposite the stop: width from the inside of the
                                       // left wall, and wall left under it.  From photos, checked in a test fit.
 
+// Which jack: "nose" is the one above.  "616e" is the common wired 616E (KLS12-199, HWS8282), a plain box
+// with the plug opening in its face.  It stands on the floor centred in the notch, its face against the back
+// of a filler that closes the notch except for a hole for the plug, so the outside still looks like the original.
+jack_type     = "nose"; // ["nose", "616e"]
+j616_size     = [11.4, 10.2, 17.42];  // width over its side ridge (x), depth (y), height: the larger of the KLS
+                                      // and HWS drawings
+j616_hole     = [9.0, 8.5];           // plug hole in the filler: width (centred on the jack), height from the floor
+j616_fill     = 0.6;    // the filler stands this far in from the outside of the back wall, so the notch still shows
+j616_skin     = 1.0;    // label skin left over the jack (label_skin elsewhere), for room above its 17.4 mm
+
 // Test print: just the jack corner of each shell, to try the jack in before printing the whole case
 jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of the case
 
@@ -190,7 +200,10 @@ floor_z     = -CZ + floor_t;           // inside of the bottom shell
 IX0 = CX0 + wall; IX1 = CX1 - wall;    // cavity
 IY0 = CY0 + wall; IY1 = CY1 - wall;
 jack_x  = jack_right - jack_open / 2;                                  // centre of the plug opening
-jack_in = [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
+j616    = jack_type == "616e";
+jack_in = j616 ? [jack_x - j616_size[0] / 2 - jack_clear, IY1 - j616_size[1] - jack_clear, jack_x + j616_size[0] / 2 + jack_clear]
+               : [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
+jack_notch_top = floor_z + jack_size[2] + jack_clear;                  // top of the top shell's notch, the same for both jacks
 
 wall_in = [IY0 + tongue_clear + tongue_t, IY1 - tongue_clear - tongue_t];   // inside of the bottom shell's wall, below the parting line
 function top_split_at(z)    = top_split_x - (z - CZ);       // where each scarf crosses height z
@@ -206,6 +219,10 @@ echo(str("key well skirts stop ", CZ - skirt_h - plate_top_z, " mm above the pla
 if (CZ - skirt_h <= plate_top_z) echo("WARNING: the key well skirts reach the plate");
 if (jack_in[1] - jack_box_t < 134.90) echo(str("WARNING: the jack box reaches y ", jack_in[1] - jack_box_t,
                                                   ", past the PCB's back edge at 134.90 there"));
+if (j616) {
+    room = lbl_floor(jack_in[1]) - j616_skin - (floor_z + j616_size[2]);
+    echo(str(room < 0.2 ? "WARNING: " : "", "616E jack: ", room, " mm clear under the label recess"));
+}
 for (p = tall_parts) {
     room = ceiling_at(p[1], p[2]) - pcb_top_z;
     echo(str(room < p[5] ? "WARNING: " : "", p[0], ": ", room, " mm above the PCB, part is ", p[5]));
@@ -294,8 +311,12 @@ module top_shell() {
         for (d = top_dowels) dowel_hole(d, top_split_at(d[5]));
         // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance
         translate([jack_x - jack_open / 2, IY1 - 1, -1])
-            cube([jack_open, wall + 2, floor_z + jack_size[2] + jack_clear + 1]);
+            cube([jack_open, wall + 2, jack_notch_top + 1]);
+        // room over a 616E: thin the label skin above it
+        if (j616) hull() for (y = [jack_in[1], IY1]) translate([jack_in[0], y - 0.01, -1])
+            cube([jack_in[2] - jack_in[0], 0.02, lbl_floor(min(y, LBL[3])) - j616_skin + 1]);
     }
+    if (j616) jack_filler(0, jack_notch_top);
 }
 
 /* ---------------------------------------------------------------- bottom shell */
@@ -353,19 +374,34 @@ module bottom_shell() {
         translate([jack_x - jack_open / 2, IY1 - 1, floor_z])
             cube([jack_open, wall + 2, CZ]);
     }
+    if (j616) jack_filler(floor_z, 0);
+}
+
+// jack_filler: closes the plug notch between z0 and z1 in front of a 616E, short of the outside so the notch
+// still shows, with a hole for the plug from the floor up
+module jack_filler(z0, z1) {
+    difference() {
+        intersection() {
+            shell_solid();
+            translate([jack_x - jack_open / 2 - 0.01, IY1 - 0.01, z0 - 0.01])
+                cube([jack_open + 0.02, CY1 - j616_fill - IY1 + 0.01, z1 - z0 + 0.02]);
+        }
+        translate([jack_x - j616_hole[0] / 2, IY1 - 1, floor_z - 1]) cube([j616_hole[0], wall + 2, j616_hole[1] + 1]);
+    }
 }
 
 // jack_box: side and front walls round the jack, open on top so the jack drops in and its wires leave over
 // the top or through a cutout in the front wall, and a short stop inside the right wall, as on the original,
-// that holds the jack in place
+// that holds the jack in place.  A 616E's wires leave its back near the top, over the box, and it has no slot,
+// so it gets neither.
 module jack_box() {
     x0 = jack_in[0]; x1 = jack_in[2]; y0 = jack_in[1]; t = jack_box_t;
     difference() {
         translate([x0 - t, y0 - t, floor_z - 0.01]) cube([x1 - x0 + 2 * t, IY1 - y0 + t, tongue_h - floor_z + 0.01]);
         translate([x0, y0, floor_z]) cube([x1 - x0, IY1 - y0 + 1, tongue_h - floor_z + 1]);
-        translate([x0, y0 - t - 1, floor_z + jack_wires[1]]) cube([jack_wires[0], t + 2, tongue_h - floor_z]);
+        if (!j616) translate([x0, y0 - t - 1, floor_z + jack_wires[1]]) cube([jack_wires[0], t + 2, tongue_h - floor_z]);
     }
-    translate([x1 - jack_stop[0], IY1 - jack_stop[1] - t, floor_z - 0.01])
+    if (!j616) translate([x1 - jack_stop[0], IY1 - jack_stop[1] - t, floor_z - 0.01])
         cube([jack_stop[0] + 0.01, t, -floor_z + 0.01]);
 }
 
@@ -414,7 +450,8 @@ module snap_pocket(x, s) {
 module board() {
     color("darkgreen", 0.8) translate([0, 0, pcb_bot_z]) linear_extrude(pcb_t) polygon(pcb_outline);
     color("dimgray", 0.8) translate([0, 0, plate_bot_z]) linear_extrude(plate_t) polygon(plate_outline);
-    color("silver", 0.8) translate([jack_right - jack_size[0], IY1 - jack_size[1], floor_z]) {
+    if (j616) color("silver", 0.8) translate([jack_x - j616_size[0] / 2, IY1 - j616_size[1], floor_z]) cube(j616_size);
+    else color("silver", 0.8) translate([jack_right - jack_size[0], IY1 - jack_size[1], floor_z]) {
         cube(jack_size);
         translate([jack_size[0] - jack_open + 0.1, jack_size[1] - 0.01, 0]) cube([jack_open - 0.1, wall + 0.01, jack_size[2]]);
     }

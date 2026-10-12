@@ -73,6 +73,15 @@ the frame. Positions are good to a few millimetres.
   in the front wall's left end lets the wires out (`jack_wires`: 8 mm wide, 2.5 mm of wall left under
   it). All of it is checked with the jack test print (below). The box clears the PCB's step at
   y 134.9 by 0.15 mm (the render warns if it reaches it).
+- Or a common wired 616E jack (KLS12-199, HWS8282), with `jack_type = "616e"` or
+  `make case JACK=616e`. Its size is the larger of the two makers' drawings (`j616_size`:
+  11.4 x 10.2 mm, 17.42 tall). It stands on the floor centred in the notch, in a box like the
+  other's but with no stop or wire cutout, since its wires leave from the top of its back. A filler
+  closes the notch in both shells 0.6 mm in from the outside (`j616_fill`), so the notch still
+  shows, with a 9 x 8.5 mm hole for the plug from the floor up (`j616_hole`). At 17.42 mm it only
+  just fits under the label recess, so the label skin above it is thinned from 1.6 to 1.0 mm
+  (`j616_skin`), leaving 0.4 mm. Not test-fitted yet: the plug hole's size and position are
+  from the drawings.
 
 ## Assumed, needs checking
 
@@ -109,7 +118,8 @@ inside the wall, split with the joint, with a 2 mm hole along the case through b
 
 `make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
-printing the whole case.
+printing the whole case. `make case-jack JACK=616e` writes the 616E's, with a `-616e` suffix,
+as does `make case JACK=616e` for the whole case.
 
 `make case-joint` writes four test pieces: a strip along the front of each shell (x 160-262, the
 front 18 mm), split at its joint like the full case. It has the front dowel of each joint and the

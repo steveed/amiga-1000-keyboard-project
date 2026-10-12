@@ -13,6 +13,10 @@ TOOLS := docker compose run --rm tools
 OPENSCAD := docker compose run --rm -T openscad --backend=manifold
 FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
+# Which jack the case takes (case/a1000_case.scad, jack_type): nose, or 616e.  616e files get a -616e suffix.
+JACK ?= nose
+JACK_VARS := -D "jack_type=\"$(JACK)\""
+JACK_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))
 
 .PHONY: drc bom fab print plate case case-jack case-joint label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
@@ -59,10 +63,10 @@ plate:
 case:
 	mkdir -p $(BUILD)/case
 	for p in $(CASE_PARTS); do \
-		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
 	done
-	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p \
-		-o $(BUILD)/case/case-assembly.png case/a1000_case.scad
+	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p $(JACK_VARS) \
+		-o $(BUILD)/case/case-assembly$(JACK_SUF).png case/a1000_case.scad
 
 # Stickers for the label recess under the case, one per board revision, 1:1.
 label:
@@ -75,7 +79,7 @@ label:
 case-jack:
 	mkdir -p $(BUILD)/case
 	for p in jack_test_bottom jack_test_top; do \
-		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
 	done
 
 # Test prints of a strip along the front of each shell, across both glue joints and a snap.

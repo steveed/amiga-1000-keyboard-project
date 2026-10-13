@@ -18,7 +18,7 @@ JACK ?= nose
 JACK_VARS := -D "jack_type=\"$(JACK)\""
 JACK_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))
 
-.PHONY: drc bom fab print plate case case-jack case-joint label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
+.PHONY: drc bom fab print plate case case-one case-jack case-joint label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -73,6 +73,13 @@ label:
 	mkdir -p $(BUILD)/case
 	for r in 1 2; do \
 		$(TOOLS) python tools/make_label.py $(BUILD)/case/$(NAME)-label-rev$$r.svg $$r || exit 1; \
+	done
+
+# The case in two parts, each shell in one piece, for a bed that takes 406 x 158 mm.
+case-one:
+	mkdir -p $(BUILD)/case
+	for p in top bottom; do \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -D split=false $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
 	done
 
 # Test prints of just the jack corner of each shell, to try the jack before printing the whole case.

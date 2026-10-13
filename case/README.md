@@ -102,6 +102,8 @@ the frame. Positions are good to a few millimetres.
 | top_right | 198 x 158 x 15 | face down |
 | bottom_left | 193 x 158 x 16 | base down |
 | bottom_right | 227 x 158 x 16 | base down |
+| top (`make case-one`) | 406 x 158 x 15 | face down |
+| bottom (`make case-one`) | 406 x 158 x 16 | base down |
 | jack_test_bottom | 50 x 25 x 16 | base down |
 | jack_test_top | 50 x 25 x 12 | face down |
 | joint_test_top_left / _right | 52 / 62 x 11 x 15 | face down |
@@ -115,6 +117,10 @@ needs supports. The exception is the label recess, which prints as a ~17 mm brid
 Each joint has two dowels, front and back, so the halves can't slide while the glue sets: a block
 inside the wall, split with the joint, with a 2 mm hole along the case through both halves. Push a
 20 mm length of 1.75 mm filament into each hole, then slide the halves together flat on the bench.
+
+`make case-one` writes the shells in one piece each instead (`split = false`), with no joints or
+dowels, for a bed that takes 406 x 158 mm, or one about 400 mm square with the part laid diagonally.
+They take the same `JACK=616e`.
 
 `make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before

@@ -16,6 +16,7 @@
 //   top_left / top_right        top shell, printed face down, joined on a 45 degree scarf at top_split_x
 //   bottom_left / bottom_right  bottom shell, printed base down, joined the same way at bottom_split_x
 // The two splits are staggered so each shell bridges the other's joint.
+// Or two parts on a big enough bed (split = false): top and bottom, each in one piece.
 //
 // Fixings: 4x M3 screws from underneath, through the bottom bosses, the PCB/plate case holes
 // and into heat-set inserts in the top shell's columns, like the original's case screws.  Snaps
@@ -65,7 +66,9 @@ screw_clear_d = 3.4;
 cbore_d       = 6.5;    // M3 pan/button head
 cbore_depth   = 3.0;
 
-// Printing splits: 45 degree scarf joints, glued
+// Printing splits: 45 degree scarf joints, glued.  split = false prints each shell in one piece, with no
+// dowels, for a bed that takes 406 x 158 mm (or about 400 mm square, laid diagonally).
+split          = true;
 top_split_x    = 200;
 bottom_split_x = 185;
 
@@ -407,12 +410,13 @@ module jack_box() {
 
 /* ---------------------------------------------------------------- dowels and snaps */
 
-// dowel_block / dowel_hole: d = [y0, y1, z0, z1, hole y, hole z], centred on x along the case
+// dowel_block / dowel_hole: d = [y0, y1, z0, z1, hole y, hole z], centred on x along the case; none when
+// the shells print in one piece
 module dowel_block(d, x) {
-    translate([x - dowel_block_l / 2, d[0], d[2]]) cube([dowel_block_l, d[1] - d[0], d[3] - d[2]]);
+    if (split) translate([x - dowel_block_l / 2, d[0], d[2]]) cube([dowel_block_l, d[1] - d[0], d[3] - d[2]]);
 }
 module dowel_hole(d, x) {
-    translate([x - dowel_len / 2 - 0.5, d[4], d[5]]) rotate([0, 90, 0]) cylinder(d = dowel_d, h = dowel_len + 1, $fn = 16);
+    if (split) translate([x - dowel_len / 2 - 0.5, d[4], d[5]]) rotate([0, 90, 0]) cylinder(d = dowel_d, h = dowel_len + 1, $fn = 16);
 }
 
 // snap_hook2d: the hook's profile in (out, z), out measured outward from the arm's outer face.  A lead-in

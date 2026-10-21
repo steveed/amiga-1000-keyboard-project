@@ -53,6 +53,10 @@ No fuse changes are needed: the firmware turns off the factory clock divider and
 
 ## Still to check on hardware
 
-- Everything: the first boards haven't arrived. In particular the factory DFU bootloader on a
-  blank chip, the Amiga handshake catch, the matrix settle time (10 us per row), the reset on a
-  real A1000, and both connections live together.
+First board, before its switches were fitted: it came up in the factory DFU bootloader, flashed,
+and enumerated as `1209:A10B`. Keys shorted with tweezers typed over USB. Still to check:
+
+- Every key with real switches, and the 5 ms debounce and 10 us row settle time with them.
+- Caps Lock and its LED on USB, and the Ctrl + both Alts + Help bootloader combo.
+- Everything on the Amiga side: AMIGA_PWR, the handshake catch, the reset on a real A1000, and
+  both connections live together.

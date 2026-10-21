@@ -48,5 +48,6 @@ Build it with `make firmware`, test it with `make firmware-test`, and flash it w
 
 ## Status
 
-Designed, routed, and passing DRC; the firmware builds and passes its tests. Neither has been run
-on a real board yet: the first boards haven't arrived.
+Designed, routed, and passing DRC; the firmware builds and passes its tests. On the first board,
+before its switches were fitted, the firmware flashed over USB and the USB keyboard works on initial
+testing. The Amiga side hasn't been tried yet.

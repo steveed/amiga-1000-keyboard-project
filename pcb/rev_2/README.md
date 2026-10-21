@@ -162,5 +162,6 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 
 ## Still to do
 
-- Firmware: ported and unit-tested ([firmware/](../../firmware/README.md)), not yet run on a board.
-- Build and test the first board, including the factory USB bootloader on a blank chip.
+- Firmware: ported and unit-tested ([firmware/](../../firmware/README.md)). On the first board the
+  factory USB bootloader worked on the blank chip, and the USB keyboard works on initial testing.
+- Finish testing the first board: every key with switches fitted, and the Amiga side.

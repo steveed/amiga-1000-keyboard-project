@@ -24,6 +24,9 @@ A blank 32U4 runs straight into its factory USB (DFU) bootloader, so a new board
 to get back to the bootloader. If the firmware can't get there, short JP2 (BOOT) while shorting
 JP1 (RESET), or use the ISP header (J3). See `pcb/rev_2/README.md`.
 
+The flash target forces the erase: the factory bootloader refuses writes until it has been sent an
+erase, and `dfu-programmer` skips the erase on a chip that already reads blank.
+
 No fuse changes are needed: the firmware turns off the factory clock divider and JTAG itself.
 
 ## How it works

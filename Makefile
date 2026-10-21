@@ -168,7 +168,7 @@ firmware-test:
 # Flash over USB with the 32U4's DFU bootloader.  This one runs on the host (brew install
 # dfu-programmer): Docker Desktop on macOS can't pass USB devices through to a container.
 firmware-flash: firmware
-	dfu-programmer atmega32u4 erase
+	dfu-programmer atmega32u4 erase --force
 	dfu-programmer atmega32u4 flash $(BUILD)/firmware/$(NAME)-rev2.hex
 	dfu-programmer atmega32u4 launch
 

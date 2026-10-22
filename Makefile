@@ -18,7 +18,7 @@ JACK ?= nose
 JACK_VARS := -D "jack_type=\"$(JACK)\""
 JACK_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))
 
-.PHONY: drc bom fab print plate case case-one case-jack case-joint label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
+.PHONY: drc bom fab print plate case case-one case-jack case-joint keycaps label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -94,6 +94,16 @@ case-joint:
 	mkdir -p $(BUILD)/case
 	for p in joint_test_top_left joint_test_top_right joint_test_bottom_left joint_test_bottom_right; do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
+	done
+
+# Rev 2's keycaps in the A1000's sizes (Cherry MX), each with a view of its underside.
+KEYCAPS := return tilde backspace tab lshift rshift
+keycaps:
+	mkdir -p $(BUILD)/case
+	for k in $(KEYCAPS); do \
+		$(OPENSCAD) --export-format=binstl -D "key=\"$$k\"" -o $(BUILD)/case/$(NAME)-$$k-keycap.stl case/a1000_keycaps.scad && \
+		$(OPENSCAD) --render --imgsize=1200,900 --camera=0,0,0,200,0,20,140 --autocenter --viewall --projection=p -D "key=\"$$k\"" \
+			-o $(BUILD)/case/$$k-keycap.png case/a1000_keycaps.scad || exit 1; \
 	done
 
 # Rev 2 (ATmega32U4, surface mount): regenerate the schematic from tools/gen_rev2_sch.py, then

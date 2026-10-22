@@ -35,6 +35,7 @@ Everything runs in Docker through `make` (KiCad 10 and a small Python image):
 - `make fab` - gerbers and drill files, zipped in `build/fab/`.
 - `make plate` - the switch plate (DXF and a gerber zip for FR4) in `build/plate/`, generated from the PCB.
 - `make case` - the printable case (four STLs and a preview) in `build/case/`, from `case/a1000_case.scad`. See [case/README.md](case/README.md).
+- `make keycaps` - rev 2's keycaps in the A1000's sizes (Return, Shifts, `~`, Backspace, Tab; STLs) in `build/case/`, from `case/a1000_keycaps.scad`.
 - `make rev2-sch`, `make rev2-pcb`, `make rev2-route`, `make rev2-drc` - the rev 2 board (ATmega32U4, surface mount, Cherry MX). See [pcb/rev_2/README.md](pcb/rev_2/README.md).
 - `make firmware`, `make firmware-test` - the rev 2 firmware and its unit tests. See [firmware/README.md](firmware/README.md).
 - `make render` - the README renders in `build/render/`.

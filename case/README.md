@@ -137,6 +137,31 @@ bottom before printing the whole case.
 revision. Print it at 100% on sticker paper and cut on the grey outline; it sits 0.5 mm inside the
 recess all round.
 
+## Keycaps (rev 2)
+
+`make keycaps` writes `build/case/*-<key>-keycap.stl` from [`a1000_keycaps.scad`](a1000_keycaps.scad):
+MX caps for rev 2 in the A1000's sizes, for the keys an off-the-shelf MX set doesn't cover.
+
+| key | size | stems |
+|---|---|---|
+| `return` | 1.25U over 2U, between `]`/`'` and HELP/UP | switch, vertical 2U stabiliser, dummy switch in SW55 |
+| `tilde` | 1.25U | switch |
+| `backspace` | 1.75U | switch |
+| `tab` | 1.75U | switch |
+| `lshift` | 2.5U (US) | switch, 2U stabiliser |
+| `rshift` | 2U | switch, 2U stabiliser |
+
+The A500KB's US Return cap is 1.5U over 2.25U and runs into HELP and UP.
+
+The profile is Cherry's (GMK), with the figures from [KeyV2](https://github.com/rsheldiii/KeyV2)'s
+cherry profile: a height and tilt for each row, a 0.65 mm cylindrical dish, and the top narrowed to
+11.85 x 14.64 mm and moved 2 mm back. Each cap takes the Cherry row of its board row: `~` and
+Backspace the number row (9.8 mm, flat), Tab the top letter row (7.45 mm, 2.5°), Return the home row
+(6.55 mm, 5° over its two rows), the Shifts the bottom row (7.35 mm, 11.5°). They'll sit with a GMK
+or other Cherry-profile set; they are not the A1000's own sculpt.
+
+Print them top down, stems up; the dish needs a little support or a raft. `cross_w` sets the stem fit.
+
 ## Hardware
 
 - 4 M3 x 16 screws, pan or button head (15-17 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column, from 3.15 mm above the parting line).

@@ -25,7 +25,7 @@
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
-part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top","joint_test_top_left","joint_test_top_right","joint_test_bottom_left","joint_test_bottom_right"]
+part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top","joint_test_top_left","joint_test_top_right","joint_test_bottom_left","joint_test_bottom_right","spacers"]
 show = ["top", "bottom", "board"];  // what the assembly view includes
 explode = 0;                        // lift the top shell this far in the assembly view
 
@@ -39,11 +39,19 @@ label_skin    = 1.6;    // material left under the sloped label recess
 print_safe    = true;   // stop the rounded edges at 45 degrees and finish with a chamfer, so both
                         // shells print without supports.  false = the full round.
 
-// Board stack.  The model shows the plate at z = 0.8 (the floor of its key wells); the rest is assumed.
+// Which board: 1, the Mitsumi recreation; 2, the MX board, which brings a thinner stack, a thicker
+// plate and a USB-C socket.
+board_rev     = 2;      // [1, 2]
+
+// Board stack.  The model shows the plate at z = 0.8 (the floor of its key wells).
 plate_top_z   = 0.8;    // plate top surface
-plate_t       = 1.2;    // 1.2 mm FR4 plate (version 1); the original steel plate is 1.25
-plate_to_pcb  = 5.0;    // plate top -> PCB top.  NOT MEASURED: depends on the Mitsumi switches.
+rev1_plate_t  = 1.2;    // 1.2 mm FR4 plate (version 1); the original steel plate is 1.25
+rev1_to_pcb   = 5.0;    // plate top -> PCB top.  NOT MEASURED: depends on the Mitsumi switches.
+rev2_plate_t  = 1.6;    // 1.6 mm FR4 MX plate
+rev2_to_pcb   = 5.05;   // plate top -> PCB top: the plate, MX switches and PCB measure 6.65 mm
 pcb_t         = 1.6;
+plate_t       = board_rev == 2 ? rev2_plate_t : rev1_plate_t;
+plate_to_pcb  = board_rev == 2 ? rev2_to_pcb : rev1_to_pcb;
 
 // Key wells: a skirt round each opening, as in the original
 skirt_t       = 1.2;
@@ -57,6 +65,8 @@ tongue_clear  = 0.2;
 // Screws and bosses
 boss_d        = 11;     // bottom boss under the PCB / plate tab
 pcb_boss_h    = 1.0;    // under the PCB the boss is a 1 mm shoulder, as on the original, so it never props the board up
+shoulder_d    = 9.5;    // rev 2: a shoulder up to the PCB, which rests on it.  Narrower than the boss, to clear
+                        // the head of a plate screw in H1, 7.5 mm from the left case hole.
 spigot_d      = 7.0;    // passes up through the 7.5 mm case holes in the PCB and plate
 squeeze       = 0.2;    // spigot stops this far below the plate top, so the screws clamp the stack
 column_d      = 10;     // top shell screw column; it stops level with the skirts, as on the original
@@ -120,6 +130,15 @@ j616_size     = [11.4, 10.2, 17.42];  // width over its side ridge (x), depth (y
 j616_hole     = [9.0, 8.5];           // plug hole in the filler: width (centred on the jack), height from the floor
 j616_fill     = 0.6;    // the filler stands this far in from the outside of the back wall, so the notch still shows
 j616_skin     = 1.0;    // label skin left over the jack (label_skin elsewhere), for room above its 17.4 mm
+
+// USB-C in the back wall, for rev 2's socket (J2), which opens to the rear on the PCB's back edge.  The
+// socket's mouth is 4.8 mm in from the outside, so the opening takes the plug's moulding as well, through
+// both shells across the parting line.
+usb_c         = board_rev == 2;       // rev 1 has no USB socket
+usb_x         = 125.0;  // socket centre (J2 at x 140 in KiCad)
+usb_open      = [13.0, 7.5];          // opening for the plug's moulding: width, height, centred on the socket
+usb_r         = 2.0;    // its corner radius
+usb_above     = 1.6;    // socket centre above the PCB top (HRO TYPE-C-31-M-12, 3.2 mm tall)
 
 // Test print: just the jack corner of each shell, to try the jack in before printing the whole case
 jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of the case
@@ -207,6 +226,7 @@ j616    = jack_type == "616e";
 jack_in = j616 ? [jack_x - j616_size[0] / 2 - jack_clear, IY1 - j616_size[1] - jack_clear, jack_x + j616_size[0] / 2 + jack_clear]
                : [jack_right - jack_size[0] - jack_clear, IY1 - jack_size[1] - jack_clear, jack_right];  // inside of the jack box: x0, y0, x1
 jack_notch_top = floor_z + jack_size[2] + jack_clear;                  // top of the top shell's notch, the same for both jacks
+usb_z   = pcb_top_z + usb_above;                                       // centre of the USB-C opening
 
 wall_in = [IY0 + tongue_clear + tongue_t, IY1 - tongue_clear - tongue_t];   // inside of the bottom shell's wall, below the parting line
 function top_split_at(z)    = top_split_x - (z - CZ);       // where each scarf crosses height z
@@ -217,7 +237,7 @@ function in_lbl(x, y, m = 0) = x > LBL[0] - m && x < LBL[2] + m && y > LBL[1] - 
 function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin : ceil_z;
 
 echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm, before its rubber feet"));
-echo(str("plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
+echo(str("rev ", board_rev, ": plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
 echo(str("key well skirts stop ", CZ - skirt_h - plate_top_z, " mm above the plate"));
 if (CZ - skirt_h <= plate_top_z) echo("WARNING: the key well skirts reach the plate");
 if (jack_in[1] - jack_box_t < 134.90) echo(str("WARNING: the jack box reaches y ", jack_in[1] - jack_box_t,
@@ -233,10 +253,19 @@ for (p = tall_parts) {
 echo(str("top halves ", top_split_x + CZ - CX0, " / ", CX1 - top_split_x,
          "   bottom halves ", bottom_split_x - CX0, " / ", CX1 - bottom_split_x + CZ));
 
+if (usb_c) echo(str("USB-C opening: z ", usb_z - usb_open[1] / 2, " to ", usb_z + usb_open[1] / 2,
+                    ", socket mouth ", CY1 - pcb_outline[4][1], " mm in from the outside"));
+
 /* ---------------------------------------------------------------- helpers */
 
 module rrect(x0, y0, x1, y1, r) {
     translate([x0 + r, y0 + r]) offset(r = r) square([x1 - x0 - 2 * r, y1 - y0 - 2 * r]);
+}
+
+// usb_cut: the USB-C opening through the back wall, and the tongue inside it
+module usb_cut() {
+    if (usb_c) translate([0, wall_in[1] - 1, 0]) rotate([-90, 0, 0]) linear_extrude(CY1 - wall_in[1] + 2)
+        rrect(usb_x - usb_open[0] / 2, -usb_z - usb_open[1] / 2, usb_x + usb_open[0] / 2, -usb_z + usb_open[1] / 2, usb_r);
 }
 
 // profile2d: the case cross-section in (y, z): a rectangle with the four long edges rounded.
@@ -315,6 +344,7 @@ module top_shell() {
         // notch over the bottom shell's plug opening, up to the top of the jack, for plug clearance
         translate([jack_x - jack_open / 2, IY1 - 1, -1])
             cube([jack_open, wall + 2, jack_notch_top + 1]);
+        usb_cut();
         // room over a 616E: thin the label skin above it
         if (j616) hull() for (y = [jack_in[1], IY1]) translate([jack_in[0], y - 0.01, -1])
             cube([jack_in[2] - jack_in[0], 0.02, lbl_floor(min(y, LBL[3])) - j616_skin + 1]);
@@ -352,6 +382,7 @@ module bottom_shell() {
             // bosses: a low shoulder under the PCB and a full-height one under the plate tab, with spigots up through the holes
             for (p = pcb_screws) translate([p[0], p[1], floor_z - 0.01]) {
                 cylinder(d = boss_d, h = pcb_boss_h);
+                if (board_rev == 2) cylinder(d = shoulder_d, h = pcb_bot_z - floor_z);
                 cylinder(d = spigot_d, h = plate_top_z - squeeze - floor_z);
             }
             translate([tab_screw[0], tab_screw[1], floor_z - 0.01]) {
@@ -376,6 +407,7 @@ module bottom_shell() {
         // shell's matching notch completes it.
         translate([jack_x - jack_open / 2, IY1 - 1, floor_z])
             cube([jack_open, wall + 2, CZ]);
+        usb_cut();
     }
     if (j616) jack_filler(floor_z, 0);
 }
@@ -459,8 +491,22 @@ module board() {
         cube(jack_size);
         translate([jack_size[0] - jack_open + 0.1, jack_size[1] - 0.01, 0]) cube([jack_open - 0.1, wall + 0.01, jack_size[2]]);
     }
+    if (usb_c) color("silver", 0.8) translate([usb_x - 4.47, pcb_outline[4][1] - 7.3, pcb_top_z]) cube([8.94, 7.3, 3.2]);
     color("orange", 0.8) for (p = tall_parts) translate([p[1] - p[3] / 2, p[2] - p[4] / 2, pcb_top_z]) cube([p[3], p[4], p[5]]);
 }
+
+/* ---------------------------------------------------------------- spacers */
+
+// Spacers that put a rev 2 board in a case printed for rev 1: rings over the three PCB spigots, under
+// the PCB, tall enough that the rev 2 plate's tab also rests on the rev 1 tab boss.
+spacer_h = (plate_top_z - rev1_plate_t) - (rev2_to_pcb - rev2_plate_t + pcb_t) - (-CZ + floor_t + pcb_boss_h);
+module spacers() {
+    for (i = [0 : len(pcb_screws) - 1]) translate([i * (shoulder_d + 3), 0, 0]) difference() {
+        cylinder(d = shoulder_d, h = spacer_h, $fn = 64);
+        translate([0, 0, -1]) cylinder(d = spigot_d + 0.4, h = spacer_h + 2, $fn = 64);
+    }
+}
+if (part == "spacers") echo(str("spacers: ", len(pcb_screws), " rings ", spacer_h, " mm tall"));
 
 /* ---------------------------------------------------------------- output */
 
@@ -484,6 +530,7 @@ if (part == "assembly") {
     if (search(["bottom"], show)[0] != []) color("#d8d0c0") bottom_shell();
     if (search(["board"], show)[0] != []) board();
 }
+if (part == "spacers")      spacers();
 if (part == "top")          print_top() top_shell();
 if (part == "bottom")       print_bottom() bottom_shell();
 if (part == "top_left")     print_top() top_piece(true);

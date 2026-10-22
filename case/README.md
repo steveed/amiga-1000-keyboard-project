@@ -52,8 +52,10 @@ the frame. Positions are good to a few millimetres.
   Each bottom boss carries a 7 mm spigot up through the PCB and plate. Under the PCB the boss is a
   1 mm shoulder on the floor, as on the original, so the spigot passes through the PCB's clearance
   hole and the board is never propped up by the case. Under the plate tab the boss runs up to the
-  plate. A column in the top shell, with a heat-set insert, stops level with the key-well skirts
-  (8.65 mm below the top, as on the original), so it doesn't reach the plate.
+  plate. Rev 2's stack is thinner (see below), so its case adds a 9.5 mm shoulder up to the PCB,
+  which rests on it; 9.5 mm clears the head of a plate screw in H1, 7.5 mm from the left hole. A
+  column in the top shell, with a heat-set insert, stops level with the key-well skirts (8.65 mm
+  below the top, as on the original), so it doesn't reach the plate.
 - Three snaps along the front and three along the back (`snap_x`) hold the long edges down between
   the screws. Each is a 10 mm arm hanging from the top shell just inside the tongue, with a hook that
   catches a pocket in the bottom shell's wall below the parting line. The catch face slopes at 30
@@ -82,12 +84,30 @@ the frame. Positions are good to a few millimetres.
   just fits under the label recess, so the label skin above it is thinned from 1.6 to 1.0 mm
   (`j616_skin`), leaving 0.4 mm. Not test-fitted yet: the plug hole's size and position are
   from the drawings.
+- A USB-C opening in the back wall for rev 2's socket (J2), which opens to the rear on the PCB's
+  back edge at x 125, about 31 mm right of the jack. The socket's mouth is 4.8 mm in from the
+  outside, so the opening takes the plug's moulding too: 13 x 7.5 mm, corners r 2 (`usb_open`),
+  centred on the socket 1.6 mm above the PCB, across the parting line in both shells. Rev 2 only.
+
+## Rev 1 or rev 2
+
+`board_rev` (`make case REV=1`, files with a `-rev1` suffix; rev 2 is the default) picks the board:
+
+- **Rev 2:** the MX plate is 1.6 mm FR4, and plate, switches and PCB measure 6.65 mm from the plate
+  top to the PCB's underside. The shoulders under the PCB come up to meet it, the tab boss stops
+  under the thicker plate, and there's the USB-C opening.
+- **Rev 1:** a 1.2 mm plate, and an assumed 5 mm from plate top to PCB top. The Mitsumi board with
+  its clear cover underneath is closer to 9 mm.
+
+`make case-spacers` writes three rings, 9.5 mm across and 2.85 mm tall, that put a rev 2 board in a
+case printed for rev 1: they slide over the three PCB spigots under the board, and lift it so the
+plate's tab also rests on the rev 1 tab boss.
 
 ## Assumed, needs checking
 
-- **Plate to PCB spacing** (`plate_to_pcb`, 5.0 mm). Not measured. It sets the PCB height and
+- **Rev 1 plate to PCB spacing** (`rev1_to_pcb`, 5.0 mm). Not measured. It sets the PCB height and
   so the room under it (3.5 mm to the floor at 5.0, for the leads and the three resistors on the
-  solder side).
+  solder side). Rev 2's is measured.
 - **Plate height** (`plate_top_z`, 0.8). From the model's well floor. It decides how far the
   keycaps stand proud of the top.
 - **Tall parts under the label recess.** Y1 is laid flat on the original (about 5 mm tall), so it

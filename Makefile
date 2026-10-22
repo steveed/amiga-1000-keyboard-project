@@ -15,10 +15,12 @@ FIRMWARE := docker compose run --rm -T firmware
 CASE_PARTS := top_left top_right bottom_left bottom_right
 # Which jack the case takes (case/a1000_case.scad, jack_type): nose, or 616e.  616e files get a -616e suffix.
 JACK ?= nose
-JACK_VARS := -D "jack_type=\"$(JACK)\""
-JACK_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))
+# Which board the case takes (board_rev): 2, or 1 for the Mitsumi board.  Rev 1 files get a -rev1 suffix.
+REV ?= 2
+CASE_VARS := -D "jack_type=\"$(JACK)\"" -D board_rev=$(REV)
+CASE_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))$(if $(filter 2,$(REV)),,-rev$(REV))
 
-.PHONY: drc bom fab print plate case case-one case-jack case-joint keycaps label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
+.PHONY: drc bom fab print plate case case-one case-jack case-joint case-spacers keycaps label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -63,10 +65,10 @@ plate:
 case:
 	mkdir -p $(BUILD)/case
 	for p in $(CASE_PARTS); do \
-		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
-	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p $(JACK_VARS) \
-		-o $(BUILD)/case/case-assembly$(JACK_SUF).png case/a1000_case.scad
+	$(OPENSCAD) --render --imgsize=2400,1000 --camera=195,60,0,55,0,20,620 --projection=p $(CASE_VARS) \
+		-o $(BUILD)/case/case-assembly$(CASE_SUF).png case/a1000_case.scad
 
 # Stickers for the label recess under the case, one per board revision, 1:1.
 label:
@@ -79,14 +81,14 @@ label:
 case-one:
 	mkdir -p $(BUILD)/case
 	for p in top bottom; do \
-		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -D split=false $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -D split=false $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
 
 # Test prints of just the jack corner of each shell, to try the jack before printing the whole case.
 case-jack:
 	mkdir -p $(BUILD)/case
 	for p in jack_test_bottom jack_test_top; do \
-		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(JACK_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(JACK_SUF).stl case/a1000_case.scad || exit 1; \
+		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
 
 # Test prints of a strip along the front of each shell, across both glue joints and a snap.
@@ -95,6 +97,11 @@ case-joint:
 	for p in joint_test_top_left joint_test_top_right joint_test_bottom_left joint_test_bottom_right; do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -o $(BUILD)/case/$(NAME)-case-$$p.stl case/a1000_case.scad || exit 1; \
 	done
+
+# Spacers that put a rev 2 board in a case printed for rev 1.
+case-spacers:
+	mkdir -p $(BUILD)/case
+	$(OPENSCAD) --export-format=binstl -D 'part="spacers"' -o $(BUILD)/case/$(NAME)-case-spacers.stl case/a1000_case.scad
 
 # Rev 2's keycaps in the A1000's sizes (Cherry MX), each with a view of its underside.
 KEYCAPS := return tilde backspace tab lshift rshift

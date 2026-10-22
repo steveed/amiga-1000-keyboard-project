@@ -37,7 +37,7 @@ STAB_BAR = 2.6           # metal between the switch cut-out and the stabilizer s
 SPACE_STAB_W, SPACE_STAB_H = 7.1, 11.0
 
 # Rev 2 (MX): keys left out of each plate variant, by key name
-MX_SKIP = {'us': {'L SHIFT ISO', 'L SHIFT INTL', '(RET) INTL'},   # US: 2.5U Shift, Return with no dummy
+MX_SKIP = {'us': {'L SHIFT ISO', 'L SHIFT INTL'},   # US: 2.5U Shift; SW55 holds the Return cap's dummy switch
            'iso': {'L SHIFT'}}                                   # ISO: short Shift, the < > key, the # key
 MX_THICKNESS = 1.6
 # Cherry stabiliser cut-out, around a stabiliser at x = s on the stem line, for the left stabiliser

@@ -136,8 +136,8 @@ and the firmware hex as a GitHub release (`make rev2-release`).
 Henryk does for the A500KB: the US left Shift's stabiliser would land in the ISO short Shift's switch
 hole, so one plate can't take both. The board takes either.
 
-- **US:** the 2.5U left Shift (SW87); no SW92 (ISO short Shift), SW58 (the < > key) or SW55 (the
-  international key under Return). 89 switches.
+- **US:** the 2.5U left Shift (SW87), and SW55 for the Return cap's dummy switch; no SW92 (ISO
+  short Shift) or SW58 (the < > key). 90 switches.
 - **ISO:** SW92, SW58 and SW55; no SW87. 91 switches.
 
 Both have 14 mm Cherry MX switch cut-outs, the Cherry stabiliser cut-outs from Henryk's

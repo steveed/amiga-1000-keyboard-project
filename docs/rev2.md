@@ -22,8 +22,7 @@ The details are in [pcb/rev_2/README.md](../pcb/rev_2/README.md) (the board) and
   both in never back-feeds either one. It also tells the firmware whether the Amiga is powered.
 - **Matrix:** 8 x 12 with a diode per key, so any combination of keys reads correctly.
 - **Layout:** the controller, USB-C and power parts sit on the strip behind the keys. USB-C opens
-  out of the left end of the strip so a right-angle cable can leave through the original case's
-  jack notch.
+  to the rear, through its own opening in the printed case's back wall, clear of the Amiga jack.
 - **Generated:** the schematic, board and plates are built by scripts in `tools/` and routed with
   KiCadRoutingTools, so changes are made in the scripts and regenerated with `make`.
 - **Ordering:** the gerbers, BOM, placement and both plates for JLCPCB are built on every push

@@ -49,10 +49,11 @@ PLACE = {
     'R2': (272.0, 49.0, 90, False), 'JP2': (276.0, 53.0, 0, False),
     'J3': (248.0, 53.0, 0, False), 'TP1': (238.0, 53.0, 0, False),
     'R3': (282.0, 60.0, 0, False),
-    # USB-C on the step face at x 118.55, opening to the left; fuse, CC resistors, ESD, series resistors
-    'J2': (122.42, 45.35, 270, False), 'F1': (131.0, 41.8, 0, False),
-    'R7': (130.0, 52.0, 90, False), 'R8': (133.0, 52.0, 90, False),
-    'U3': (139.0, 46.5, 0, False), 'R9': (146.0, 45.0, 0, False), 'R10': (146.0, 48.5, 0, False),
+    # USB-C on the back edge, opening to the rear, 31 mm right of the jack so the two plugs
+    # don't crowd each other; fuse, CC resistors, ESD, series resistors
+    'J2': (140.0, 43.65, 180, False), 'F1': (131.0, 44.0, 90, False),
+    'R7': (133.0, 51.0, 90, False), 'R8': (136.0, 51.0, 90, False),
+    'U3': (140.0, 53.0, 0, False), 'R9': (146.0, 50.0, 0, False), 'R10': (146.0, 53.5, 0, False),
     # power mux and its parts, between the USB group and the controller, clear of the back edge
     'U2': (161.0, 49.0, 0, False), 'C10': (154.0, 45.0, 0, False), 'C11': (158.0, 44.5, 0, False),
     'C12': (167.0, 47.0, 90, False), 'R4': (154.0, 55.0, 90, False), 'R5': (157.0, 55.0, 90, False),
@@ -194,6 +195,23 @@ def stable(text):
 # sits in a corner, and the router kept leaving one or the other just short.
 ESCAPES = [('U2', '6', '/VBUS', 2.4), ('U2', '1', 'GND', 2.4)]
 
+# Links between pins of the same net that the router can't reach round their neighbours, as offsets
+# from the part's position: (part, net, layer or 'via', points).
+# USB-C's two D+ pads and two D- pads alternate (B6 A7 A6 B7, 0.5 mm apart), so each pair has to be
+# joined round the other.  D+ makes a U-turn behind the pads on top; D- drops to a via each side of
+# it and joins on the back.  For J2 opening to the rear (rotated 180).
+# The TPS2116's two VIN1 pins (3 and 5) are on opposite sides: pin 3 steps out to a via and runs
+# under the chip on the back, clear of the +5V pin above it.
+JUMPERS = [('J2', '/USB_DP', 'F.Cu', [(-0.75, 4.045), (-0.75, 5.15), (0.25, 5.15), (0.25, 4.045)]),
+           ('J2', '/USB_DN', 'F.Cu', [(-0.25, 4.045), (-0.25, 2.75)]),
+           ('J2', '/USB_DN', 'F.Cu', [(0.75, 4.045), (0.75, 5.75)]),
+           ('J2', '/USB_DN', 'via', [(-0.25, 2.75), (0.75, 5.75)]),
+           ('J2', '/USB_DN', 'B.Cu', [(-0.25, 2.75), (0.75, 5.75)]),
+           ('U2', '/VCC_AMIGA', 'F.Cu', [(-0.74, 0.25), (-1.375, 0.25), (-1.575, 0.5)]),
+           ('U2', '/VCC_AMIGA', 'via', [(-1.575, 0.5), (1.0, 1.0)]),
+           ('U2', '/VCC_AMIGA', 'B.Cu', [(-1.575, 0.5), (0.5, 0.5), (1.0, 1.0)]),
+           ('U2', '/VCC_AMIGA', 'F.Cu', [(1.0, 1.0), (0.74, 0.75)])]
+
 
 # Fan-out for the 32U4: every pin but the crystal and USB data pins gets a short track straight out
 # to its own via, the vias alternating between two radii so neighbours 0.8 mm apart don't collide.
@@ -238,6 +256,24 @@ def escapes(board, nets):
         v = pcbnew.PCB_VIA(board)
         v.SetPosition(b); v.SetWidth(mm(0.6)); v.SetDrill(mm(0.3)); v.SetNet(nets[net])
         board.Add(v)
+
+
+def jumpers(board, nets):
+    """The tracks and vias in JUMPERS, placed relative to their parts."""
+    for ref, net, layer, pts in JUMPERS:
+        c = board.FindFootprintByReference(ref).GetPosition()
+        at = lambda p: pcbnew.VECTOR2I(c.x + mm(p[0]), c.y + mm(p[1]))
+        if layer == 'via':
+            for p in pts:
+                v = pcbnew.PCB_VIA(board)
+                v.SetPosition(at(p)); v.SetWidth(mm(0.6)); v.SetDrill(mm(0.3)); v.SetNet(nets[net])
+                board.Add(v)
+            continue
+        for a, b in zip(pts, pts[1:]):
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(at(a)); t.SetEnd(at(b)); t.SetWidth(mm(0.2))
+            t.SetLayer(pcbnew.F_Cu if layer == 'F.Cu' else pcbnew.B_Cu); t.SetNet(nets[net])
+            board.Add(t)
 
 
 def load_fp(fpid):
@@ -319,6 +355,7 @@ def main():
 
     place_diodes(board, diodes, keys)
     escapes(board, nets)
+    jumpers(board, nets)
     fanout(board)
     # Save beside a throwaway project: SaveBoard rewrites the project file next to the board,
     # which would drop the ERC settings and the VERSION text variable from rev 2's.

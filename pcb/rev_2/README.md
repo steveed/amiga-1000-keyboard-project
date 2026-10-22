@@ -71,10 +71,10 @@ Placement and routing notes:
 - Switches sit at rev 1's key centres; Return at its stem.
 - Each key's diode is on the back, between its row and the next, at the first spot that clears every
   pad and hole by 0.5 mm.
-- The controller, USB-C and power parts are on the strip behind the keys. USB-C opens to the left out
-  of the step at the left end of the strip, so a right-angle USB-C cable (a common part for Amiga
-  mods) can turn and leave through the jack notch, which keeps the original case usable; the Amiga
-  header (J1) sits on the board's back edge behind the jack.
+- The controller, USB-C and power parts are on the strip behind the keys. USB-C opens to the rear on
+  the strip's back edge, about 31 mm right of the case's jack, through its own opening in the
+  printed case's back wall. On the first boards it opened to the left out of the step, and the
+  plug ran into the jack. The Amiga header (J1) sits on the board's back edge behind the jack.
 - U1 sits on the right of the strip, where rev 1's controller was, so the matrix lines run along the
   strip instead of converging mid-board. It's turned so its row pins face the keys, and fanned out: every pin but the crystal and USB data
   pins has a short track to its own via, on two staggered rings. About 20 matrix lines converge on

@@ -13,11 +13,11 @@ needs its own MX plate.
 run `make rev2-sch`, which regenerates it and runs ERC. The switches keep rev 1's references and
 key names.
 
-- **Controller:** ATmega32U4 at 16 MHz, in place of the mask-ROM 6500/1. Its firmware will be
+- **Controller:** ATmega32U4 at 16 MHz, in place of the mask-ROM 6500/1. Its firmware is
   ported from Henryk Richter's [A500KB](https://github.com/HenrykRichter/A500KB) (AVR, same licence).
   Flashing:
   - first time: the 32U4 ships with Microchip's USB (DFU) bootloader, and a chip with empty flash
-    runs straight into it, so it can be flashed over USB as it comes (to confirm on the first board);
+    runs straight into it, so it can be flashed over USB as it comes (confirmed on the first boards);
   - updates: the firmware jumps to the bootloader on a key combination, then flash over USB;
   - recovery, if the firmware can't get there: short JP2 (BOOT) while shorting JP1 (RESET), then
     flash over USB; or use the 6-pin ISP header (J3, not fitted; a pogo adapter or a soldered header
@@ -162,6 +162,9 @@ PF4-PF7 are the JTAG pins: the firmware must turn JTAG off (MCUCR.JTD) before it
 
 ## Still to do
 
-- Firmware: ported and unit-tested ([firmware/](../../firmware/README.md)). On the first board the
-  factory USB bootloader worked on the blank chip, and the USB keyboard works on initial testing.
-- Finish testing the first board: every key with switches fitted, and the Amiga side.
+- Firmware: ported and unit-tested ([firmware/](../../firmware/README.md)). The first version of the
+  board has been programmed and tested: the factory USB bootloader worked on the blank chip, and the
+  USB side is fully tested on an assembled prototype.
+- Test the first board's Amiga side.
+- Order the second version (USB-C to the rear, SW55 on the US plate) and check J2's rotation in
+  JLC's placement preview: it changed from 270 to 180 degrees.

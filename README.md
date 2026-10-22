@@ -23,7 +23,8 @@ green = KDAT (PA1, pin 37), red = +5V, black = GND.
 ## Rev 2
 A second board for the same case that needs no donor controller: an ATmega32U4 with open firmware,
 surface-mount parts assembled by the fab, Cherry MX switches, and both the Amiga cable and USB-C
-live at once. See [docs/rev2.md](docs/rev2.md).
+live at once. The first boards have been programmed, and an assembled prototype is fully tested
+over USB. See [docs/rev2.md](docs/rev2.md).
 
 ## Building
 Everything runs in Docker through `make` (KiCad 10 and a small Python image):

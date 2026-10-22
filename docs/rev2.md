@@ -47,6 +47,10 @@ Build it with `make firmware`, test it with `make firmware-test`, and flash it w
 
 ## Status
 
-Designed, routed, and passing DRC; the firmware builds and passes its tests. On the first board,
-before its switches were fitted, the firmware flashed over USB and the USB keyboard works on initial
-testing. The Amiga side hasn't been tried yet.
+The first version of the board (ordered 2026-10-08) has been programmed and tested: the firmware
+flashes over USB, and the USB side is fully tested on an assembled prototype with switches, plate,
+printed case and keycaps. The Amiga side hasn't been tried yet.
+
+The board in the repo is the second version, not yet ordered. Its USB-C opens to the rear, because
+on the first the plug ran into the Amiga jack, and its US plate takes the Return cap's dummy switch.
+It's routed and passing DRC; the firmware builds and passes its tests.

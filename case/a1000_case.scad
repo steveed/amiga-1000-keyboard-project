@@ -25,7 +25,7 @@
 //
 // Render one part:  openscad -o top_left.stl -D 'part="top_left"' a1000_case.scad
 
-part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top","joint_test_top_left","joint_test_top_right","joint_test_bottom_left","joint_test_bottom_right","spacers"]
+part = "assembly"; // ["assembly","top","bottom","top_left","top_right","bottom_left","bottom_right","jack_test_bottom","jack_test_top","joint_test_top_left","joint_test_top_right","joint_test_bottom_left","joint_test_bottom_right","spacers","leg","leg_test","leg_sweep"]
 show = ["top", "bottom", "board"];  // what the assembly view includes
 explode = 0;                        // lift the top shell this far in the assembly view
 
@@ -147,8 +147,45 @@ jack_test     = [70, 120, 125];       // x0, x1, y0; it runs on to the back of t
 // each split at its joint, to try the dowels and a snap before printing the whole case
 joint_test    = [160, 262, 10];       // x0, x1, y1; it runs from the front of the case
 
-feet          = "recessed"; // ["recessed","none"]: pockets for stick-on rubber feet where the model shows four square feet
+// Flat outside: none of the scale model's recesses in the top (label, badge) or the bottom (label),
+// so both shells print on a flat face and the inside of the top is flat too.  false puts them back.
+smooth        = true;
+// Pockets for stick-on rubber feet where the model shows its four feet: round, for standard 1/2 inch
+// (12.7 mm) bumpers, or the model's 19 mm squares.
+feet          = "round";    // ["round","square","none"]
+foot_d        = 13.2;       // round pocket: a 12.7 mm foot with room round it
 foot_depth    = 1.0;        // pocket depth, out of the floor_t floor
+
+// Fold-out legs at the back, after a Logitech keyboard's: a flat leg on two pins, lying flush in a
+// pocket in the floor with its hinge at the back.  It swings down and back until its back face
+// stops on the pocket's back edge, leg_lean past upright, so the case's weight holds it open.
+// Its two outer rails flex in to fit the pins into their holes.
+// AMIGA lettering above the keypad, engraved into the top: the A1200 cover's (amiga-logo.dxf, from
+// ../a1200kb-external-case, an outline 94.78 x 19.43 mm in plan), scaled to the keypad opening's width
+// and centred over it, level with the original's badge.  It takes the badge's place.
+logo          = true;
+logo_w        = 60.26;  // the keypad opening's width (the A1200's is 94.78)
+logo_c        = [356.67, 131.05];   // centre: over the keypad, at the badge's height
+logo_depth    = 0.7;    // as on the A1200
+
+legs          = true;
+leg_x         = [31.7, 358.0];  // leg centres, symmetric about the case's middle; clear of the plate tab's boss
+                                // on the left and of the PCB's step on the right
+leg_axis_y    = 143.5;  // hinge axis; the pocket's back edge lands just ahead of the rear chamfer (y 146.3)
+leg_axis_h    = 2.2;    // axis above the case's underside, so the pin holes are closed below
+leg_w         = 24;     // across the case
+leg_len       = 19;     // axis to tip
+leg_t         = 3.2;    // the folded leg sits leg_axis_h - leg_t / 2 up in its pocket
+leg_lean      = 10;     // past upright when open, degrees
+leg_clear     = 0.3;    // round the leg in its pocket
+leg_rail      = [2.0, 2.2, 14];  // pin rails: width, slot inside each, slot length from the axis
+leg_pin       = [2.5, 1.3];      // pin diameter, length out of the leg's side
+leg_pin_clear = 0.3;    // pin hole oversize, on the diameter
+leg_wall      = 2.5;    // pocket walls
+leg_roof      = 1.2;
+leg_notch     = [12, 4, 1.8];    // finger notch in front of the tip: width, length, depth at the pocket
+legs_open     = false;  // assembly view: legs out
+leg_test      = 20;     // leg test print: the floor this far either side of the left leg's centre
 
 $fn = 48;
 
@@ -188,7 +225,7 @@ badge_depth = 0.5;
 BLBL = [79.94, 52.81, 149.89, 104.27];
 blbl_depth = 0.3;
 
-// Feet: 19 mm square (the model's are 2.25 mm tall; here they are pockets for rubber feet)
+// Feet: 19 mm square (the model's are 2.25 mm tall; here they place pockets for rubber feet)
 foot_w = 19;
 foot_c = [[36.47, 7.84], [353.25, 7.84], [36.47, 108.77], [353.25, 108.77]];
 
@@ -234,7 +271,16 @@ function bottom_split_at(z) = bottom_split_x - (z + CZ);
 function lbl_floor(y) = lbl_z0 + (y - LBL[1]) * (lbl_z1 - lbl_z0) / (LBL[3] - LBL[1]);
 function in_lbl(x, y, m = 0) = x > LBL[0] - m && x < LBL[2] + m && y > LBL[1] - m && y < LBL[3] + m;
 // inside of the top shell at (x, y): lower under the label recess
-function ceiling_at(x, y) = in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin : ceil_z;
+function ceiling_at(x, y) = !smooth && in_lbl(x, y, label_skin) ? lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin : ceil_z;
+
+// Legs.  The open leg's back face meets the pocket's back edge (at the underside) leg_lean past upright.
+leg_stop_y  = leg_axis_y + (leg_t / 2) / cos(leg_lean) + leg_axis_h * tan(leg_lean);
+leg_front   = leg_axis_y - leg_len - leg_clear;                 // pocket front wall, inside
+leg_half    = leg_w / 2 + leg_clear;                            // pocket half-width, inside
+leg_roof_z  = -CZ + leg_axis_h + leg_t / 2 + leg_clear;         // pocket roof, inside
+leg_box_top = leg_roof_z + leg_roof;
+leg_hole    = leg_pin[1] - leg_clear + 0.3;                     // pin hole depth into the side wall
+leg_lift    = leg_len * cos(leg_lean) + leg_t / 2 * sin(leg_lean) - leg_axis_h;   // tip below the underside, open
 
 echo(str("case: ", CX1 - CX0, " x ", CY1 - CY0, " x ", 2 * CZ, " mm, before its rubber feet"));
 echo(str("rev ", board_rev, ": plate top ", plate_top_z, ", PCB top ", pcb_top_z, ", under the PCB ", pcb_bot_z - floor_z, " mm to the floor"));
@@ -243,8 +289,8 @@ if (CZ - skirt_h <= plate_top_z) echo("WARNING: the key well skirts reach the pl
 if (jack_in[1] - jack_box_t < 134.90) echo(str("WARNING: the jack box reaches y ", jack_in[1] - jack_box_t,
                                                   ", past the PCB's back edge at 134.90 there"));
 if (j616) {
-    room = lbl_floor(jack_in[1]) - j616_skin - (floor_z + j616_size[2]);
-    echo(str(room < 0.2 ? "WARNING: " : "", "616E jack: ", room, " mm clear under the label recess"));
+    room = (smooth ? ceil_z : lbl_floor(jack_in[1]) - j616_skin) - (floor_z + j616_size[2]);
+    echo(str(room < 0.2 ? "WARNING: " : "", "616E jack: ", room, " mm clear above it"));
 }
 for (p = tall_parts) {
     room = ceiling_at(p[1], p[2]) - pcb_top_z;
@@ -252,6 +298,19 @@ for (p = tall_parts) {
 }
 echo(str("top halves ", top_split_x + CZ - CX0, " / ", CX1 - top_split_x,
          "   bottom halves ", bottom_split_x - CX0, " / ", CX1 - bottom_split_x + CZ));
+
+if (legs) {
+    echo(str("legs: tip ", leg_lift, " mm below the underside when open, leaning back ", leg_lean,
+             " degrees; pocket roof ", leg_box_top, ", ", leg_box_top - floor_z, " mm above the floor"));
+    if (leg_stop_y - leg_axis_y < leg_t / 2 + leg_clear) echo("WARNING: the leg's hinge end hits the pocket's back wall");
+    if (leg_x[0] + leg_half + leg_wall > tab_screw[0] - boss_d / 2) echo("WARNING: the left leg pocket reaches the plate tab's boss");
+    // the PCB's back edge: 121.36 left of x 71.1, 144.99 to x 342.95, then 119.6
+    for (x = leg_x) {
+        edge = x < 71.1 ? 121.36 : x - leg_half - leg_wall < 342.95 ? 144.99 : 119.6;
+        if (leg_front - leg_wall < edge && leg_box_top > pcb_bot_z - 1)
+            echo(str("WARNING: the leg pocket at x ", x, " runs under the PCB, ", pcb_bot_z - leg_box_top, " mm below it"));
+    }
+}
 
 if (usb_c) echo(str("USB-C opening: z ", usb_z - usb_open[1] / 2, " to ", usb_z + usb_open[1] / 2,
                     ", socket mouth ", CY1 - pcb_outline[4][1], " mm in from the outside"));
@@ -320,7 +379,7 @@ module top_shell() {
             translate([0, 0, CZ - skirt_h]) linear_extrude(skirt_h - top_skin + 0.01)
                 difference() { openings2d(skirt_t); openings2d(); }
             // backing under the sloped label recess
-            hull() for (y = [LBL[1] - label_skin, LBL[3] + label_skin]) {
+            if (!smooth) hull() for (y = [LBL[1] - label_skin, LBL[3] + label_skin]) {
                 z = lbl_floor(min(max(y, LBL[1]), LBL[3])) - label_skin;
                 translate([LBL[0] - label_skin, y - 0.01, z]) cube([LBL[2] - LBL[0] + 2 * label_skin, 0.02, CZ - z - 0.5]);
             }
@@ -332,10 +391,11 @@ module top_shell() {
         }
         translate([0, 0, -1]) linear_extrude(CZ + 2) openings2d();
         // sloped label recess
-        hull() for (y = [LBL[1], LBL[3]])
+        if (!smooth) hull() for (y = [LBL[1], LBL[3]])
             translate([LBL[0], y - 0.01, lbl_floor(y)]) cube([LBL[2] - LBL[0], 0.02, CZ]);
-        // badge recess
-        translate([0, 0, CZ - badge_depth]) linear_extrude(1)
+        // badge recess, or the lettering in its place
+        if (logo) logo_cut();
+        else if (!smooth) translate([0, 0, CZ - badge_depth]) linear_extrude(1)
             rrect(badge_c[0] - badge_w / 2, badge_c[1] - badge_w / 2, badge_c[0] + badge_w / 2, badge_c[1] + badge_w / 2, badge_r);
         // heat-set inserts
         for (p = concat(pcb_screws, [tab_screw])) translate([p[0], p[1], CZ - skirt_h - 0.01])
@@ -346,7 +406,7 @@ module top_shell() {
             cube([jack_open, wall + 2, jack_notch_top + 1]);
         usb_cut();
         // room over a 616E: thin the label skin above it
-        if (j616) hull() for (y = [jack_in[1], IY1]) translate([jack_in[0], y - 0.01, -1])
+        if (j616 && !smooth) hull() for (y = [jack_in[1], IY1]) translate([jack_in[0], y - 0.01, -1])
             cube([jack_in[2] - jack_in[0], 0.02, lbl_floor(min(y, LBL[3])) - j616_skin + 1]);
     }
     if (j616) jack_filler(0, jack_notch_top);
@@ -390,7 +450,9 @@ module bottom_shell() {
                 cylinder(d = spigot_d, h = plate_top_z - squeeze - floor_z);
             }
             for (d = bottom_dowels) dowel_block(d, bottom_split_at(d[5]));
+            if (legs) for (x = leg_x) leg_box(x);
         }
+        if (legs) for (x = leg_x) leg_pocket(x);
         for (d = bottom_dowels) dowel_hole(d, bottom_split_at(d[5]));
         for (s = [0, 1], x = snap_x[s]) snap_pocket(x, s);
         // screws from underneath
@@ -399,10 +461,11 @@ module bottom_shell() {
             cylinder(d = cbore_d, h = cbore_depth + 1);
         }
         // pockets for stick-on rubber feet
-        if (feet == "recessed") for (c = foot_c) translate([0, 0, -CZ - 1])
-            linear_extrude(1 + foot_depth) rrect(c[0] - foot_w / 2, c[1] - foot_w / 2, c[0] + foot_w / 2, c[1] + foot_w / 2, 2);
+        if (feet != "none") for (c = foot_c) translate([0, 0, -CZ - 1]) linear_extrude(1 + foot_depth)
+            if (feet == "round") translate(c) circle(d = foot_d, $fn = 64);
+            else rrect(c[0] - foot_w / 2, c[1] - foot_w / 2, c[0] + foot_w / 2, c[1] + foot_w / 2, 2);
         // label recess underneath
-        translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
+        if (!smooth) translate([0, 0, -CZ - 1]) linear_extrude(1 + blbl_depth) rrect(BLBL[0], BLBL[1], BLBL[2], BLBL[3], 2);
         // plug opening: an open notch from the floor up to the parting line, as on the original; the top
         // shell's matching notch completes it.
         translate([jack_x - jack_open / 2, IY1 - 1, floor_z])
@@ -495,6 +558,62 @@ module board() {
     color("orange", 0.8) for (p = tall_parts) translate([p[1] - p[3] / 2, p[2] - p[4] / 2, pcb_top_z]) cube([p[3], p[4], p[5]]);
 }
 
+// logo_cut: the lettering, engraved logo_depth into the top.  The DXF's outline spans x 298.63-393.41,
+// y 103.66-123.08 in the A1200 keyboard's plane; it is moved to the origin, scaled and placed.
+logo_src = [[298.63, 103.659], [393.409, 123.084]];
+module logo_cut() {
+    k = logo_w / (logo_src[1][0] - logo_src[0][0]);
+    translate([logo_c[0], logo_c[1], CZ - logo_depth]) linear_extrude(logo_depth + 1) scale(k)
+        translate(-(logo_src[0] + logo_src[1]) / 2) import("amiga-logo.dxf");
+}
+
+/* ---------------------------------------------------------------- legs */
+
+// leg: a flat plate, its hinge end rounded about the axis (the x axis here), running back along -y to
+// the tip.  Two slots cut a rail off each side, which carries a pin and flexes in to fit it.
+module leg() {
+    difference() {
+        hull() {
+            rotate([0, 90, 0]) cylinder(r = leg_t / 2, h = leg_w, center = true);
+            translate([-leg_w / 2, -leg_len, -leg_t / 2]) cube([leg_w, leg_len, leg_t]);
+        }
+        for (s = [-1, 1]) translate([s * (leg_w / 2 - leg_rail[0] - leg_rail[1] / 2) - leg_rail[1] / 2, -leg_rail[2], -leg_t])
+            cube([leg_rail[1], leg_rail[2] + leg_t, 2 * leg_t]);
+    }
+    // pins, chamfered at the end to lead them into their holes
+    for (s = [-1, 1]) translate([s * (leg_w / 2 - 0.01), 0, 0]) rotate([0, s * 90, 0]) {
+        cylinder(d = leg_pin[0], h = leg_pin[1] - 0.4 + 0.01, $fn = 32);
+        translate([0, 0, leg_pin[1] - 0.4]) cylinder(d1 = leg_pin[0], d2 = leg_pin[0] - 0.8, h = 0.4 + 0.01, $fn = 32);
+    }
+}
+
+// leg_place: a leg in its pocket at x, turned a degrees out from folded
+module leg_place(x, a) { translate([x, leg_axis_y, -CZ + leg_axis_h]) rotate([a, 0, 0]) children(); }
+
+// leg_box: the block round a pocket, from the underside up to the roof, merging into the back wall
+module leg_box(x) {
+    translate([x - leg_half - leg_wall, leg_front - leg_wall, -CZ + 0.01])
+        cube([2 * (leg_half + leg_wall), wall_in[1] + 0.01 - (leg_front - leg_wall), leg_box_top + CZ - 0.01]);
+}
+
+// leg_pocket: the pocket, open underneath, the pin holes in its sides, and a finger notch that ramps
+// down to the leg's tip so a fingertip gets under it
+module leg_pocket(x) {
+    translate([x - leg_half, leg_front, -CZ - 1]) cube([2 * leg_half, leg_stop_y - leg_front, leg_roof_z + CZ + 1]);
+    for (s = [-1, 1]) translate([x + s * (leg_half - 0.01), leg_axis_y, -CZ + leg_axis_h]) rotate([0, s * 90, 0])
+        cylinder(d = leg_pin[0] + leg_pin_clear, h = leg_hole + 0.01, $fn = 32);
+    hull() {
+        translate([x - leg_notch[0] / 2, leg_front - 0.01, -CZ - 1]) cube([leg_notch[0], 0.02, 1 + leg_notch[2]]);
+        translate([x - leg_notch[0] / 2, leg_front - leg_notch[1], -CZ - 1]) cube([leg_notch[0], 0.02, 1]);
+    }
+}
+
+// leg_test_region: the floor round the left leg's pocket, back to the back of the case
+module leg_test_region() {
+    translate([leg_x[0] - leg_test, leg_front - leg_notch[1] - 4, -CZ - 1])
+        cube([2 * leg_test, CY1 - (leg_front - leg_notch[1] - 4) + 1, 2 * CZ + 2]);
+}
+
 /* ---------------------------------------------------------------- spacers */
 
 // Spacers that put a rev 2 board in a case printed for rev 1: rings over the three PCB spigots, under
@@ -529,7 +648,13 @@ if (part == "assembly") {
     if (search(["top"], show)[0] != []) color("#e8e0d0") translate([0, 0, explode]) top_shell();
     if (search(["bottom"], show)[0] != []) color("#d8d0c0") bottom_shell();
     if (search(["board"], show)[0] != []) board();
+    if (legs && search(["bottom"], show)[0] != []) color("#c8c0b0") for (x = leg_x) leg_place(x, legs_open ? 90 + leg_lean : 0) leg();
 }
+// legs print flat, pins level with the bed
+if (part == "leg")          translate([0, leg_len, leg_t / 2]) leg();
+if (part == "leg_test")     print_bottom() intersection() { bottom_shell(); leg_test_region(); }
+// collision check: everything in the way of a leg as it swings out.  Empty means it swings clear.
+if (part == "leg_sweep")    intersection() { bottom_shell(); for (a = [0 : 5 : 90 + leg_lean - 0.5]) leg_place(leg_x[0], a) leg(); }
 if (part == "spacers")      spacers();
 if (part == "top")          print_top() top_shell();
 if (part == "bottom")       print_bottom() bottom_shell();

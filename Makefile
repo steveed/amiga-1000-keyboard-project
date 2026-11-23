@@ -20,7 +20,7 @@ REV ?= 2
 CASE_VARS := -D "jack_type=\"$(JACK)\"" -D board_rev=$(REV)
 CASE_SUF  := $(if $(filter nose,$(JACK)),,-$(JACK))$(if $(filter 2,$(REV)),,-rev$(REV))
 
-.PHONY: drc bom fab print plate case case-one case-jack case-joint case-spacers keycaps label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
+.PHONY: drc bom fab print plate case case-one case-legs case-jack case-joint case-spacers keycaps keycap-spec label rev2-sch rev2-pcb rev2-route rev2-drc rev2-fab rev2-plate rev2-jlc firmware firmware-test firmware-flash render release rev2-release clean
 
 # Refill the pours, then fail on any DRC error or schematic/board mismatch (silkscreen warnings don't fail).
 drc:
@@ -61,9 +61,11 @@ plate:
 		-o $(BUILD)/plate/gerbers $(BUILD)/plate/$(NAME)-plate.kicad_pcb
 	$(TOOLS) sh -c 'cd $(BUILD)/plate/gerbers && python -m zipfile -c ../$(NAME)-plate-gerbers.zip *'
 
-# Printable case parts (STL) and an assembly preview, from case/a1000_case.scad.
+# Printable case parts (STL), the fold-out leg (print two) and an assembly preview, from case/a1000_case.scad.
+LEG_STL := $(OPENSCAD) --export-format=binstl -D 'part="leg"' -o $(BUILD)/case/$(NAME)-case-leg.stl case/a1000_case.scad
 case:
 	mkdir -p $(BUILD)/case
+	$(LEG_STL)
 	for p in $(CASE_PARTS); do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
@@ -80,6 +82,7 @@ label:
 # The case in two parts, each shell in one piece, for a bed that takes 406 x 158 mm.
 case-one:
 	mkdir -p $(BUILD)/case
+	$(LEG_STL)
 	for p in top bottom; do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" -D split=false $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
@@ -90,6 +93,12 @@ case-jack:
 	for p in jack_test_bottom jack_test_top; do \
 		$(OPENSCAD) --export-format=binstl -D "part=\"$$p\"" $(CASE_VARS) -o $(BUILD)/case/$(NAME)-case-$$p$(CASE_SUF).stl case/a1000_case.scad || exit 1; \
 	done
+
+# Test print of the floor round the left leg's pocket, with a leg, to try the pins' fit and the swing.
+case-legs:
+	mkdir -p $(BUILD)/case
+	$(LEG_STL)
+	$(OPENSCAD) --export-format=binstl -D 'part="leg_test"' -o $(BUILD)/case/$(NAME)-case-leg_test.stl case/a1000_case.scad
 
 # Test prints of a strip along the front of each shell, across both glue joints and a snap.
 case-joint:
@@ -112,6 +121,17 @@ keycaps:
 		$(OPENSCAD) --render --imgsize=1200,900 --camera=0,0,0,200,0,20,140 --autocenter --viewall --projection=p -D "key=\"$$k\"" \
 			-o $(BUILD)/case/$$k-keycap.png case/a1000_keycaps.scad || exit 1; \
 	done
+
+# A drawing of the Return keycap to send a keycap maker, with its STL beside it.
+keycap-spec:
+	mkdir -p $(BUILD)/spec
+	$(OPENSCAD) --export-format=binstl -o $(BUILD)/spec/$(NAME)-return-keycap.stl case/a1000_keycaps.scad
+	$(OPENSCAD) --render --imgsize=1600,1200 --camera=0,0,0,55,0,335,140 --autocenter --viewall --projection=p \
+		--colorscheme=Tomorrow -o $(BUILD)/spec/return-top.png case/a1000_keycaps.scad
+	$(OPENSCAD) --render --imgsize=1600,1200 --camera=0,0,0,200,0,20,140 --autocenter --viewall --projection=p \
+		--colorscheme=Tomorrow -o $(BUILD)/spec/return-under.png case/a1000_keycaps.scad
+	$(TOOLS) python tools/keycap_spec.py case/a1000_keycaps.scad $(BUILD)/spec/$(NAME)-return-keycap.stl \
+		$(BUILD)/spec/return-top.png $(BUILD)/spec/return-under.png $(BUILD)/spec/$(NAME)-return-keycap-spec.pdf
 
 # Rev 2 (ATmega32U4, surface mount): regenerate the schematic from tools/gen_rev2_sch.py, then
 # fail on any ERC error.  The library-table warnings from the bare container are not errors.

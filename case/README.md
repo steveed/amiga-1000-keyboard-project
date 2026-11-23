@@ -38,8 +38,8 @@ the frame. Positions are good to a few millimetres.
   in a 15.5 mm notch in the bottom case's back wall, in a moulded pocket, left of J1 (x 123),
   which is wired to the jack.
 - Rear corners: spring-loaded fold-out legs. Each is a hinged leg with a wire spring, lying
-  along the back wall when folded, from the end wall to about 55 mm in. Not modelled yet;
-  the model's two rear feet sit about where they fold.
+  along the back wall when folded, from the end wall to about 55 mm in. Not copied: the case
+  has simpler printed legs instead (below).
 - The top case has small ribs or hooks along the inside of its front wall. Not modelled.
 - The plate carries an aluminium channel over the controller strip.
 
@@ -63,8 +63,27 @@ the frame. Positions are good to a few millimetres.
   the parts along both boards' back edges.
 - A skirt round each key opening, 8.65 mm deep from the top surface as on the original, stopping
   2.35 mm above the plate (`skirt_h`).
-- Four 19 mm square pockets underneath, 1 mm deep (`foot_depth`), where the model has its feet,
-  for stick-on rubber feet instead of printed ones.
+- Flat top and bottom (`smooth`): the label and badge recesses on top, and the label recess
+  underneath, are left off, so each shell prints on a flat face and the top's inside is flat too
+  (13.55 mm over the PCB everywhere). `smooth = false` puts them back.
+- Four round pockets underneath, 13.2 mm across and 1 mm deep (`foot_d`, `foot_depth`), centred where
+  the model has its feet, for standard 1/2 inch (12.7 mm) stick-on rubber feet. `feet = "square"`
+  makes them the model's 19 mm squares instead. The rear two sit 4.8 mm ahead of the leg notches.
+- AMIGA lettering above the keypad (`logo`), engraved 0.7 mm into the top in place of the badge
+  recess: the A1200 cover's italic outline (`amiga-logo.dxf`, from the a1200kb-external-case
+  project), scaled to the keypad opening's width (60.3 mm, `logo_w`; the A1200's is 94.8) and
+  centred over it at the badge's height (`logo_c`).
+- Two fold-out legs at the back, after a Logitech keyboard's, centred at x 31.7 and 358
+  (`leg_x`). Each is a flat leg, 24 x 19 x 3.2 mm, on two 2.5 mm pins at its back end, lying flush
+  in a pocket in the floor (0.6 mm up from the underside). It swings down and back on its pins
+  until its back face stops on the pocket's back edge, 10 degrees past upright (`leg_lean`), so the
+  case's weight holds it open; its tip stands 16.8 mm below the underside, about 6 degrees of tilt
+  on the front feet. Two slots cut a 2 mm rail off each side of the leg: squeeze the rails
+  together to put the pins in their holes. A ramp in front of each pocket (`leg_notch`) lets a
+  fingertip under the tip. The pocket's box stands 2.8 mm off the floor inside and stops short of
+  the PCB's back edge (the render warns if it runs under it). The leg is the same for every
+  case. The `leg_sweep` part is a check: the case where a leg swings through it, which must be
+  empty.
 - A 4P4C jack where the original's is, sized from the jack itself and a test fit
   (`jack_size`): a 22 x 10.5 mm body, 13.5 mm tall, behind the back wall, with a 15.4 mm nose at its
   right end that sits in the 15.5 mm plug opening (x 86.05-101.55), as deep as the wall. The opening
@@ -81,8 +100,8 @@ the frame. Positions are good to a few millimetres.
   other's but with no stop or wire cutout, since its wires leave from the top of its back. A filler
   closes the notch in both shells 0.6 mm in from the outside (`j616_fill`), so the notch still
   shows, with a 9 x 8.5 mm hole for the plug from the floor up (`j616_hole`). At 17.42 mm it only
-  just fits under the label recess, so the label skin above it is thinned from 1.6 to 1.0 mm
-  (`j616_skin`), leaving 0.4 mm. Not test-fitted yet: the plug hole's size and position are
+  leaves 1.2 mm under the flat top; with `smooth = false` it only just fits under the label recess,
+  so the label skin above it is thinned from 1.6 to 1.0 mm (`j616_skin`), leaving 0.4 mm. Not test-fitted yet: the plug hole's size and position are
   from the drawings.
 - A USB-C opening in the back wall for rev 2's socket (J2), which opens to the rear on the PCB's
   back edge at x 125, about 31 mm right of the jack. The socket's mouth is 4.8 mm in from the
@@ -128,11 +147,13 @@ plate's tab also rests on the rev 1 tab boss.
 | jack_test_top | 50 x 25 x 12 | face down |
 | joint_test_top_left / _right | 52 / 62 x 11 x 15 | face down |
 | joint_test_bottom_left / _right | 25 / 93 x 18 x 16 | base down |
+| leg (print two) | 27 x 21 x 3.2 | flat, as written |
+| leg_test | 40 x 33 x 16 | base down |
 
 The STLs come out in their print orientation. Each shell splits into two on a 45 degree scarf
 (glue it), and the two splits are staggered so the shells bridge each other's joint. The rounded
 edges stop at 45 degrees and finish with a small chamfer at the bed (`print_safe`), so nothing
-needs supports. The exception is the label recess, which prints as a ~17 mm bridge.
+needs supports. The leg pockets' roofs print as 25 mm bridges.
 
 Each joint has two dowels, front and back, so the halves can't slide while the glue sets: a block
 inside the wall, split with the joint, with a 2 mm hole along the case through both halves. Push a
@@ -141,6 +162,10 @@ inside the wall, split with the joint, with a 2 mm hole along the case through b
 `make case-one` writes the shells in one piece each instead (`split = false`), with no joints or
 dowels, for a bed that takes 406 x 158 mm, or one about 400 mm square with the part laid diagonally.
 They take the same `JACK=616e`.
+
+`make case` and `make case-one` also write the leg. `make case-legs` writes it with a test piece of
+the floor round the left leg's pocket (40 mm wide, from just ahead of the notch to the back), to try
+the pins' fit and the swing before printing the whole case.
 
 `make case-jack` writes the two jack test pieces: just the corner of each shell round the jack
 (x 70-120, from y 125 to the back), to try the jack in its box and the two shells round it before
@@ -155,7 +180,7 @@ bottom before printing the whole case.
 `make label` writes a 1:1 sticker for the label recess underneath (`build/case/*-label-rev1.svg` and
 `-rev2.svg`), laid out like the original Commodore label but with this project's name and the board
 revision. Print it at 100% on sticker paper and cut on the grey outline; it sits 0.5 mm inside the
-recess all round.
+recess all round (with `smooth = false`; otherwise stick it where the recess was, x 80-150, y 53-104).
 
 ## Keycaps (rev 2)
 
@@ -187,4 +212,5 @@ Print them top down, stems up; the dish needs a little support or a raft. `cross
 - 4 M3 x 16 screws, pan or button head (15-17 works: the head sits 3 mm up in a counterbore and the insert runs 5 mm up the column, from 3.15 mm above the parting line).
 - 4 M3 heat-set inserts, 4 mm hole.
 - About 80 mm of 1.75 mm filament, cut into four 20 mm dowels for the joints.
-- 4 stick-on rubber feet, up to 19 mm square or round, for the pockets underneath.
+- 4 stick-on rubber feet, 1/2 inch (12.7 mm) round, about 3.5 mm tall (3M SJ5012 or similar),
+  for the pockets underneath. 1 mm sits in the pocket.
